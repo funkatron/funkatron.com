@@ -97,17 +97,35 @@ ul>li {
 	}
 	
 	#nav-items {
-		width:22em;
+		width:21.2em;
 		white-space:nowrap;
 		.center_margin;
+		text-align:left;
+		list-style:none;
+		padding:0;
+		margin-top:0;
+		margin-bottom:0;
+		position:relative;
 		
-		a {
-			padding-right:1.5em;
-			color:@color_bg;
-			text-decoration:none;
+		li {
+			margin:0;
+			list-style:none;
+			padding:0;
+			display: inline-block;
+			position:absolute;
+			text-align: left;
+			
+			a {
+				color:@color_bg;
+				text-decoration:none;
+				display:inline-block;
+			}
 		}
 		
-		.word4 { padding-right:0; }
+		.word1 { left:0em }
+		.word2 { left:5.4em }
+		.word3 { right:7em }
+		.word4 { right:0em }
 	}
 }
 

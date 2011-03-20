@@ -82,18 +82,41 @@ ul > li {
   line-height: 1em;
 }
 #header #nav-items {
-  width: 22em;
+  width: 21.2em;
   white-space: nowrap;
   margin-left: auto;
   margin-right: auto;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
 }
-#header #nav-items a {
-  padding-right: 1.5em;
+#header #nav-items li {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+  position: absolute;
+  text-align: left;
+}
+#header #nav-items li a {
   color: #ffffff;
   text-decoration: none;
+  display: inline-block;
+}
+#header #nav-items .word1 {
+  left: 0em;
+}
+#header #nav-items .word2 {
+  left: 5.4em;
+}
+#header #nav-items .word3 {
+  right: 7em;
 }
 #header #nav-items .word4 {
-  padding-right: 0;
+  right: 0em;
 }
 #page-content {
   line-height: 1.5em;

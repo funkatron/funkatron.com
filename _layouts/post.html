@@ -21,7 +21,7 @@ layout: default
 	<div class="related-posts">
 		<h3>Related Posts</h3>
 		<ul>
-		{% for rp in site.related_posts limit:5 %}
+		{% for rp in site.related_posts limit:3 %}
 			<li class="related-post"><a href="{{rp.url}}">{{rp.title}}</a></li>
 		{% endfor %}
 		</ul>
