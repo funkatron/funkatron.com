@@ -1,0 +1,321 @@
+---
+layout: post
+author: funkatron
+title: "Google App Engine from a PHP developer&#8217;s perspective"
+url_title: google-app-engine-from-a-php-developers-perspective
+tags: "php, python, google app engine, django, datastore, symfony"
+published: true
+categories:
+- Development
+- The Web Problem
+- Python
+- PHP
+date: 2008-06-03
+summary: 
+old_entry_id: 2429
+---
+<p><a href="http://flickr.com/photos/zinka/300709246/"><img src="http://farm1.static.flickr.com/119/300709246_d1864882bd.jpg" alt="My cheatin' heart" /></a></p>
+
+<p>When Google AppEngine was announced, a lot of sturm und drang went through the PHP community because it only supported Python. Of course, the same thing went through the Ruby community. The Perl community, not so much, because they&#8217;re used to getting ignored.</p>
+
+<p>Anyway, I didn&#8217;t really give a crap, because Python is a cool language, and I&#8217;ve been interested in learning new languages and frameworks lately. PHP is cool and all, but having done it for 9 years, you kinda look for new challenges. Plus, getting hung up on one language is a sure way to be a boring dude who gets caught up in lame religious language wars.</p>
+
+<p>I&#8217;ve actually toyed a little with Python here and there, but never dove in on a significant project. I&#8217;m someone who really <em>likes</em> whitespace and indenting rules and such, so those aspects of the language never bothered me. Otherwise, Python is a good fit for me philosophy-wise, because it&#8217;s totally the anti-Perl, lacking goofy magic characters and 1000 ways of doing the same thing. I can&#8217;t stand languages where &#8220;<code>~^s</code>&#8221; means &#8220;find all numbers that start with the letter &#8216;s&#8217;, add them, multiply them by 75, and then post the result to Twitter&#8221;. I&#8217;m not freakin&#8217; R2D2 here.</p>
+
+<p>So anyway, I started working on a little side project with <a href="http://al3x.net">Alex Payne</a> on GAE. It&#8217;s been an enjoyable experience to work with a new language and framework, and there&#8217;s a lot to like about what GAE offers. It also has some rough edges, though, in some areas you&#8217;d be surprised by.</p>
+
+<h3>The good</h3>
+
+<h4>The webapp framework</h4>
+
+<p>The built-in framework for handling requests is <a href="http://code.google.com/appengine/docs/webapp/"><strong>webapp</strong></a>, a nicely straightforward system for mapping requests to handlers.</p>
+
+<pre><code>class MainPage(webapp.RequestHandler):
+    def get(self):
+        self.response.out.write('Sup dogg?')
+
+class FooPage(webapp.RequestHandler)
+    def get(self):
+        self.response.out.write('This is the foo page')
+
+def main():
+    wapp = webapp.WSGIApplication([
+                                    ('/', MainPage),
+                                    ('/foo', FooPage)
+                                  ],
+                                  debug=True)
+
+    wsgiref.handlers.CGIHandler().run(wapp)
+</code></pre>
+
+<p>So we define a class to handle a specific URL request, and define methods for <code>GET</code> or <code>POST</code> or whatever HTTP commands inside those classes. Then in the main function we map URLs to those handler classes in the <code>webapp.WSGIApplication</code> constructor, and then start it up.</p>
+
+<p>I like this because it&#8217;s <em>simple</em> and easy to follow. I could read the code before I&#8217;d written any myself and get what&#8217;s going on. There&#8217;s no magic happening here; no auth-mapped stuff or relationships established because I happened to name something the right way and put it in the right directory. Convention is good, and we have conventions here, but the conventions are clear and obvious.</p>
+
+<h4>Django templating</h4>
+
+<p>Django has a really nice templating system. GAE lets you <a href="http://code.google.com/appengine/docs/gettingstarted/templates.html">use it</a> outside of the whole Django stack. This is cool. For example:</p>
+
+<pre><code># define some values to plug into the template
+tpl_data = {
+    'page_title':"This is an awesome page",
+    'body':"Here's the page body, sucker"
+    }
+
+# get the template path
+path = os.path.join(os.path.dirname(__file__), 'index.html')
+
+#render and output the template
+self.response.out.write(template.render(path, tpl_data))
+</code></pre>
+
+<p>Here&#8217;s a super simple <code>index.html</code> template:</p>
+
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{ page_title.striptags }}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        {{ body }}
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h4>Google User Auth</h4>
+
+<p>Writing a user system is a pain. Making people set up new accounts to use your site is yet another barrier to experiencing your amazing new <strike>Google sellout project</strike> site. You could presumably do these things if you want in GAE, but most of the time that seems kinda stupid. GAE offers you <a href="http://code.google.com/appengine/docs/users/">very easy integration with Google user accounts</a>, so you can use <em>that</em> as your authentication system. Since everyone and their mom has a Gmail account, it&#8217;s a pretty good bet many or most of your users will be able to skip account setup.</p>
+
+<h4>Pricing</h4>
+
+<p>GAE is free for your first 500MB of storage and &#8220;around&#8221; 5 million pageviews. That&#8217;s plenty to host a smallish app or do initial testing on something you want to get big (because big == profit, right?). If you push past that, the pricing is in-line with <a href="http://www.amazon.com/gp/browse.html?node=201590011">similar services from Amazon</a>. That means it&#8217;s totally reasonable to set up an app just for goofing around and learning.</p>
+
+<h4>Python</h4>
+
+<p>Python is a cool language: easy to pick up and quite powerful. It doesn&#8217;t fit some tasks as well as PHP IMHO, but it does a ton of stuff well, and its large community means there is lots of support and library development. Some stuff it does really well includes:</p>
+
+<ul>
+<li>Network programming (<a href="http://showmedo.com/videos/video?name=1080010&amp;fromSeriesID=108">example</a>)</li>
+<li>Parsing HTML</li>
+<li>Email parsing and manipulation</li>
+<li><a href="http://docs.python.org/mac/mac.html">OS X scripting</a></li>
+<li>String manipulation</li>
+<li>Unit testing</li>
+<li>Other stuff I probably don&#8217;t know about</li>
+</ul>
+
+<h4>AppEngineLauncher</h4>
+
+<p>Recently the GAE team released the <a href="http://googleappengine.blogspot.com/2008/05/app-engine-launcher-for-mac-os-x.html">Google App Engine Launcher</a>, an app for OS X that handles launching the development server and deploying your app to Google&#8217;s servers. You can of course script all this stuff yourself on the command line, but for folks less comfortable with that, this is a godsend. I actually did use the CLI before, but I don&#8217;t touch it now because the GAEL is just <a href="http://dudafly.ytmnd.com/">so fly</a>. Single-click deployment is especially awesome.</p>
+
+<h4>Leveraging Google&#8217;s Infrastructure</h4>
+
+<p>They gots some big computers, rite? You&#8217;d certainly think so, and they probably have better uptime than your $5 shared hosting account.  We hope.</p>
+
+<h3>The lame</h3>
+
+<h4>Datastore query limitations &amp; primitive text search</h4>
+
+<p>The Datastore API is GAE&#8217;s database system. It has some similarities to traditional relational DBs like MySQL and PostgreSQL, but it is <em>fundamentally different</em>. It stores data objects as <em>entities</em> instead of rows, and properties instead of columns. Objects are described by <em>model</em> classes, defined in Python:</p>
+
+<pre><code>class Page(db.Model):
+    title = db.StringProperty(required=True)
+    keywords = db.StringProperty()
+    date_added = db.DateProperty(required=True)
+    date_updated = db.DateProperty(required=True)
+    body = db.StringProperty()
+</code></pre>
+
+<p>Models are to entities as classes are to objects, then (I think).</p>
+
+<p>The object approach has some cool flexibility, like <em>expando</em> models that let you add arbitrary properties to entities (very <em>unlike</em> rows in a relational database).</p>
+
+<p>You can do SQL-like queries against the Datastore with GQL. It&#8217;s a lot like SQL, but a lot more basic. In fact, this is a summary of the <em>entire</em> language:</p>
+
+<pre><code>SELECT * FROM &lt;kind&gt;
+[WHERE &lt;condition&gt; [AND &lt;condition&gt; ...]]
+[ORDER BY &lt;property&gt; [ASC | DESC] [, &lt;property&gt; [ASC | DESC] ...]]
+[LIMIT [&lt;offset&gt;,]&lt;count&gt;]
+[OFFSET &lt;offset&gt;]
+
+&lt;condition&gt; := &lt;property&gt; {&lt; | &lt;= | &gt; | &gt;= | = | != } &lt;value&gt;
+&lt;condition&gt; := &lt;property&gt; IN &lt;list&gt;
+&lt;condition&gt; := ANCESTOR IS &lt;entity or key&gt;
+</code></pre>
+
+<p>This lets you do basic queries, but it&#8217;s missing a lot of powerful stuff present in SQL. Most notably there is no equivalent to the <code>LIKE</code> comparison operator. That means <strong>there is no way to do partial string matches!</strong></p>
+
+<p>Okay, so you can do <a href="http://groups.google.com/group/google-appengine/browse_thread/thread/b99bb87d9a3d05ab/8ca66b9241ccf73f?lnk=gst&amp;q=string+prefix+match#8ca66b9241ccf73f">kludgy prefix matching</a>, and there is an as-of-yet undocumented whole word search using <a href="http://groups.google.com/group/google-appengine/browse_thread/thread/f64eacbd31629668/8dac5499bd58a6b7?lnk=gst&amp;q=searchablemodel#8dac5499bd58a6b7">the SearchableModel class</a>, but those are primitive compared to the string matching capabilities in MySQL. Personally  I would&#8217;ve thought that <em>the</em> search company would have given GAE really awesome text search capabilities out of the box, but for now folks have to roll their own hacks.</p>
+
+<p>I guess now I have an idea of why Gmail&#8217;s search can&#8217;t match partial strings.</p>
+
+<h4>No &#8220;beginner&#8221; docs</h4>
+
+<p>GAE&#8217;s docs are aimed at experienced developers who have already built web apps. Most of it is reference, and it&#8217;s a little light on examples. If you&#8217;ve not used Python before, here&#8217;s the entire introduction form the GAE docs:</p>
+
+<blockquote>
+  <p>For more information about Python, see <a href="http://www.google.com/url?sa=D&amp;q=http://python.org/">the Python website</a> and <a href="http://www.google.com/url?sa=D&amp;q=http://docs.python.org/">the Python documentation</a>.</p>
+</blockquote>
+
+<p>I think Python is easy to pick up, but GAE doesn&#8217;t even bother pointing out some good tutorials for beginners.  Compare this to <em><a href="http://djangobook.com/">The Django Book</a></em> or <em><a href="http://www.symfony-project.org/book/">The Definitive Guide to Symfony</a></em>, both of which aren&#8217;t really for beginners, but do a good job of helping them get up to speed.</p>
+
+<hr />
+
+<p>I&#8217;m early in my development experience with GAE, so this is by no means comprehensive. Google has already demonstrated that the GAE feature set will be growing, having introduced memcache and image manipulation APIs just a week ago. I&#8217;m sure the documentation will be improved and supplemented by third parties in short order, and the issues with text search will almost certainly be addressed soon &#8211; it&#8217;s an obvious deficiency.</p>
+
+<p>For now, I&#8217;m having a lot of fun working with GAE. It&#8217;s a solid platform with a lot of promise, and it offers a lot of learning opportunities for folks who want to explore web app dev with Python.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2429" data-url-title="google-app-engine-from-a-php-developers-perspective">
+	<ul>
+	
+	<li class="comment">
+		<a name="6471" class="comment-id anchor"></a>
+		<div class="comment-author">Kibitzer</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">06/03/2008 09:55:23 PM</div>
+		<div class="comment-body"><p>Really nice write-up, thanks for taking the time. I signed up for the Google Apps thing but I haven&#8217;t used it yet, so good to get some perspective on it.</p>
+
+<p>I don&#8217;t get why people get so bent out of shape over indenting being part of the syntax. Srsly, who cares?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6472" class="comment-id anchor"></a>
+		<div class="comment-author">gasper_k</div>
+		<div class="comment-author-url">http://fatg.sopca.com</div>
+		<div class="comment-date">06/04/2008 05:09:43 AM</div>
+		<div class="comment-body"><p>very insightful post, thanks. I&#8217;ve read a few articles on the Datastore and it requires a completely different mindset compared to a RDBMS. This is not bad by itself, but I agree that text searching should be more powerful.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6473" class="comment-id anchor"></a>
+		<div class="comment-author">Amanda Abelove</div>
+		<div class="comment-author-url">http://www.abelove.com</div>
+		<div class="comment-date">06/04/2008 11:29:27 AM</div>
+		<div class="comment-body"><p>Google sellout site? <em>laugh</em></p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6474" class="comment-id anchor"></a>
+		<div class="comment-author">Wesley Tanaka</div>
+		<div class="comment-author-url">http://wtanaka.com/</div>
+		<div class="comment-date">06/05/2008 02:24:25 AM</div>
+		<div class="comment-body"><p>Maybe it&#8217;s because it&#8217;s beta, but I&#8217;ve run into data store errors on GAE about as often as MySQL mysteriously disappears on $5 hosting.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6476" class="comment-id anchor"></a>
+		<div class="comment-author">max</div>
+		<div class="comment-author-url">http://www.web2py.com</div>
+		<div class="comment-date">06/05/2008 03:27:18 PM</div>
+		<div class="comment-body"><p>Mind that you can develop with web2py and run on the app engine or on a normal system with mysql/postgresql/oracle seamlessly. web2py is higher level, easier and has plenty of intro level docs.
+Anyway, you are right about the GAE DB limitations, not much one can do about that.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6477" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">06/05/2008 04:48:55 PM</div>
+		<div class="comment-body"><p>@max: Yes, I should have mentioned that you can run any framework that has a CGI interface, not just webapp. Thanks for clarifying.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6478" class="comment-id anchor"></a>
+		<div class="comment-author">max</div>
+		<div class="comment-author-url">http://www.web2py.com</div>
+		<div class="comment-date">06/06/2008 09:53:58 AM</div>
+		<div class="comment-body"><p>It is true that you can any Python framework with CGI but only barebone. With Django and Pylons for example, you cannot use their native ORMs on GAE, you have to use GQL. Thus the code is not portable. This is not the case of web2py. The web2py ORM provides an abstraction layer that works with MySQL/PostgreSQL/Oracle/SQLite and GAE.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6479" class="comment-id anchor"></a>
+		<div class="comment-author">Drackt</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">06/06/2008 01:23:40 PM</div>
+		<div class="comment-body"><p>Hey, just a note to tell you I love the image you used at the top of the post. I don&#8217;t know why but it brought me up short and I though, &#8220;Damn, that is cool.&#8221; Moving on&#8230;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6480" class="comment-id anchor"></a>
+		<div class="comment-author">Jimmy</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">06/06/2008 01:40:47 PM</div>
+		<div class="comment-body"><p>Great article!  I&#8217;m a native PHP developer and have been interested in Python ever since Django went mainstream.  I&#8217;ve read a little about GAE, and it may be the tipping point which enables me to finally dive into the Python environment.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6481" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">06/06/2008 02:04:28 PM</div>
+		<div class="comment-body"><p>@Drackt Thanks!</p>
+
+<p>@Jimmy Django is a nice FW, and Python is a cool language. I still love me some PHP, but the only thing that learning another language can do is expand your horizons.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6483" class="comment-id anchor"></a>
+		<div class="comment-author">Alex</div>
+		<div class="comment-author-url">http://a--optic.com</div>
+		<div class="comment-date">06/09/2008 01:10:56 PM</div>
+		<div class="comment-body"><p>What I find interesting about google is that any API/framework released seems to be in a different language? I remember learning vPython in physics when I was in college. It is a interesting language. I still prefer PHP. Nice writeup on the pros and cons</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6485" class="comment-id anchor"></a>
+		<div class="comment-author">Adam Charnock</div>
+		<div class="comment-author-url">http://porteightyeight.com</div>
+		<div class="comment-date">06/10/2008 07:54:02 PM</div>
+		<div class="comment-body"><p>Hey,</p>
+
+<p>It may interest you to know that Zend and Google do seem to be talking about providing PHP support in GAE.</p>
+
+<p>For more info:
+http://porteightyeight.com/archives/201-PHP-for-Google-App-Engine-in-the-works.html</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6619" class="comment-id anchor"></a>
+		<div class="comment-author">Shruti</div>
+		<div class="comment-author-url">http://www.webdesignersindia.net/</div>
+		<div class="comment-date">12/17/2008 06:01:32 AM</div>
+		<div class="comment-body"><p>After reading your post I found that Python is an interesting language. I don&#8217;t know Python yet but I will try it soon. Thanks for the information.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6629" class="comment-id anchor"></a>
+		<div class="comment-author">John</div>
+		<div class="comment-author-url">http://www.fwdir.com</div>
+		<div class="comment-date">12/25/2008 03:43:55 AM</div>
+		<div class="comment-body"><p>I found your site while searching for php frameworks. It&#8217;s interesting to hear that there is is a google app engine, I never knew about it. I better add it to http://www.fwdir.com.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6890" class="comment-id anchor"></a>
+		<div class="comment-author">Adam</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/11/2009 04:39:59 PM</div>
+		<div class="comment-body"><p>Thanks! very useful intro :D</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

@@ -1,0 +1,83 @@
+---
+layout: post
+author: funkatron
+title: "Apache conf file syntax coloring for nano"
+url_title: apache_conf_file_syntax_coloring_for_nano
+tags: ""
+published: true
+categories:
+- Development
+- The Web Problem
+date: 2005-10-28
+summary: 
+old_entry_id: 2026
+---
+<p>I&#8217;m gonna lose all 1337 h4x0r rep my admitting that my fav editor is <a href="http://www.nano-editor.org/">Nano</a>.  This is a remnant of using <a href="http://www.washington.edu/pine/">Pine</a> as my preferred email program in college (and even today when I can only get in via SSH), which by default uses <a href="http://www.indiana.edu/~ucspubs/b103/">Pico</a> as its editor.  Nano is a Pico clone that has a &#8220;free as in freedom&#8221; license in the GPL, and adds some enhancements like regex searching and <strong>syntax coloring</strong>.</p>
+
+<p>Yesterday I decided to delve back into developing syntax coloring stuff for Nano on our servers, and came up with a pretty decent setup for Apache conf files.  It includes special coloring for the <a href="http://httpd.apache.org/docs/2.0/mod/directives.html">runtime config directives</a>.</p>
+
+<p>To use this, make a text file in your home directory called <code>.nanorc</code> and paste the contents of this file into it:</p>
+
+<p><a href="http://funkatron.com/downloads/nano/apacheconf-coloring.txt">http://funkatron.com/downloads/nano/apacheconf-coloring.txt</a></p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2026" data-url-title="apache_conf_file_syntax_coloring_for_nano">
+	<ul>
+	
+	<li class="comment">
+		<a name="1695" class="comment-id anchor"></a>
+		<div class="comment-author">Nigel</div>
+		<div class="comment-author-url">http://www.eclipticdreams.com</div>
+		<div class="comment-date">06/30/2006 10:26:38 AM</div>
+		<div class="comment-body"><p>What other nano syntax files have you developed? I&#8217;ve not seen many on the net and yours is one of the first I found but its damn useful!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1694" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">06/30/2006 11:37:16 AM</div>
+		<div class="comment-body"><p>I&#8217;ve done a few things here and there, but only for my own use.  I prefer to do coding in a GUI editor, but I&#8217;m almost always editing apache conf files in the shell, so having syntax coloring for those files makes more of an impact in my productivity than it would for other file types.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6738" class="comment-id anchor"></a>
+		<div class="comment-author">Mikel King</div>
+		<div class="comment-author-url">http://mikelking.com</div>
+		<div class="comment-date">03/27/2009 09:52:43 AM</div>
+		<div class="comment-body"><p>Thanks for putting this together.</p>
+
+<p>I&#8217;ve found it&#8217;s a good idea to drop these syntax highlighters into their own repositories, wither as a system global or at least in my own personal which is referenced from my .nanorc</p>
+
+<p>as an example&#8230;</p>
+
+<pre><code>## Nanorc files
+ include "/usr/local/share/nano/c.nanorc"
+
+## Apache Configuration Files
+ include "~/.nanorc.d/apache.nanorc"
+</code></pre>
+
+<p>Still great work thanks!!!</p>
+
+<p>m!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6739" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">03/27/2009 10:42:18 AM</div>
+		<div class="comment-body"><p>Very good idea, Mikel. Thanks!</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

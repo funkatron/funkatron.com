@@ -1,0 +1,143 @@
+---
+layout: post
+author: funkatron
+title: "LameBrain 0.5.2 now available"
+url_title: lamebrain_052_now_available
+tags: ""
+published: true
+categories:
+- OS X
+date: 2003-03-29
+summary: 
+old_entry_id: 1804
+---
+<p>Finally!  Here are the goods:</p>
+
+<ul>
+<li>Documentation is complete</li> <li>Fixed problem with single-file encoder and dropped files that had hidden extensions</li> <li>Fixed bug where .m3u playlists were not generated according to customized naming schemes</li> <li>Dragging and dropping a folder on the batch encoder will optionally recurse through all subfolders as well</li> <li>Batch encoder will only accept files with user-defined valid extentions. Default valid extensions are &#8220;mp3&#8221;, &#8220;wav&#8221;, and &#8220;aiff&#8221;</li>
+</ul>
+
+<p><a href="files/LameBrain.dmg.gz">Get your freak on</a>.</p>
+
+<p><b>Update:</b> Whoops!  Uploaded the wrong file.  Fixed now.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="1804" data-url-title="lamebrain_052_now_available">
+	<ul>
+	
+	<li class="comment">
+		<a name="1572" class="comment-id anchor"></a>
+		<div class="comment-author">Ira Adams</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">03/29/2003 04:55:04 PM</div>
+		<div class="comment-body"><h2>The application that downloads from this link says it&#8217;s version 0.5.1</h2>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1571" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">03/29/2003 07:19:17 PM</div>
+		<div class="comment-body"><p>Ooops.  Fixed.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1570" class="comment-id anchor"></a>
+		<div class="comment-author">999ØFor9s</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">04/03/2003 10:43:13 PM</div>
+		<div class="comment-body"><p>When I try to rip a CD with LAME GUI settings &#8220;none, none. -r3mix, none, none, 2&#8221; it rips the first track in the queue fine but halts on the next track with an error &#8220;An exception of class NilObjectException was not handled. The application must shut down.&#8221;  I can relaunch and encode that track that failed, but the next in line always halts.</p>
+
+<p>Also, nit-pick: the app doesn&#8217;t respond to the wheel on my MS Wheelmouse Optical :)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1569" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">04/04/2003 05:48:59 AM</div>
+		<div class="comment-body"><p>Does this happen with every CD?  If not, which CD(s) are failing?  Do these CDs rip fine with iTunes?  Also, are you using a customized naming scheme?</p>
+
+<p>Apologies about the lack of wheel support.  Annoys me too, but I don&#8217;t think RealBasic has any support for it.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1568" class="comment-id anchor"></a>
+		<div class="comment-author">Addictedtomymac</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">04/12/2003 04:31:37 PM</div>
+		<div class="comment-body"><p>I have heard that &#8212;nspsytune &#8212;vbr-mtrh -V1 -mj -h -b96 &#8212;lowpass 19.5 &#8212;athtype 3 &#8212;ns-sfb21 2 -Z &#8212;scale 0.98 -X0 are good settings for LAME (according to www.r3mix.net) to get &#8220;CD-quality&#8221; MP3s. Does LameBrain support all of these features/commands? IE&#8230; am I getting the same quality that I would get if I were encoding on a PC?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1567" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">04/12/2003 07:38:19 PM</div>
+		<div class="comment-body"><p>I believe those are the settings you get if you use the special &#8212;r3mix preset in LAME.  There is a GUI setting to enable that preset, and one of the default profiles that comes with LameBrain uses thast setting.  You could also put those command line options into the &#8220;Expert&#8221; setting and save them to a profile if you like.</p>
+
+<p>And yes, you would get the same quality as on a PC.  LAME is identical from platform to platform, except for speed optimizations for specific processors.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1566" class="comment-id anchor"></a>
+		<div class="comment-author">Lee Austin</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">04/18/2003 02:38:34 PM</div>
+		<div class="comment-body"><p>I been ripping CD for about two days.  But last night I started getting the same message as above (Apr. 3:When I try to rip a CD with LAME GUI settings &#8220;none, none. -r3mix, none, none, 2&#8221; it rips the first track in the queue fine but halts on the next track with an error &#8220;An exception of class NilObjectException was not handled. The application must shut down.&#8221;  I can relaunch and encode that track that failed, but the next in line always halts.&#8221;</p>
+
+<p>Now it happens to every CD on the first Track.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1565" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">04/22/2003 12:53:58 AM</div>
+		<div class="comment-body"><p>Unfortunately, I can&#8217;t be quite sure why this is happening, because I&#8217;ve never beem able to replicate it.  Have you tried the basic stuff, like deleting the prefs file?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1564" class="comment-id anchor"></a>
+		<div class="comment-author">victor</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">04/23/2003 09:09:58 AM</div>
+		<div class="comment-body"><p>bom o grafico eu gostei so que nao to conseguindo fazer o download &#8230;.. estou prescizando muito de um conversor de mp3 como o seu !!! continue fazendo prog.. para linux .. sou um admirador dessas distribuições &#8230;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1563" class="comment-id anchor"></a>
+		<div class="comment-author">victor</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">04/23/2003 09:11:24 AM</div>
+		<div class="comment-body"><p>gostei do seu mp3 conversor continue fazendo mas e mais ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1562" class="comment-id anchor"></a>
+		<div class="comment-author">Dave</div>
+		<div class="comment-author-url">http://www.hydrogenaudio.org</div>
+		<div class="comment-date">05/02/2003 03:03:38 PM</div>
+		<div class="comment-body"><p>Can I direct to the hydrogenaudio discussion board and this thread in particular:
+&lt;a href=&#8221;http://www.hydrogenaudio.org/index.php?act=ST&amp;f=15&amp;t=203&amp;&#8221;&gt;http://www.hydrogenaudio.org/index.php?act=ST&amp;f=15&amp;t=203&amp;&lt;/a&gt;</p>
+
+<p>There&#8217;s a great deal of good information available there and some of the LAME developers hang out and answer questions.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

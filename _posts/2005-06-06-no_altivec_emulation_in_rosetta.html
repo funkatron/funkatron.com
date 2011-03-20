@@ -1,0 +1,28 @@
+---
+layout: post
+author: funkatron
+title: "No Altivec Emulation in Rosetta"
+url_title: no_altivec_emulation_in_rosetta
+tags: ""
+published: true
+categories:
+- OS X
+date: 2005-06-06
+summary: 
+old_entry_id: 1926
+---
+<p><a href="http://developer.apple.com/documentation/MacOSX/Conceptual/universal_binary/universal_binary.pdf">Universal Binary Programming Guidelines</a>:</p>
+
+<blockquote>Rosetta is designed to translate currently shipping applications that run on a PowerPC with a G3 processor and that are built for Mac OS X. Rosetta does not run the following:
+
+<ul><li>Applications built for Mac OS 8 or 9</li>
+<li>Code written specifically for AltiVec</li>
+<li>Code that inserts preferences in the System Preferences pane</li>
+<li>Applications that require a G4 or G5 processor</li>
+<li>Applications that depend on one or more kernel extensions</li>
+<li>Kernel extensions</li>
+<li>Bundled Java applications</li></ul></blockquote>
+
+<p>(Via <a href="http://www.macintouch.com/">Macintouch</a>.)</p>
+
+<p>I suppose this isn&#8217;t surprising, but not emulating Altivec code puts a bit of a damper on things. Running slow is one thing &#8212; not running at all is entirely another.  On the other hand, what <i>major</i> apps exist that are not either made by Apple or one of the big 3rd parties that will definitely transition their code (or have existing Windows versions that contain vectorized equivalents for x86 processors)?  I can&#8217;t think of any offhand, but I might be missing something.</p>

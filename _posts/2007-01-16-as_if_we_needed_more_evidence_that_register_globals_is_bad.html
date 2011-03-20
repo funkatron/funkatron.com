@@ -1,0 +1,41 @@
+---
+layout: post
+author: funkatron
+title: "As if we needed more evidence that register_globals is bad"
+url_title: as_if_we_needed_more_evidence_that_register_globals_is_bad
+tags: ""
+published: true
+categories:
+- PHPSecInfo
+- PHP
+date: 2007-01-16
+summary: 
+old_entry_id: 2240
+---
+<p>For the past few years, PHP security experts have been pounding on the heads of sysadmins to <strong>turn off <a href="http://php.net/register_globals">register_globals</a></strong>.  While default installs of PHP turn it off, some popular web apps (especially older versions) insist on using it, so some webhost sysadmins will turn it on, presumably to make things go smoothly for their customers.  Oops!</p>
+
+<p><a href="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-0233">CVE-2007-0233</a>, what seems like the 300th Wordpress vulnerability in the last two weeks, reports an sql injection vulnerability in Wordpress 2.0.6 (which was only released 11 days ago).  The exploit appears to rely on register_globals being enabled, though:</p>
+
+<pre>
+funkatron@foo > php xpl.php foo.com /wp/
+
+---------------------------------------------------------------------------
+Wordpress < = 2.0.6 wp-trackback.php Zend_Hash_Del_Key_Or_Index /
+/ sql injection admin hash disclosure exploit
+(needs register_globals=on, 4 <= PHP < 4.4.3,< 5.1.4)
+by rgod
+dork: "is proudly powered by WordPress"
+mail: retrog at alice dot it
+site: http://retrogod.altervista.org
+---------------------------------------------------------------------------
+
+pwd hash   ->
+admin user ->
+exploit failed...
+</pre>
+
+<p>This is a good example of why web app security (and any security, for that matter) must be multilayered: on the hardware level, on the server daemon level, on the language environment level, and on the code level.</p>
+
+<p>So, for the love of god, STOP ENABLING REGISTER_GLOBALS, upgrade to <a href="http://wordpress.org/development/2007/01/wordpress-207/">Wordpress 2.0.7</a>, and  (shameless plug) use <a href="http://phpsecinfo.com">PhpSecInfo</a> to audit your PHP environment. ;)</p>
+
+<p>[tags]php, phpsecinfo, register-globals, sql-injection, wordpress[/tags]</p>

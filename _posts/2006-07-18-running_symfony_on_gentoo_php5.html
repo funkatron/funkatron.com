@@ -1,0 +1,38 @@
+---
+layout: post
+author: funkatron
+title: "Running Symfony on Gentoo PHP5"
+url_title: running_symfony_on_gentoo_php5
+tags: ""
+published: true
+categories:
+- General
+date: 2006-07-18
+summary: 
+old_entry_id: 2137
+---
+<p>A couple notes for those who are, like me, trying to run <a href="http://www.symfony-project.org/"><span>Symfony</span> </a>on <a href="http://php.net"><span>PHP</span>5</a> in <span><a href="http://www.gentoo.org/">Gentoo</a></span>:</p>
+
+<ul> <li>You&#8217;ll need to make sure that <a href="http://us3.php.net/manual/en/ref.info.php#ini.magic-quotes-gpc">magic_quotes_<span>gpc</span></a> is disabled.&#xA0; It should be anyway, but I believe it defaults to &#8220;on.&#8221;</li> <li>You need to <a href="http://www.symfony-project.com/forum/index.php/m/3955/#msg_3955">add &#8220;reflection&#8221; to the <span>Gentoo</span> <span>useflags</span></a> for <span>dev</span>-<span>lang</span>/<span>php</span>.&#xA0; This functionality seems to be used by the <span>symfony</span> <span>CLI</span> <span>app</span> to build the propel models/<span>sql</span>/do inserts.</li> </ul>
+
+<p>I&#8217;ll add more notes as I come across them.<br /> <br /></p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2137" data-url-title="running_symfony_on_gentoo_php5">
+	<ul>
+	
+	<li class="comment">
+		<a name="1729" class="comment-id anchor"></a>
+		<div class="comment-author">paulo</div>
+		<div class="comment-author-url">http://mentalstring.net</div>
+		<div class="comment-date">10/10/2006 10:54:05 PM</div>
+		<div class="comment-body"><h2>also, ctype and posix need to be added as they are not default for PHP5</h2>
+</div>
+	</li>
+	 
+	</ul>
+</div>

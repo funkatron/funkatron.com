@@ -1,0 +1,141 @@
+---
+layout: post
+author: funkatron
+title: "A little Ruby goes a long way"
+url_title: a_little_ruby_goes_a_long_way
+tags: ""
+published: true
+categories:
+- Development
+- The Web Problem
+- PHP
+date: 2007-02-17
+summary: 
+old_entry_id: 2262
+---
+<p>I&#8217;ve been coding PHP for 8 years now, and it can be hard to jump into another language when you&#8217;re so entrenched in the syntax and quirks of another.  However, I still think it&#8217;s a useful exercise from an intellectual standpoint to dabble in &#8220;competitors&#8221; to PHP, like Python and Ruby.  It can also provide some real productivity gains when you leverage something another language does more effectively than PHP.</p>
+
+<p>The Web2.0 kids love to chatter about Ruby&#8217;s beauty and elegance and super awesomeness.  I don&#8217;t give a crap about that per se, but their groovy love-in has produced some <em>very</em> nice libraries for handling Web2.0-ish stuff like XML feeds.  The <a href="http://sporkmonger.com/projects/feedtools/">FeedTools</a> lib is a very comprehensive, very powerful Ruby library that makes creating, consuming and manipulating feeds <em>much</em> easier &#8212; moreso than anything I&#8217;ve found in PHP.</p>
+
+<p>Ruby existed as a good general-purpose scripting language long before Rails made it a nerd-hipster household name, and that&#8217;s how we&#8217;re going to use it here: as a good ol&#8217; fashioned CLI script to aggregate a few separate XML feeds into a single aggregated feed.  You&#8217;ll need to have Ruby and the <a href="http://rubygems.org/">RubyGems</a> package manager installed, which is an exercise left up to the reader (it varies from platform to platform).  Once we have them working, you&#8217;ll need to install the <a href="http://sporkmonger.com/projects/feedtools/">FeedTools</a> gem:</p>
+
+<pre>
+# gem install feedtools
+</pre>
+
+<p>Now that we have that installed, you can use the feed_tools library in your Ruby scripts.  Here&#8217;s a script I wrote to aggregate three feeds from <a href="http://www.cerias.purdue.edu/">CERIAS</a> into a single combo feed:</p>
+
+<pre class="prettyprint">
+require "RubyGems"
+require "feed_tools"
+
+feedurls = %w(http://www.cerias.purdue.edu/feeds/news
+  http://www.cerias.purdue.edu/weblogs/feed/
+  http://www.cerias.purdue.edu/feeds/seminars_podcast)
+
+combo = FeedTools::build_merged_feed feedurls
+
+combo.feed_type = 'atom'
+combo.title = 'CERIAS Super Combined Feed'
+combo.copyright = '2006 CERIAS'
+combo.author = 'CERIAS &lt;webmaster@cerias.purdue.edu&gt;'
+combo.id = "http://foo.bar/foobar/combo.xml"
+
+File.open('./combo.xml', 'w') do |file|
+  file.puts combo.build_xml()
+end
+
+puts "done writing"
+</pre>
+
+<p>To execute this, you&#8217;ll want to do something like:</p>
+
+<pre>
+# ruby /path/to/script/generatecombo.rb
+</pre>
+
+<p>The best idea would be to run this as a cron job, as the feed combination process takes maybe a minute even for just these three feeds.</p>
+
+<p>I think most of the script is pretty self-explanatory, but let&#8217;s break it down:</p>
+
+<pre class="prettyprint">
+require "RubyGems"
+require "feed_tools"
+</pre>
+
+<p>This works just like you&#8217;d imagine.  Note that to use gem libs, we <em>need</em> to require the RubyGems lib first, as it does some mucketymuck with the require statement to get it to handle gems properly.</p>
+
+<pre class="prettyprint">
+feedurls = %w(http://www.cerias.purdue.edu/feeds/news
+  http://www.cerias.purdue.edu/weblogs/feed/
+  http://www.cerias.purdue.edu/feeds/seminars_podcast)
+</pre>
+
+<p>This section just makes an array called <code>feedurls</code> that contains the three feed URLs.  <code>%w(...)</code> is just a handy little shorthand for &#8220;treat the stuff between the parentheses as a string, and explode it into an array with whitespace as the delimiter&#8221;.  I <strong>really</strong> wish PHP had something like this, as writing out array data can be pretty tedious.</p>
+
+<pre class="prettyprint">
+combo = FeedTools::build_merged_feed feedurls
+</pre>
+
+<p>This is the line that does all the work of combining the feeds.  One line.  Pretty smooth.  So we now have a Feed object called <code>combo</code>.</p>
+
+<pre class="prettyprint">
+combo.feed_type = 'atom'
+combo.title = 'CERIAS Super Combined Feed'
+combo.copyright = '2006 CERIAS'
+combo.author = 'CERIAS &lt;webmaster@cerias.purdue.edu&gt;'
+combo.id = "http://foo.bar/foobar/combo.xml"
+</pre>
+
+<p>We need to set a few properties for <code>combo</code> before it can be published, though.  A couple might not be self-explanatory:</p>
+
+<ul>
+<li><code><a href="http://sporkmonger.com/projects/feedtools/api/classes/FeedTools/Feed.html#M000077">feed_type</a></code> determines your feed format.</li>
+<li><code><a href="http://sporkmonger.com/projects/feedtools/api/classes/FeedTools/Feed.html#M000082">id</a></code> sets a unique URL for the feed</li>
+</ul>
+
+<p>There are many more attributes for feeds available; read the docs on <a href="http://sporkmonger.com/projects/feedtools/api/classes/FeedTools/Feed.html">the Feed class</a> for more info.</p>
+
+<pre class="prettyprint">
+File.open('./combo.xml', 'w') do |file|
+  file.puts combo.build_xml()
+end
+</pre>
+
+<p>The <code>build_xml</code> method generates the XML for the feed object we&#8217;ve created.  This final piece of code opens (or creates and opens, if necessary) a file called &#8220;combo.xml&#8221; in the current directory and writes that XML.  The file is automatically closed when this block finished executing.  </p>
+
+<p>So, we now have a nice combined XML feed, ready to be parsed into our PHP apps using <a href="http://simplepie.org">Simplepie</a> or <a href="http://framework.zend.com/manual/en/zend.feed.html">Zend_Feed</a>, and/or served up as-is to feed reading clients.</p>
+
+<p>[tags]ruby, FeedTools, php, xml, generator, parsing, combining[/tags]</p>
+
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2262" data-url-title="a_little_ruby_goes_a_long_way">
+	<ul>
+	
+	<li class="comment">
+		<a name="6384" class="comment-id anchor"></a>
+		<div class="comment-author">engtech</div>
+		<div class="comment-author-url">http://InternetDuctTape.com</div>
+		<div class="comment-date">03/15/2008 10:59:44 PM</div>
+		<div class="comment-body"><p>I&#8217;m giving feed_tools a shot as a replacement to the default RSS module as I don&#8217;t like how it doesn&#8217;t handle atom seemlessly and how it gives me very different structures between different flavours of RSS.</p>
+
+<p>I&#8217;m doing my usual &#8220;blog search&#8221; before wasting time on a library, and I was wondering if you ended up having any issues with it?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6385" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">03/15/2008 11:39:22 PM</div>
+		<div class="comment-body"><p>I can&#8217;t say that I&#8217;ve done a ton with feed_tools since then, especially because I do 99% of my web app work in PHP. On the PHP side, SimplePie (http://simplepie.org) is <em>by far</em> the best library for this &#8212; it seamlessly handles the various formats, but allows you to also customize for edge cases.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

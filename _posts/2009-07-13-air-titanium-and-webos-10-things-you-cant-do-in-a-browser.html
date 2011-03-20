@@ -1,0 +1,159 @@
+---
+layout: post
+author: funkatron
+title: "AIR, Titanium and webOS: 10 Things You Can&#8217;t Do in A Browser"
+url_title: air-titanium-and-webos-10-things-you-cant-do-in-a-browser
+tags: "air, titanium, webos, palm, web runtime, desktop, mobile, html, css, javascript, python, ruby, spaz"
+published: true
+categories:
+- AIR
+- JavaScript
+- Python
+- Spaz
+- webOS
+date: 2009-07-13
+summary: 
+old_entry_id: 2452
+---
+<p><a href="http://www.flickr.com/photos/36688133@N00/2894794157/" title="You can't do that"><img src="http://farm4.static.flickr.com/3024/2894794157_c65decf052.jpg" alt="You can't do that" /></a></p>
+
+<div class="photo-credit"><a href="http://www.flickr.com/photos/36688133@N00/2894794157/">Photo by Rob Watling</a></div>
+
+<p>In the past two years I&#8217;ve spent most of my free time working on desktop applications written in JavaScript, HTML and CSS. I write them on top of <strong>web runtime platforms</strong> like <a href="http://titaniumapp.com">Titanium</a> and <a href="http://adobe.com/go/air">Adobe AIR</a>, and more recently Palm&#8217;s <a href="http://en.wikipedia.org/wiki/WebOS">webOS</a>. In this time, I&#8217;ve heard a misconception raised repeatedly: that &#8220;local&#8221; (desktop or mobile) applications written on top of web runtimes offer no advantage over remotely-hosted, browser based apps. Or, to paraphrase something I overheard recently:</p>
+
+<blockquote>
+  <p>HUH huh your app is written in JavaScript and HTML, why don&#8217;t you just load the web site DURRRR.</p>
+</blockquote>
+
+<p>I suppose this kind of thinking comes from the JS+HTML+CSS being almost exclusively used for web site front-ends for so many years. It&#8217;s a knee-jerk reaction, much like the one that says &#8220;oh, you can&#8217;t use PHP in the &#8216;enterprise&#8217;&#8221; or &#8220;Oreos aren&#8217;t for breakfast.&#8221; Proved my mom wrong on that one.</p>
+
+<p>So, I decided to make a list of what things you <em>can</em> do in a web runtime platform that you <em>can&#8217;t</em> do in a browser. Now some of these vary depending on the platform or the browser, and I&#8217;ll try to make note of them in my list:</p>
+
+<ol>
+<li><p><strong>Cross-browser compatibility issues are a thing of the past</strong><br />
+I should offer a caveat here &#8212; even though the rendering engines are the same, you&#8217;ll sometimes run into OS rendering differences. AIR, for example, supported CSS3 box shadows on OS X until v1.5, but never did on Windows. But the differences are far, far smaller than you&#8217;d see between, say, Safari 3 and IE6. Trust me &#8212; you will <em>love</em> not having to worry about getting your layout working in some ass-tastic box model implementation anymore</p></li>
+<li><p><strong>Advanced rendering features (CSS3, etc)</strong><br />
+Since you don&#8217;t have to worry about looking the same in different browsers, you can take advantage of the special features your runtime&#8217;s rendering engine supports. Titanium, for example, supports the same advanced CSS features that Safari 4 does, like <a href="http://www.css3.info/preview/box-shadow/">box shadow</a>, <a href="http://www.css3.info/preview/rounded-border/">border radius</a>, and <a href="http://snook.ca/archives/javascript/css_animations_in_safari/">CSS gradients</a>.</p></li>
+<li><p><strong>File system access</strong><br />
+On desktop web runtime platforms like AIR and Titanium, you can interact with the filesystem just like any other application: read, write, and create files and folders with the permissions of the executing user. webOS offers less freedom in this respect, but you can read and write files on a limited basis.</p></li>
+<li><p><strong>Networking</strong><br />
+Both of the major desktop web runtime platforms provide much more advanced networking capabilities than are available within a browser. I&#8217;m not much of a networking programmer, but both platforms allow the developer to open TCP socket connections and communicate over them.  Titanium seems especially well-prepared in this area, with its ability to leverage Python and its powerful networking capabilities.</p></li>
+<li><p><strong>No same-origin policy restrictions</strong><br />
+If you want to pull data from a web site other than your own in the browser, you have to resort to JSONP &#8212; basically an XSS attack waiting to happen &#8212; or set up a proxy on your site&#8217;s server. Web runtime app platforms don&#8217;t have this issue, so you can make XHR calls to any domain you wish, and interact with any APIs.</p></li>
+<li><p><strong>No need to support non-JS users</strong><br />
+This might seem like a small issue, but having to support users who have disabled JS was one of the major reasons I never did serious browser-based frontend programming before I started working on <a href="http://getspaz.com">Spaz</a> two years ago. Now the cool kids at SXSW will tell you that &#8220;nobody&#8221; disables JavaScript, but I think that&#8217;s kind of short-sighted.</p>
+
+<p>Nevertheless, this argument and the need for graceful degradation and &#8220;unobtrusive&#8221; JavaScript become moot in the web runtime app platform. JavaScript is there, it&#8217;s expected, and you can&#8217;t disable it. So go crazy.</p></li>
+<li><p><strong>Using/interacting with platform-specific UI elements</strong><br />
+This includes things like window chrome, menu systems, Dock items (OS X), menulings (OS X) and the System tray (Win/Linux). Both major web runtime platforms display your application within the native window chrome, allow you to create native menus, and give you some access to the system tray and OS X&#8217;s Dock. Titanium is a bit better in this regard in that it inherits the native look of form widgets and scrollbars, and provides access to the OS X menubar (those little icons in the top-right).</p></li>
+<li><p><strong>Sound playback without plugins</strong><br />
+Until HTML5 becomes standard in all browsers and bestows the grace of plugin-less media playback, we&#8217;re stuck <code>&lt;embed&gt;</code>ing <code>&lt;object&gt;</code>s in our gorgeously crafted markup. Funk dat. Web runtime platforms provide sound playback APIs that mean we don&#8217;t have to stick a Flash applet in our document and hope it doesn&#8217;t catch the CPU on fire.  AIR has a particularly good playback API (probably because the whole thing is running in a Flash engine. Small victories).</p></li>
+<li><p><strong>Interacting with other applications/shell interaction</strong><br />
+Being able to leverage other applications on the machine/device can be really valuable, especially on Unix OSes (Mac OS X, Linux, etc) that have a bevy of useful utilities available from the shell.  Titanium is the only desktop web runtime platform that allows the developer full access to these capabilities; AIR is limited to interacting with other Flash-based applications at this time (although this may change in the future). Runtimes on mobile devices are typically much more limited, although webOS&#8217;s Application Manager service does let applications launch and pass arguments to other apps.</p></li>
+<li><p><strong>Database support</strong><br />
+Typically this is implemented either via the HTML5-style database stuff (usually asynchronous) or a platform-specific SQLite (usually synchronous). Out of the box, support isn&#8217;t provided for external DB servers (MySQL, PostgreSQL, MS-SQL, etc), but with Titanium this should be possible by delegating to Python or Ruby scripts, or Titanium kernel modules. DB servers that provide HTTP interfaces (like <a href="http://couchdb.apache.org/">CouchDB</a>) will work fine, though.</p></li>
+</ol>
+
+<p>All of this <em>doesn&#8217;t</em> mean web runtime platforms are going to replace browser-based apps anytime soon.  There are clear advantages to remotely hosting an application (speed of updating comes to mind), and supporting an app on a user&#8217;s machine brings a new group of debugging headaches.  But for applications already chafing at the limitations of the browser, web runtime platforms offer a compelling option.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2452" data-url-title="air-titanium-and-webos-10-things-you-cant-do-in-a-browser">
+	<ul>
+	
+	<li class="comment">
+		<a name="6832" class="comment-id anchor"></a>
+		<div class="comment-author">Tim Wright</div>
+		<div class="comment-author-url">http://www.csskarma.com</div>
+		<div class="comment-date">07/13/2009 01:45:22 PM</div>
+		<div class="comment-body"><p>Great read, thanks</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6833" class="comment-id anchor"></a>
+		<div class="comment-author">Richard Orelup</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/13/2009 02:03:08 PM</div>
+		<div class="comment-body"><p>A great summary of a lot of the points missed by people on this subject.</p>
+
+<p>One thing I think a couple of these points show but is not explicitly said (or I missed it while reading through) is that these applications don&#8217;t need to be online.  They can be created to be offline applications or apps that only need to be online part of the time but still function.  Now with Gears or BrowserPlus you can gain some of this functionality but overall it&#8217;s not as smooth as Air or Titanium (especially for a fully offline application, though I haven&#8217;t written one of those in forever.)</p>
+
+<p>I think this is another strong point for these platforms and why I&#8217;ve been pushing them myself for the projects we have been doing.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6835" class="comment-id anchor"></a>
+		<div class="comment-author">Robert Peaslee</div>
+		<div class="comment-author-url">http://www.robertpeaslee.com</div>
+		<div class="comment-date">07/13/2009 04:25:20 PM</div>
+		<div class="comment-body"><p>Wow, great write-up. I actually always wondered what the advantage of using something like Air was, now I know. I&#8217;m not even ashamed to admit that I want to play with it ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6838" class="comment-id anchor"></a>
+		<div class="comment-author">Scotty Delicious</div>
+		<div class="comment-author-url">http://scottydelicious.com</div>
+		<div class="comment-date">07/14/2009 07:52:23 PM</div>
+		<div class="comment-body"><p>Great post Funkatron. I have been playing around with Appcelerator Titanium recently and really digging it for many of the reasons you listed here.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6844" class="comment-id anchor"></a>
+		<div class="comment-author">David Dieguez</div>
+		<div class="comment-author-url">http://www.doois.com.br</div>
+		<div class="comment-date">07/17/2009 11:24:43 PM</div>
+		<div class="comment-body"><p>Very useful read. We&#8217;ve been using a couple of nice apps on AIR.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6883" class="comment-id anchor"></a>
+		<div class="comment-author">Cristian Acuña</div>
+		<div class="comment-author-url">http://codigonet.net</div>
+		<div class="comment-date">08/07/2009 08:45:23 AM</div>
+		<div class="comment-body"><p>Wow what great great write-up and just-in-time. I actually write a web-based desktop application using SWT, but I think to give a try to Titanium.
+Very thanks for this info.
+Best regards</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="7007" class="comment-id anchor"></a>
+		<div class="comment-author">foebits</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">11/15/2009 10:41:00 PM</div>
+		<div class="comment-body"><p>I can&#8217;t see #1 in Firefox.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="7116" class="comment-id anchor"></a>
+		<div class="comment-author">Nash Tsai</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/11/2010 01:45:23 PM</div>
+		<div class="comment-body"><p>Adobe has limitation on multi-threading support , how is Titanium deal with multi-threading? Will Python Threads work?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="7117" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/11/2010 02:22:38 PM</div>
+		<div class="comment-body"><p>@nash</p>
+
+<p>Generally, you&#8217;re in a much better situation with Titanium Destkop than AIR.</p>
+
+<p>Titanium supports the Web Worker API. I am not sure about concurrency within the Kroll kernel, which is where the scripting languages execute &#8212; I dunno if the different interpreters all execute in a single thread or not. You can also access and spawn external processes, which you can only do with native-built packages in AIR 2.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

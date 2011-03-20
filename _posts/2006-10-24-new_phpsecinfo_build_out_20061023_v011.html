@@ -1,0 +1,27 @@
+---
+layout: post
+author: funkatron
+title: "New PHPSecInfo build out (20061023; v0.1.1)"
+url_title: new_phpsecinfo_build_out_20061023_v011
+tags: ""
+published: true
+categories:
+- PHPSecInfo
+- InfoSec
+- PHP
+date: 2006-10-24
+summary: 
+old_entry_id: 2195
+---
+<p>This version fixes the errant Notices we were getting, makes it easier to extract test data for your own nefarious purposes, and fixes a bug with the curl file protocol test on PHP4.  The latter unfortunately just skips the test on PHP4 because I&#8217;m not sure how to do the check; suggestions are welcome.</p>
+
+<p>Download: <a href="http://phpsec.org/projects/phpsecinfo/phpsecinfo.zip" title="PHPSecInfo">http://phpsec.org/projects/phpsecinfo/phpsecinfo.zip</a></p>
+
+<p>Docs: <a href="http://phpsec.org/projects/phpsecinfo/docs/" title="PHPSecInfo Docs">http://phpsec.org/projects/phpsecinfo/docs/</a></p>
+
+<p><strong>What&#8217;s new:</strong>
+v0.1.1
+ - Added PhpSecInfo::getOutput(), PhpSecInfo::loadAndRun() and PhpSecInfo::getResultsAsArray() methods
+ - Modified PhpSecInfo::runTests() to fix undefined offsent notices
+ - Modified PhpSecInfo_Test::setMessageForResult() to fix undefined offset notices
+ - Modified PhpSecInfo_Test_Curl_File_Support to skip if PHP version is &lt; 5 (detection of file protocol support relies on PHP5 version of curl_version)</p>

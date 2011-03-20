@@ -1,0 +1,48 @@
+---
+layout: post
+author: funkatron
+title: "Protect your applications <em>without recoding them???</em>"
+url_title: protect_your_applications_without_recoding_them
+tags: ""
+published: true
+categories:
+- General
+- InfoSec
+- The Web Problem
+date: 2005-06-13
+summary: 
+old_entry_id: 1933
+---
+<p><a href="http://www.onlamp.com/pub/a/onlamp/2005/06/09/wss_security.html">ONLamp.com: Securing Web Services with mod_security</a></p>
+
+<p>On the front page of <a href="http://onlamp.com">ONLamp.com</a>, this article has the tag line &#8220;Protect your applications without recoding them.&#8221;  In principle and practice, I <strong>strongly</strong> disagree with this statement.</p>
+
+<p>I love <a href="http://www.modsecurity.org/">mod_security</a>.  It&#8217;s a fabulous tool.  But it should <em>never</em> be used as your only line of defense against malicious input. It&#8217;s a bad, bad, bad idea to put all your security eggs in one basket, simply because if we&#8217;ve learned anything in the past 50 years of computing, it&#8217;s that <em>everything</em> is flawed, and people can <em>and will</em> find and exploit that flaw.</p>
+
+<p>Proper security is a multilayered, multi-approach thing.  And I think the author is doing a real disservice to those who are trying to educate the development community about secure practices with statements like:</p>
+
+<blockquote>Solutions can take many different forms, ranging from secure coding practices to proper input validation. One approach is to perform content validation for each incoming request and compare it with predefined rules.</blockquote>
+
+<p>No, no, no!  Solutions (plural) is just plain wrong.  The <strong>solution</strong> (singular) is to implement <em>all</em> of these approaches.  To not do so is either naive (if you&#8217;re relying on something someone else developed), arrogant (if you&#8217;re relying on something you developed), and in either case <em>very</em> dangerous.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="1933" data-url-title="protect_your_applications_without_recoding_them">
+	<ul>
+	
+	<li class="comment">
+		<a name="1659" class="comment-id anchor"></a>
+		<div class="comment-author">Ben Ramsey</div>
+		<div class="comment-author-url">http://benramsey.com</div>
+		<div class="comment-date">06/13/2005 11:11:36 AM</div>
+		<div class="comment-body"><p>I&#8217;ve spoken about mod_security in a couple of PHP talks now, and everytime I mention it, I always make it a point to say that it provides a great stopgap to plug up security holes in your existing applications at the Web server level but that this doesn&#8217;t mean you shouldn&#8217;t get rid of those those holes by making the time to find them and recode accordingly.</p>
+
+<h2>So, I agree with you here.</h2>
+</div>
+	</li>
+	 
+	</ul>
+</div>

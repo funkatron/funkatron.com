@@ -1,0 +1,191 @@
+---
+layout: post
+author: funkatron
+title: "Safely parsing JSON in JavaScript"
+url_title: safely-parsing-json-in-javascript
+tags: "json, php, python, parser, eval, codeinjection, security, jquery, ajax, ruby"
+published: true
+categories:
+- AIR
+- JavaScript
+- jQuery
+- InfoSec
+date: 2008-10-15
+summary: 
+old_entry_id: 2439
+---
+<p><a href="http://flickr.com/photos/slambo_42/1092945151/" title="Wear safety shoes"><img src="http://farm2.static.flickr.com/1342/1092945151_8e1d2f6677.jpg" alt="Wear safety shoes" title="Wear safety shoes" /></a></p>
+
+<p>I love me some <a href="http://json.org">JSON</a>. It saves me tons of parsing headaches when exchanging data between web services because it maps so well to concepts shared among most common programming languages. It&#8217;s super easy to take a PHP object, convert it to JSON, and then push it to a Javascript (or a Ruby, or a Python) app.</p>
+
+<p>Because JSON is valid JavaScript code, the most common method for converting it into native JS objects is to just <code>eval</code> the JSON. This is an extremely bad idea, because it opens your app up to all sorts of code injection attacks. Even with &#8220;trusted&#8221; sources, a security failure on your source&#8217;s end, or just a disgruntled employee, could wreak havoc on your apps and your users. I&#8217;d recommend reading <a href="http://yuiblog.com/blog/2007/04/10/json-and-browser-security/">Douglas Crockford&#8217;s &#8220;JSON and Browser Security&#8221;</a>. Go ahead; I&#8217;ll wait. <img src="http://funkatron.com/content/rockanim.gif" alt="Rockford is impatient" /></p>
+
+<p><a href="http://jquery.com">jQuery</a>, which we&#8217;ll use for all our examples because it&#8217;s awesome, will in many cases automatically parse JSON responses for you. This, as we learned above, is a Bad Thing. The following <a href="http://docs.jquery.com/Ajax">Ajax methods</a> will automatically parse JSON in jQ (as of 1.2):</p>
+
+<ul>
+<li><code>jQuery.getJSON()</code> &#8211; <em>always</em></li>
+<li><code>jQuery.ajax()</code> &#8211; <em>if <code>type</code> is &#8216;json&#8217;</em></li>
+<li><code>jQuery.get()</code> &#8211; <em>if <code>type</code> is &#8216;json&#8217;</em></li>
+<li><code>jQuery.post()</code> &#8211; <em>if <code>type</code> is &#8216;json&#8217;</em></li>
+</ul>
+
+<p>So my rules of thumbs are:</p>
+
+<ol>
+<li>never, ever use <code>$.getJSON()</code></li>
+<li>never, ever set the <code>type</code> option to &#8216;json.&#8217;</li>
+</ol>
+
+<p>To force the issue, I set my type to &#8216;text&#8217; in my ajax calls. For example:</p>
+
+<pre><code>&lt;script type="text/javascript" charset="utf-8" src="/js/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8"&gt;
+    $.ajax('http://twitter.com/statuses/public_timeline.json', function(data, textStatus) {
+        alert('Status is '+textStatus);
+        alert('JSON data string is: '+data);
+    }, 'text');     
+&lt;/script&gt;
+</code></pre>
+
+<p>In the example above, we&#8217;re including the jquery library with the first <code>&lt;script&gt;</code> tag, and then calling the <code>jQuery.ajax()</code> method in the second. We&#8217;re passing three parameters:</p>
+
+<ol>
+<li>the URL we&#8217;re pulling the JSON string from. In this case, it&#8217;s the Twitter public timeline</li>
+<li>an anonymous function that&#8217;s called when the request is successful</li>
+<li>the type of data we&#8217;re getting, as a string. Using &#8216;text&#8217; ensures no extra processing is done on the response string</li>
+</ol>
+
+<p>So this is great, but all we&#8217;ve got is a string of serialized data, which isn&#8217;t terribly useful. Thankfully, there&#8217;s <a href="http://json.org/json2.js">a handy library</a> at <a href="http://json.org">JSON.org</a> that takes care of parsing JSON <strike>without using <code>eval</code></strike> without using <code>eval</code> on non-JSON code<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. The library gives us two methods: <code>JSON.parse()</code> for turning a JSON string into a JS object, and <code>JSON.stringify()</code> for turning a JS object into a JSON string. So let&#8217;s utilize JSON.parse() in our code, and actually do something with that data:</p>
+
+<pre><code>&lt;script type="text/javascript" charset="utf-8" src="/js/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/js/JSON2.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8"&gt;
+    $.get('http://twitter.com/statuses/public_timeline.json', function(data, textStatus) {
+        alert('Status is '+textStatus);
+        alert('JSON data string is: '+data);
+
+        // this will give us an array of objects
+        var public_tweets = JSON.parse(data);
+
+        // iterate over public_tweets
+        for(var x=0; x &lt; public_tweets.length; x++) {
+            var twt = public_tweets[x];
+            var elm = '&lt;div class="tweet" id="'+twt.id+'"&gt; \
+                &lt;a href="'+twt.user.url+'"&gt;&lt;img src="'+twt.user.profile_image_url+'" /&gt;&lt;/a&gt; \
+                    &lt;div class="tweet-text"&gt;'+twt.text+'&lt;/div&gt; \
+                &lt;/div&gt;';
+            $('BODY').prepend(elm);
+        }
+    }, 'text');
+&lt;/script&gt;
+</code></pre>
+
+<p>In the modified example above, the second script tag loads the JSON2 library. We then use the <code>JSON.parse()</code> method to turn the data string into a JavaScript object &#8211; in this case, and array of Twitter message objects. Then we iterate over the array, building a string of HTML for each entry and prepending it to the <code>&lt;body&gt;</code> tag (so the newest item is on top).</p>
+
+<p><strong>Note:</strong> If you&#8217;re using this code on a remotely-hosted html page (or loading it as a local file under Firefox 3), it won&#8217;t work, and if you check in your error console you&#8217;ll probably see a security warning. That&#8217;s because our <code>$.get()</code> call directly accesses the Twitter API hosted on Twitter.com, which is almost certainly not the domain your files are hosted on. When we try to do so, it violates the same-origin policy enforced by browsers. The only workaround that I think is safe is to set up some sort of proxy on <em>your</em> domain to pass requests &#8211; other approaches like JSONP rely on <code>eval()</code>ing the result, which is what we&#8217;re trying to avoid here. I&#8217;ll try to cover setting up a local domain proxy in a future post.</p>
+
+<p>By handling JSON with a parser rather than just using <code>eval()</code>, we mitigate the risk of code injection. This helps us protect both our application <em>and</em> our users.</p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn:1">
+<p>Basically, JSON.parse() runs a regex search for code that appears to be defining a function or redefining prototypes or other kinds of stuff beyond simple data transmission, and guts those parts.&#160;<a href="#fnref:1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2439" data-url-title="safely-parsing-json-in-javascript">
+	<ul>
+	
+	<li class="comment">
+		<a name="6563" class="comment-id anchor"></a>
+		<div class="comment-author">Nick Carter</div>
+		<div class="comment-author-url">http://www.thynctank.com</div>
+		<div class="comment-date">10/15/2008 01:08:46 PM</div>
+		<div class="comment-body"><p>To be clear, the JSON2 script /does/ use eval, it just doesn&#8217;t use it if the returned string contains certain substrings which would indicate a function or assignment to prevent external tampering.</p>
+
+<p>Most libraries do this now, including MooTools, whose Request.JSON has a &#8220;secure&#8221; option. This can be disabled if you reeeeally think you can trust someone, but is on by default and applies same or similar checks on returned data as json2.js.</p>
+
+<p>Prototype likewise has similar checks in place.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6564" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/15/2008 01:20:45 PM</div>
+		<div class="comment-body"><p>Thanks for the clarification Nick. I&#8217;ll update accordingly.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6785" class="comment-id anchor"></a>
+		<div class="comment-author">tri</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/18/2009 12:41:01 AM</div>
+		<div class="comment-body"><p>Did you try your code in FF? It didn&#8217;t work for me in FF. I got a &#8220;restricted URI denied&#8221; error</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6788" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">05/18/2009 09:18:16 AM</div>
+		<div class="comment-body"><p>@TRI: yes, read the &#8220;Note:&#8221; paragraph, second to last.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6802" class="comment-id anchor"></a>
+		<div class="comment-author">anand</div>
+		<div class="comment-author-url">http://twitter.com/Anand_Dasgupta</div>
+		<div class="comment-date">06/08/2009 07:55:39 AM</div>
+		<div class="comment-body"><p>[code snipped - Ed]</p>
+
+<p>this doesnt seem to be working&#8230;.plzzz help&#8230;.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6954" class="comment-id anchor"></a>
+		<div class="comment-author">saldog</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/24/2009 11:15:42 AM</div>
+		<div class="comment-body"><p>awesome, thanks a lot for this!  honestly, most straightforward quick tut in parsing json with jquery i&#8217;ve found all day.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6955" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">09/24/2009 11:33:12 AM</div>
+		<div class="comment-body"><p>@Saldog: I&#8217;m glad you found it helpful!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6972" class="comment-id anchor"></a>
+		<div class="comment-author">Kyle Simpson</div>
+		<div class="comment-author-url">http://flxhr.flensed.com/jquery.php</div>
+		<div class="comment-date">10/15/2009 06:52:27 PM</div>
+		<div class="comment-body"><p>You can use the flXHRproxy jQuery plugin which adapts flXHR for use with jQuery&#8217;s various Ajax methods. flXHR is a completely API compatible replacement for native XHR but allows cross-domain Ajax. It does so by using an invisible flash file to bridge the domains (if the target server authorizes such with a simple policy file).</p>
+
+<p><a href="http://flxhr.flensed.com/jquery.php">flXHRproxy jQuery plugin</a></p>
+
+<p>The key is that flXHR wraps the invisible flash file in smart Javascript that exactly mimics the XHR API so that flXHR acts a drop-in replacement, so the flXHRproxy jQuery plugin simply registers flXHR as the alternate XHR object and the rest of the Ajax mechanisms work as normal without being any the wiser.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Funkatron / {{page.title}}</title>
+	
+	<link rel="alternate" type="application/atom+xml" title="Funkatron / Posts / ATOM" href="http://funkatron.com/posts.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Funkatron / Posts / RSS" href="http://funkatron.com/posts.rss" />
+	<link rel="alternate" type="application/rss+xml" title="Funkatron / Items of Interest / RSS" href="http://funkatron.com/feeds/itemsofinterest" />
+	
+	<script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="http://ajax.cdnjs.com/ajax/libs/less.js/1.0.41/less-1.0.41.min.js"></script>
+	<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+	
+	<script src="../js/jqwidont.js"></script>
+	<script src="../js/site.js"></script>
+		
+	<link rel="stylesheet" href="../css/site.css">
+	
+</head>
+<body id="{{ page.id }}">
+	
+	<div id="container">
+
+		<div id="header">
+			<h1 id="title"><a href="/index.html">FUNKATRON</a></h1>
+			<div id="nav">
+				<div id="nav-items">
+					<a href="/posts.html" class="word1">POSTS</a>
+					<a href="/items.html" class="word2">ITEMS</a>
+					<a href="/about.html" class="word3">ABOUT</a>
+					<a href="/contact.html"   class="word4">CONTACT</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="page-content">{{content}}</div>
+
+		<div id="page-footer">
+			<div id="page-meta">Page generated: {{ site.time | date_to_string }}</div>
+			<ul id="feeds">
+				<li><a href="/feeds/itemsofinterest"><span class="rss-icon"></span> Items of Interest</a></li>
+				<li><a href="/posts.xml"><span class="rss-icon"></span> Posts</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

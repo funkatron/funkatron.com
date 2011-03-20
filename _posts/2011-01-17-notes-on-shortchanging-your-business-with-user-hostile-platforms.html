@@ -1,0 +1,97 @@
+---
+layout: post
+author: funkatron
+title: "Notes on &#8220;Shortchanging Your Business with User-Hostile Platforms&#8221;"
+url_title: notes-on-shortchanging-your-business-with-user-hostile-platforms
+tags: ""
+published: true
+categories:
+- General
+date: 2011-01-17
+summary: 
+old_entry_id: 2469
+---
+<p><a href="http://www.flickr.com/photos/alphadesigner/212917484/" title="The Girl with the Make Up 1"><img src="http://farm1.static.flickr.com/70/212917484_c28857509f.jpg" alt="The Girl with the Make Up 1" /></a></p>
+
+<div class="photo-credit"><a href="http://www.flickr.com/photos/alphadesigner/212917484/">Photo by alphadesigner</a></div>
+
+<p>Please read <a href="http://al3x.net/2011/01/15/user-hostile-platforms.html">Alex&#8217;s original post</a>, if you haven&#8217;t. What follows are some thoughts in response to his post.</p>
+
+<ul>
+<li><p>These are all native OS X apps:</p>
+
+<ul>
+<li><a href="http://itunes.apple.com/us/app/dress-assistant/id412648913?mt=12">Dress Assistant</a></li>
+<li><a href="http://easeintotheswitch.com/wp-content/uploads/2008/12/mac-os-x-leopard-time-machine2-1024x640.png">Time Machine</a></li>
+<li><a href="http://images.ientrymail.com/webpronews/article_pics/twitter-for-mac.jpg">Twitter for Mac</a></li>
+</ul>
+
+<p>I also think they all fly in the face of UX consistency within a system GUI, which I think is one of the things people bitch about with non-native apps.</p></li>
+<li><p>The definition of &#8220;native&#8221; is really fuzzy here. it seems like you mean &#8220;uses the GUI toolkit that ships with the OS.&#8221; By this definition, though, I&#8217;d argue that many popular OS X apps are not &#8220;native,&#8221; even though they&#8217;re Cocoa apps. On Linux, Gnome and KDE apps are both &#8220;native,&#8221; but they certainly don&#8217;t look the same.</p></li>
+<li><p>Some of your examples of people wanting native apps are people simply liking an app better because it&#8217;s designed better, and provides a consistent aesthetic with the rest of their desktop. That can and is often accomplished independent of the SDK you use. &#8220;Native&#8221; is not in any way synonymous with &#8220;better,&#8221; but lots of people toss it out there as if the argument is so obvious, it needs not be explained. It&#8217;s a lot like saying &#8220;it scales.&#8221;</p></li>
+<li><p>Cross platform and &#8220;native&#8221; aren&#8217;t necessarily mutually exclusive. It&#8217;s harder, yes, but not impossible. there are tons of variables involved, and I think you&#8217;re oversimplifying a pretty complex problem.</p></li>
+<li><p>Cross platform is not, by definition, user-hostile. It <em>can</em> be harder to file off the rough edges, depending on the dev platform and the application, but I think that&#8217;s a matter of UX effort.</p></li>
+<li><p>IME, &#8220;Native&#8221; UIs matter way less to users on mobile. Like, unless it looks like a fucking turd and totally nonfunctional, most users don&#8217;t care. Is it relatively smooth to navigate? Bonus. Spaz webOS is, from what I can tell, probably the most popular Twitter client on webOS. Why? Because it&#8217;s free. You know how many of my users have praised it for using &#8220;native&#8221; widgets, for the most part? Like 4, and they are all ultranerds.</p></li>
+<li><p>Many (most?) of the AIR apps I&#8217;ve seen really should just be web apps, because there&#8217;s no great benefit to them being desktop apps.</p></li>
+<li><p>Why are we okay with using some web apps if it&#8217;s such a huge issue? I prefer to use Gmail&#8217;s web interface, for example, and I prefer to use Google Reader in a SSB &#8212; although with a custom theme. Is it just that my expectations are different?</p></li>
+<li><p>I think for many teams, like the one you mention, the choices are probably these (pick one):</p>
+
+<ol>
+<li>a really strong web app (that might not support some browsers)</li>
+<li>a cross-platform app based on web tech (devs can use existing skills)</li>
+<li>a native app for a single platform &#8212; probably not OS X.</li>
+</ol>
+
+<p>Which do you choose? I guarantee you that for a company like Pandora, it does not make financial sense to do native Windows and OS X clients. Folks who 1. care and 2. would pay are grey-bearded unicorns in the grand scheme of things.</p></li>
+<li><p>So why don&#8217;t devs want to do native apps? I&#8217;d argue it&#8217;s because <em>it&#8217;s too hard</em>, especially when you need to support multiple platforms with widely varying capabilities. If you want better integration with the rest of the devices, make it easier for the people driving new app dev to do so. Asking them to jump from JavaScript to ObjC is not something most will swallow, and the trend is not going to reverse back to devs doing lower-level coding. Some types of applications will always require it, but many (most!) won&#8217;t. A high-level language like JavaScript (especially with the work that&#8217;s been done to speed it up) with hooks into a fast GUI toolkit (not the DOM) is, I believe, where we should be headed.</p></li>
+</ul>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2469" data-url-title="notes-on-shortchanging-your-business-with-user-hostile-platforms">
+	<ul>
+	
+	<li class="comment">
+		<a name="7474" class="comment-id anchor"></a>
+		<div class="comment-author">JulesLt</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">01/17/2011 11:50:09 AM</div>
+		<div class="comment-body"><p>I think you’re right that ‘native’ is a slightly over-rated term, but there’s definitely something in Alex’s post.</p>
+
+<p>Huawei could definitely have done better than the appalling client they rebadged for telcos, considering the millions of units sold. (At the most trivial level, the version I have was shipped with log4j debug settings left on, let alone the higher level problems). I don’t think Java was to blame, so much as a symptom - of aiming low - and achieving your goal.</p>
+
+<p>The other problem is when developers clearly just don’t get that there are standard keyboard shortcuts people expect to use. I can’t recall what it is, but there is one program I have that doesn’t offer a keyboard shortcut for quit. That’s ‘user-hostile’ in my book, but I don’t think it’s intentional, so much as born out of ignorance. And that’s as true for Windows native applications as anything else – in the 2 decades I’ve been doing commercial development, I don’t think I’ve ever seen a company give any formal training in those aspects of development, or into a test plan.</p>
+
+<p>You are probably right that on mobile this may not be an issue - but I think that’s largely because there isn’t yet a consistent vocabulary that users are used to.</p>
+
+<p>(Although I can think of one example - someone developing x-platform native clients for iOS and Android, but who only understands iOS, may miss the possibilities of the application-as-a-service architecture in Android, being used to application-as-a-silo).</p>
+
+<p>It’s certainly an issue with web apps – I completely surprised a colleague of mine by dragging-and-dropping within a Flex application, because he didn’t know you could do it, and he’d ‘trained’ himself not to drag’n’drop inside the browser window. People don’t expect keyboard shortcuts in web apps either, especially where the logical key has a browser level meaning. How should CTRL-A work?</p>
+
+<p>Of course that is irrelevant to the 95% of users who never use any shortcuts at all &#8230; but it feels like a step backwards at times.</p>
+
+<p>A good x-platform GUI toolkit won&#8217;t give you any of that -
+it&#8217;s about understanding the platforms you are working with, and expectations of users. Which I OK, because most of them have low expectations!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="7476" class="comment-id anchor"></a>
+		<div class="comment-author">Nick Carter</div>
+		<div class="comment-author-url">http://thynctank.com</div>
+		<div class="comment-date">01/18/2011 12:46:40 PM</div>
+		<div class="comment-body"><p>Finally got around to reading both of these posts. Or at least Alex&#8217;s edited post. Parts of his post speaks to the UX snob in me, and this post mostly to the pragmatist, both from a dev and a user perspective. I think overall performance and those consistent keyboard shortcuts are super-important, way moreso than consistent-looking widgets. But that&#8217;s just me.</p>
+
+<p>I do think AIR in particular has its annoyances, particularly the two-step install and confusingly separate runtime. Most users won&#8217;t understand or care about this space/bandwidth-saving maneuver at all, they just know it&#8217;s odd. Likewise, the need to sign apps with expensive certs or face warning dialogs presented to your users is a real shame, particularly when OSS could (did?) have so much to do with the uptake of AIR in the first place.</p>
+
+<p>Titanium is a step in the right direction, with the ability to package the runtime with the app, greater entrenchment in terms of system access, and on mobile, those native widgets (dubious though their importance may be).</p>
+
+<p>So long as developers can present the important bits of an application in such a way as to please their most important/abundant consumers, everything else - consistent UI, toolchains and languages all - is absolutely unimportant.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

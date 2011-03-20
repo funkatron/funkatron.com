@@ -1,0 +1,29 @@
+---
+layout: post
+author: funkatron
+title: "PHPSecInfo v0.2.1 now available"
+url_title: phpsecinfo_v021_now_available
+tags: ""
+published: true
+categories:
+- PHPSecInfo
+- My Projects
+- InfoSec
+- The Web Problem
+- PHP
+date: 2007-04-06
+summary: 
+old_entry_id: 2306
+---
+<p><a href="http://phpsecinfo.com">PhpSecInfo</a> v0.2.1 is now available.  It&#8217;s primarily a bugfix release, but a fairly significant one.  From the <a href="http://phpsec.org/projects/phpsecinfo/CHANGELOG">CHANGELOG</a>:</p>
+
+<ul>
+<li>uid and gid tests now correctly test the user and group that PHP is executing as (requires that <code>exec()</code> or <a href="http://us.php.net/posix">posix functions</a> are enabled)</li>
+<li>Changed upload_max_filesize and post_max_size return &#8220;OK&#8221; if current value is equal to recommended value</li>
+<li>fixed nonstandard naming with a couple locally used constants</li>
+<li>fixed problem with XHTML validity in cases of not run tests (thanks Thomas Corbiere)</li>
+</ul>
+
+<p>Get your security auditing on at <a href="http://phpsecinfo.com">phpsecinfo.com</a>.</p>
+
+<p>[tags]phpsecinfo, uid, gid, php, security[/tags]</p>

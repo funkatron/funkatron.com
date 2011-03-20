@@ -1,0 +1,116 @@
+---
+layout: post
+author: funkatron
+title: "The Zend Framework and It&#8217;s Influence on Secure PHP Development"
+url_title: the_zend_framework_and_its_influence_on_secure_php_development
+tags: ""
+published: true
+categories:
+- InfoSec
+- The Web Problem
+- PHP
+date: 2007-03-15
+summary: 
+old_entry_id: 2288
+---
+<p>I posted this rather lengthy argument in the <a href="http://www.nabble.com/Zend-Core-f16191.html">Zend fw-core mailing list</a> after I learned that the <code>Zend_Filter_Input</code> component had been dropped from the Zend Framework.  I have used this component extensively in various projects, and had written up a contribution to the <a href="http://devzone.zend.com/">Zend DevZone</a> that described using a bootstrap script to block direct access by your developers to the superglobal user input arrays ($_GET, $_POST, $_COOKIE, etc).</p>
+
+<p>I want to be clear that I think the ZFW project leads have done a very good job of guiding the development of the framework.  I think they&#8217;re very smart, capable folks who have done a ton of good, hard work.  I just disagree strongly with what&#8217;s happened to the input filtering components, and feel that it should be addressed before the 1.0 release.</p>
+
+<p>Here&#8217;s my post:</p>
+
+<blockquote><p>Let me start off with some context.  If we do a search for &#8216;php&#8217; in the 2006 records of the <a href="http://nvd.nist.gov/">NIST NVD</a>, over <em>40%</em> of the total number of vulnerabilities are returned.  Removing language level issues, which would account for a small number of these, we&#8217;re left with an enormous number of PHP application vulnerabilities &#8212; well over 1/3 of all the 2006 entries in the NVD, for sure.</p>
+
+<p>I believe those numbers say a lot about the following things:
+1. How popular PHP is
+2. How much web applications are a target
+3. How many PHP devs are incapable of writing secure applications</p>
+
+<p>I don&#8217;t necessarily fault PHP as a language for this, as I think any language of similar ease and popularity would suffer many of the same problems.  And as more and more of our business and social activity is conducted online, web applications are inevitably going to increasingly be targeted.</p>
+
+<p>But we can do a <em>lot</em> about #3, in two major areas: <strong>education</strong>, and <strong>empowerment</strong>.</p>
+
+<p>Education is fairly easy to understand, I think: books, training courses, articles, tutorials, etc.  In a sense, the ZFW project has a significant opportunity to educate PHP developers by serving as an example to the community.  Zend&#8217;s profile in the community gives it an opportunity to raise the bar, and change expectations about what effective, secure web app development entails.</p>
+
+<p>Empowering developers, in my mind, means making it easier to do the right thing.  Our toolsets &#8212; editors, debuggers, frameworks, etc &#8212; should make it <em>easier</em> to write secure applications.  The default action should be the secure action.  It shouldn&#8217;t be <em>impossible</em> to do potentially dangerous stuff, but it should require clear intent on the part of the developer.</p>
+
+<p>This is where I feel the Zend Framework has <strong>regressed</strong> as of version 0.8.  Out of the box, it is <strong>more difficult</strong> to write secure applications with ZFW as of 0.8.0 than it was in 0.7.0.</p>
+
+<p>For example, let&#8217;s look at stripping tags from user input.  In 0.7:</p>
+
+<pre class="prettyprint">
+require "Zend/Filter.php";
+$searchtxt = Zend_Filter::noTags($searchtxt);
+</pre>
+
+<p>In 0.8:</p>
+
+<pre class="prettyprint">
+require "Zend/Filter/StripTags.php";
+$noTags    = new Zend_Filter_StripTags();
+$searchtxt = $noTags->filter($searchtxt);
+</pre>
+
+<p>Only one extra line, but when you&#8217;re having to instantiate a new filter every time you want different functionality, it adds up.  And if you&#8217;re not using class autoloading, you have to do a require statement for every filter class, whereas in 0.7 you only needed to do a single require.</p>
+
+<p>In some ways, the new Zend_Filter is a win, especially in terms of expandability, but it lacks the proper hooks for making filtering and validation as speedy and easy as it was before.  Make no mistake: verbosity <em>matters</em>.  I am not alone in preferring an option that makes me type less.</p>
+
+<p>More disturbing, though, is the total removal of the <strong>Zend_Filter_Input</strong> component from the ZFW.  ZFI was a very effective tool for limiting access to user input arrays like $_POST and $_COOKIE, wrapping them in an object and forcing the developer to use object methods to access the data.</p>
+
+<pre class="prettyprint">
+require "Zend/Filter/Input.php";
+$f_POST = new Zend_Filter_Input($_POST);
+$searchtext = $f_POST->noTags('searchtxt');
+$id = $f_POST->getInt('id');
+
+// you can only get the raw input with the getRaw method
+$unfiltered_input = $f_POST->getRaw('xssWaitingToHappen');
+</pre>
+
+<p>It wasn&#8217;t perfect &#8212; as of 0.7 it lacked iterative access and didn&#8217;t work well with multidimensional arrays &#8212; but it established a strong new paradigm for PHP development that was a long time in coming.  The vast majority of vulnerabilities in PHP apps come from mishandling user input, and Zend_Filter_Input made it significantly <strong>easier to do the right thing</strong>, and significantly <strong>harder to do the wrong thing</strong>.  This was a <em>major</em> jewel for the Zend Framework, something no other high-profile PHP framework was offering (AFAIK).  And it evidently had been considered a fundamental component, having been present in the core since the initial public release (0.1.2).  Now, it&#8217;s gone, with no comparable functionality in place, and no concrete plans to restore it.</p>
+
+<p>Zend has a significant opportunity to influence how PHP development is done with the ZFW 1.0 release.  The Zend Framework will be, for better or worse, considered an example as to how PHP development <em>should</em> be done.  It&#8217;s disappointing, then, to see the framework move backwards in terms of easing secure development while it speeds towards 1.0.  This opportunity will not come again.  I hope these decisions are reconsidered, and the feature freeze is delayed so that previously-existing functionality can be restored.</p></blockquote>
+
+<p>[tags]zend framework, php, security, infosec, webdev, zfw, input filtering[/tags]</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2288" data-url-title="the_zend_framework_and_its_influence_on_secure_php_development">
+	<ul>
+	
+	<li class="comment">
+		<a name="1773" class="comment-id anchor"></a>
+		<div class="comment-author">Cristian Bichis</div>
+		<div class="comment-author-url">http://www.zftutorials.com</div>
+		<div class="comment-date">03/15/2007 02:08:07 PM</div>
+		<div class="comment-body"><p>Hello,</p>
+
+<p>I was concerned myself a lot about all those things: i made a tutorials site which is supposed to be already used by lot of people according to emails i am receiving&#8230;</p>
+
+<p>Also, started a dedicated Zend Framework forum (www.zfforums.com), aso&#8230; More interesting things coming soon&#8230;</p>
+
+<p>Also, as stated into my forum post from here:
+http://www.zfforums.com/zend-framework-general-discussions-1/concepts-ideas-planning-39/zend-framework-performance-27.html</p>
+
+<p>One of the biggest improvements i said (and performance costs are not a problem at all for this) are exactly that applications would be more secure using ZF.</p>
+
+<p>IMHO PHP is now surviving only due to large scale of existing developers rather than things as security, rapid development, aso&#8230; I worked with a lot of other platforms (not necessary web oriented) so i think i know what i am talking bout&#8230; So, without a major enhancement - as ZF can be i am said to say but we going to be repeated same mistakes for each newbie developer, same problems unsolved by language itself by lot of time&#8230;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1772" class="comment-id anchor"></a>
+		<div class="comment-author">Eric Coleman</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">03/16/2007 09:08:03 AM</div>
+		<div class="comment-body"><p>I actually just suggested they implement a filtering layer into the controller directly before 1.0.  I think it should be a goal to promote safe coding practices.</p>
+
+<p>http://www.nabble.com/Re%3A-Concerns-about-Zend_Filter_Input-p9514913s16154.html</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

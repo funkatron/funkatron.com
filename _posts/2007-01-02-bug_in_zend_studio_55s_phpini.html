@@ -1,0 +1,28 @@
+---
+layout: post
+author: funkatron
+title: "Bug in Zend Studio 5.5&#8217;s php.ini"
+url_title: bug_in_zend_studio_55s_phpini
+tags: ""
+published: true
+categories:
+- PHP
+date: 2007-01-02
+summary: 
+old_entry_id: 2230
+---
+<p>In the php.ini file used by the PHP5 executable, the include path is hosed.&nbsp; If you installed in the default location and are running Windows, you&#8217;ll probably find the file at</p>
+
+<pre>C:\Program Files\Zend\ZendStudio-5.5.0\bin\php5\php.ini</pre>
+
+<p>This line is from the original file:</p>
+
+<pre>include_path = C:\Program Files\Zend\ZendStudio-5.5.0\bin\ZendFramework\library;.</pre>
+
+<p>You might notice that the value is not wrapped in quotes, which makes the ; character demark the beginning of a comment.  That eliminates your current working directory from the include path, which is a pretty major disaster when requiring external files into your script.  The solution is (taa-daa!) to wrap the value in quotes:</p>
+
+<pre>include_path = "C:\Program Files\Zend\ZendStudio-5.5.0\bin\ZendFramework\library;."</pre>
+
+<p>What&#8217;s more annoying is that this bug was in the Beta of 5.5 as well, and apparently didn&#8217;t get fixed.</p>
+
+<p>[tags]zend studio, php5, php.ini, bug, include_path[/tags]</p>

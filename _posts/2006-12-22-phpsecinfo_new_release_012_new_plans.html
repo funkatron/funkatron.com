@@ -1,0 +1,54 @@
+---
+layout: post
+author: funkatron
+title: "PHPSecInfo: New release (0.1.2), new plans"
+url_title: phpsecinfo_new_release_012_new_plans
+tags: ""
+published: true
+categories:
+- General
+- PHPSecInfo
+- InfoSec
+- PHP
+date: 2006-12-22
+summary: 
+old_entry_id: 2226
+---
+<p>First off, <a href="http://phpsec.org/projects/phpsecinfo/" title="PHPSecInfo">a new build of PHPSecInfo is out</a>: Version 0.1.2, build
+20061218. Here&#8217;s what&#8217;s new:</p>
+
+<ul>
+<li><p>Code is now licensed under &#8220;New BSD&#8221; license. See LICENSE</p></li>
+<li><p>Added PhpSecInfo_Test_Core_Allow_Url_Include to test for
+allow_url_include in PHP5.2 and above</p></li>
+<li><p>fix bug in post_max_size check where upload_max_size value was being
+checked</p></li>
+<li><p>change curl file_support test to recommend upgrading to newest
+version of PHP rather than disabling support in cURL for &#8216;file://&#8217;
+protocol</p></li>
+<li><p>removed =&amp; calls that force pass by reference in PHP4, so as to not
+throw PHP5 STRICT notices. It means passing objects by value in PHP4,
+but this seems acceptable for our purposes (memory usage isn&#8217;t
+terribly high).</p></li>
+<li><p>Fixed bug in PhpSecInfo_Test_Session_Use_Trans_Sid where wrong ini
+key was requested (Thanks Mark Wallert)</p></li>
+<li><p>New, detailed README file with explanations and basic usage
+instructions - Now providing an md5 hash for releases</p></li>
+</ul>
+
+<p>Here&#8217;s what I&#8217;m planning to do in the next few releases:</p>
+
+<ol>
+<li>More detailed test results, including the current and recommended
+settings</li>
+<li>A web-based &#8220;glossary&#8221; with more details on each test &amp;
+how to fix problems</li>
+<li>More tests!!! I especially need your help with
+this one!</li>
+</ol>
+
+<p>I&#8217;m also going to look into options to reformat the test result
+structure, so it plays more nicely with templating systems. No
+promises on how this will go, but we&#8217;ll see.</p>
+
+<p>[tags]phpsecinfo, php, security, audit, tool[/tags]</p>

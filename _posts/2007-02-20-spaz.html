@@ -1,0 +1,1258 @@
+---
+layout: post
+author: funkatron
+title: "Spaz - An Open-Source Twitter Client for Mac OS X, Windows and Linux"
+url_title: spaz
+tags: "twitter, client, desktop, windows, os x, mac, linux, multiuser, multiple users, apollo, adobe AIR, ajax, spry, jquery"
+published: true
+categories:
+- My Projects
+- Spaz
+date: 2007-02-20
+summary: Spaz is a Twitter client for users who value free, <em>open-source</em> software, attractive <em>design</em>, and <em>customizability</em>
+old_entry_id: 2265
+---
+<a name="features"></a><h2>Features</h2>
+
+<ul>
+	<li><strong>Cross-platform</strong>: available on all AIR-compatible platforms: Windows, OS X, and Linux</li>
+	<li><strong>Open source</strong> software using a New BSD-style license (source available at <a href="http://code.google.com/p/spaz" target="_blank">Spaz Google Code project site</a>)</li>
+	<li>Written in pure Javascript, XHTML and CSS. Utilizes the powerful <strong><a href="http://jquery.com" title="jQuery">jQuery</a></strong> Javascript framework</li>
+	<li>Built-in global <strong>search</strong> powered by <a href="http://search.twitter.com/">Summize</a></strong></li>
+	<li><strong>Short URL creation</strong> tool with support for multiple services (is.gd, bit.ly, snurl.com, and more)</li>
+	<li>In-line <strong>short URL decoding</strong></li>
+	<li><strong>No ads</strong></li>
+	<li><strong>Markdown</strong> syntax support
+	<li><strong>Multiple themes</strong> and support for <strong>user-created themes</strong></li>
+	<li><strong>User-defined CSS</strong> overrides</li>
+	<li><strong>Event sounds</strong> using the <a href="http://www.adiumxtras.com/index.php?a=xtras&amp;xtra_id=602">Tokyo Train Station</a> soundset by Dominik Dimaano</li>
+	<li><strong>Directory listings</strong> of users you&#8217;re following, and your followers.</li>
+	<li><strong>Debugging and development tools</strong> and debug logging</li>
+</ul>
+
+<a name="faq"></a><h2>FAQ &amp; Help</h2>
+
+<ul>
+	<li><a href="http://funkatron.com/spaziki/" title="Spaziki!">Spaziki: The Spaz Wiki and FAQ</a></li>
+	<li><a href="http://groups.google.com/group/spaz-users" title="Spaz Users |
+	  Google Groups">Join the Spaz Users Group</a></li>
+	<li><a href="http://code.google.com/p/spaz/issues/list" title="spaz - Google Code">File a bug or suggestion</a></li>
+	<li><a href="http://twitter.com/spaz" title="Twitter / spaz">Follow Spaz on Twitter</a></li>
+</ul>
+
+<a name="join-the-team"></a><h2>Join the Team</h2>
+
+<p>Spaz.AIR is written entirely in XHTML and Javascript.  It uses the <a href="http://labs.adobe.com/technologies/spry/">Spry</a> and <a href="http://jquery.com/">jQuery</a> frameworks.</p>
+
+<p>Spaz is <strong>open-source</strong> and licensed under <a href="http://funkatron.com/apps/spaz/AIR/LICENSE.txt" target="_blank" title="Spaz license">a New BSD-style license</a>.</p>
+
+<h3 id="subversion_repository">Subversion Repository</h3>
+
+<p>You can access the SVN repo at <a href="http://code.google.com/p/spaz">Spaz&#8217;s Google Code site</a>.</p>
+
+<p>The source code of Spaz.AIR is available in the <code>.air</code> file &#8212; you should be able to open it with any &#8220;unzip&#8221; tool.</p>
+
+
+
+<a name="download"></a><h2>Download</h2>
+
+
+<h3 id="automated_8220one_step8221_install">Automated &#8220;One-step&#8221; Install</h3>
+
+<div id="flashcontent" style="width:215px; height:180px;">
+	<strong>Please upgrade your Flash Player</strong>
+	This is the content that would be shown if the user does not have Flash Player 9.0.115 or higher installed.
+</div>
+
+<script type="text/javascript">
+	// <![CDATA[
+
+	// version 9.0.115 or greater is required for launching AIR apps.
+	var so = new SWFObject("http://funkatron.com/assets/AIRInstallBadge.swf", "Badge", "215", "180", "9.0.115", "#222222");
+	so.useExpressInstall('http://funkatron.com/assets/expressinstall.swf');
+
+	// these parameters are required for badge install:
+	so.addVariable("airversion", "1.0"); // version of AIR runtime required
+	so.addVariable("appname", "Spaz"); // application name to display to the user
+	so.addVariable("appurl", "http://funkatron.com/apps/spaz/AIR/SpazAIR.air"); // absolute URL (beginning with http or https) of the application ".air" file
+
+	// these parameters are required to support launching apps from the badge (but optional for install):
+	//so.addVariable("appid", "Spaz.AIR"); // the qualified application ID (ex. com.gskinner.air.MyApplication)
+	//so.addVariable("pubid", ""); // publisher id
+
+	// this parameter is required in addition to the above to support upgrading from the badge:
+	//so.addVariable("appversion", "0.3.7"); // AIR application version
+
+	// these parameters are optional:
+	so.addVariable("imageurl", "http://funkatron.com/assets/spaz-screenshot-205x170.png"); // URL for an image (JPG, PNG, GIF) or SWF to display in the badge (205px wide, 170px high)
+	so.addVariable("appinstallarg", "installed from web"); // passed to the application when it is installed from the badge
+	so.addVariable("applauncharg", "launched from web"); // passed to the application when it is launched from the badge
+	//so.addVariable("helpurl", "help.html"); // optional url to a page containing additional help, displayed in the badge's help screen
+	so.addVariable("hidehelp", "false"); // hides the help icon if "true"
+	so.addVariable("skiptransition", "false"); // skips the initial transition if "true"
+	so.addVariable("titlecolor", "#00AAFF"); // changes the color of titles
+	so.addVariable("buttonlabelcolor", "#00AAFF"); // changes the color of the button label
+	so.addVariable("appnamecolor", "#00AAFF"); // changes the color of the application name if the image is not specified or loaded
+
+	// these parameters allow you to override the default text in the badge:
+	// supported strings: str_error, str_err_params, str_err_airunavailable, str_err_airswf, str_loading, str_install, str_launch, str_upgrade, str_close, str_launching, str_launchingtext, str_installing, str_installingtext, str_tryagain, str_beta3, str_beta3text, str_help, str_helptext
+	so.addVariable("str_err_airswf", "<u>Running locally?</u><br/><br/>The AIR proxy swf won't load properly when this demo is run from the local file system."); // overrides the error text when the AIR proxy swf fails to load
+
+	so.write("flashcontent");
+
+	// ]]>
+</script>
+
+<h3 id="manual_install">Manual Install</h3>
+
+<p>Note: Spaz.AIR <strong>requires</strong> that the Adobe Integrated Runtime be installed on your system.</p>
+
+<ol>
+<li><a href="http://get.adobe.com/air">Download and install AIR</a></li>
+<li><a href="http://funkatron.com/getspaz">Download Spaz</a></li>
+</ol>
+
+<h3 id="extras">Extras</h3>
+
+<ul>
+<li><a href="http://funkatron.com/apps/spaz/AIR/whatsnew.html">View the changelog</a></li>
+<li><a href="http://funkatron.com/apps/spaz/AIR/LICENSE.txt" target="_blank" title="Spaz license">View the license</a></li>
+<li><a href="http://funkatron.com/apps/spaz/AIR/spaz-css-dev.zip">Get the theme development template</a>(this is a bit out of date)</li>
+</ul>
+
+<h3 id="old_versions">Old Versions</h3>
+
+<p>Previous versions of Spaz were written in <a href="http://realbasic.com">RealBasic</a>, and compiled for Windows, Mac OS X and Linux.  The new AIR-based Spaz is, in the creator&#8217;s opinion, a far superior program, but you can still download the old versions and source code if you like:</p>
+
+<ul>
+<li><a href="http://funkatron.com/apps/spaz/RB/Spaz-OSX-Universal.zip">Spaz-RB for OS X</a></li>
+<li><a href="http://funkatron.com/apps/spaz/RB/Spaz-Windows.zip">Spaz-RB for Windows</a></li>
+<li><a href="http://funkatron.com/apps/spaz/RB/Spaz-Linux.zip">Spaz-RB for Linux</a></li>
+<li><a href="http://funkatron.com/apps/spaz/RB/Spaz-Source.zip">Spaz-RB source code</a></li>
+</ul>
+
+
+
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2265" data-url-title="spaz">
+	<ul>
+	
+	<li class="comment">
+		<a name="1761" class="comment-id anchor"></a>
+		<div class="comment-author">derek</div>
+		<div class="comment-author-url">http://derek.sk</div>
+		<div class="comment-date">04/11/2007 08:17:42 AM</div>
+		<div class="comment-body"><p>How about the source so someone can help fix the linux version?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1760" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">04/11/2007 08:27:58 AM</div>
+		<div class="comment-body"><p>Yes, actually, I plan on doing that.  I haven&#8217;t rushed to do so because it&#8217;s written in REALBasic, and there aren&#8217;t any FOSS compilers available for the language.  I&#8217;ll try to get on it, tho, as soon as I can get subversion going and such.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1759" class="comment-id anchor"></a>
+		<div class="comment-author">Georg</div>
+		<div class="comment-author-url">http://blog.fragmentspuren.de</div>
+		<div class="comment-date">05/30/2007 03:24:29 PM</div>
+		<div class="comment-body"><p>Hi,</p>
+
+<p>this is a great application, I love it especially for the multiuser support. One of the most useful things is the indication of how many characters have already been used up - great!</p>
+
+<p>There are few things that I notcied with it:</p>
+
+<ul>
+<li><p>is there a chance, that the Timeline wraps the lines? This could be configurable.</p></li>
+<li><p>&#8220;Get my timeline Ctrl+3&#8221; returns: &#8220;Error retrieving XML Data. Twitter returned &#8220;User not found&#8221;. Check your username and password.&#8221; (all other things work well, username and password are correct)</p></li>
+<li><p>i added a picture to one of my accounts, but the picture does not get updated / does not appear in Spaz</p></li>
+</ul>
+
+<p>Please go on with this application - bon courage!
+Cheers
+Georg</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1758" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">06/03/2007 01:45:05 PM</div>
+		<div class="comment-body"><p>Georg,</p>
+
+<p>All good comments and ideas.</p>
+
+<ul>
+<li><p>Wrapping the lines will be a bit hard, but I would like to experiment with it.</p></li>
+<li><p>I&#8217;m not sure what&#8217;s up with getting your own timeline.  Something might have changed with the API.</p></li>
+<li><p>The pictures are cached a little <em>too</em> aggressively &#8212; it never tries to look for a new one if a cached images exists.  You can delete the cache files manually, though, and it will bring in new pics.  Obviously this is a bug, though.</p></li>
+</ul>
+
+<p>When I have a bit more time I will address these things.  Thanks!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1875" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/26/2007 07:35:30 PM</div>
+		<div class="comment-body"><p>Hey, just trying out Spaz.AIR and have a few questions / comments. Is this the right place to leave them or do you have a bug report / wishlist area?</p>
+
+<p>Overall first impression &#8212; best thing I&#8217;ve tried for Windows so far.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1876" class="comment-id anchor"></a>
+		<div class="comment-author">Kate</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/26/2007 09:15:20 PM</div>
+		<div class="comment-body"><p>Best Twitter app for the PC and I&#8217;ve tried them all.</p>
+
+<p>I&#8217;m a Spaz fangirrrrl</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1877" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/27/2007 10:08:13 AM</div>
+		<div class="comment-body"><p>@Grame: Feel free to leave comments here, or dm/reply to the Spaz account on Twitter (http://twitter.com/spaz)</p>
+
+<p>@Kate: Thank you so much!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1879" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/29/2007 06:46:54 PM</div>
+		<div class="comment-body"><p>OK then, 2 comments which I suspect may be AIR related (iow, limitations of the AIR VM or widget set):</p>
+
+<ul>
+<li><p>wheel mouse doesn&#8217;t work for scrolling the Tweet lists;</p></li>
+<li><p>the &#8220;normal&#8221; keyboard navigation shortcuts don&#8217;t work in the text entry area. Specifically: HOME, END, Contrl+arrow keys for navigation, Control+SHIFT+arrow keys for selection.</p></li>
+</ul>
+
+<p>Also, is an expanded set of Preferences on the cards? eg, how often to refresh</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1882" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/29/2007 10:55:39 PM</div>
+		<div class="comment-body"><p>@Graeme: Yes, unfortunately those are all issues inherent to the AIR beta, and I don&#8217;t know of a way to easily work around them.  They drive me nuts too, believe me. 8)</p>
+
+<p>Responses from Adobe reps on the AIR dev forums indicate that they&#8217;re aware of these problems, and intend to fix them by the time a final release appears.  I think this will be in the next few months, so I don&#8217;t think it would be worth putting the time into workarounds,</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1883" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/30/2007 12:34:15 AM</div>
+		<div class="comment-body"><p>@funkatron, that&#8217;s fine. It&#8217;s kinda weird because in the Spry demos the textarea works fine (Spaz uses the Spry widgets, right?)</p>
+
+<p>Look FWIW I&#8217;m loving Spaz.AIR and I&#8217;ll stick with it despite the niggles. It&#8217;s the best thing I&#8217;ve seen on Windows so far.</p>
+
+<p>BTW, the new progress animation doesn&#8217;t seem to animate for me &#8212; I just see a solid ring.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1885" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/30/2007 08:55:02 AM</div>
+		<div class="comment-body"><p>@Graeme: It&#8217;s an issue of AIR&#8217;s rendering engine, not Spry.  The non-animation you see is another quirk, specific to the Windows version of the AIR beta.</p>
+
+<p>I&#8217;m glad to hear you think so highly of it!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1889" class="comment-id anchor"></a>
+		<div class="comment-author">Zack</div>
+		<div class="comment-author-url">http://zechariahs.org/blog</div>
+		<div class="comment-date">08/01/2007 08:16:33 AM</div>
+		<div class="comment-body"><p>Can Spaz.AIR be modified to include a &#8220;Place icon in menu bar&#8221; option?</p>
+
+<p>Thanks.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1891" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/02/2007 07:46:18 PM</div>
+		<div class="comment-body"><p>@Zack: no, unless Adobe modifies the AIR platform to include that capability. I doubt they will do so, as it&#8217;s very much an OS X-specific feature, and AIR is intended to be very much cross-platform.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1892" class="comment-id anchor"></a>
+		<div class="comment-author">Zack</div>
+		<div class="comment-author-url">http://zechariahs.org/blog</div>
+		<div class="comment-date">08/02/2007 08:18:15 PM</div>
+		<div class="comment-body"><p>@funkatron Oh well.  Thanks for a great application!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1893" class="comment-id anchor"></a>
+		<div class="comment-author">Vidyut Luther</div>
+		<div class="comment-author-url">http://www.phpcult.com/</div>
+		<div class="comment-date">08/02/2007 10:18:27 PM</div>
+		<div class="comment-body"><p>Ed, 
+ Do you mind if I setup a trac page for Spaz? I got bugs to report :).</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1902" class="comment-id anchor"></a>
+		<div class="comment-author">kosmar</div>
+		<div class="comment-author-url">http://kosmar.de</div>
+		<div class="comment-date">08/05/2007 07:20:44 PM</div>
+		<div class="comment-body"><p>spaz is great. but unless you support german üäöß its just useless for my lil part of the globe. plz keep my updated about supporting all latin or better all unicode. thx</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1905" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/06/2007 08:42:18 AM</div>
+		<div class="comment-body"><p>@kosmar: I&#8217;ve not fiddled with any special unicode support, but Spaz (the AIR version, which is the only version being developed) displays cyrillic and japanese characters fine, so I don&#8217;t know why essets and umlauted vowels wouldn&#8217;t. I believe all non-7bit ASCII chars come through from Twitter as HTML entities.  Can you send me a screenshot that includes what chars are <em>not</em> working for you?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1908" class="comment-id anchor"></a>
+		<div class="comment-author">kosmar</div>
+		<div class="comment-author-url">http://kosmar.de</div>
+		<div class="comment-date">08/06/2007 03:07:06 PM</div>
+		<div class="comment-body"><p>seems only ü and ö are not working, as they are not accepted as input. i type put nothing happens. see my test here: http://www.ipernity.com/doc/kosmar/504923</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1909" class="comment-id anchor"></a>
+		<div class="comment-author">kosmar</div>
+		<div class="comment-author-url">http://kosmar.de</div>
+		<div class="comment-date">08/06/2007 03:11:39 PM</div>
+		<div class="comment-body"><p>could that be a bug with air and german keyboard layouts? just wild guessing.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1910" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/06/2007 03:54:11 PM</div>
+		<div class="comment-body"><p>Very possibly. I&#8217;ll see if I can find any info on that. Try typing into the username field in the prefs too&#8230; if that blocks their input, I&#8217;d bet there&#8217;s an issue with the AIR beta.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1914" class="comment-id anchor"></a>
+		<div class="comment-author">kosmar</div>
+		<div class="comment-author-url">http://kosmar.de</div>
+		<div class="comment-date">08/08/2007 12:10:52 PM</div>
+		<div class="comment-body"><p>in fact. yes, thats the case in the username field of spaz … anyway my pownce client running in the same air runtime accepts all german ÜÄÖüäöß , hm!?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1915" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/08/2007 01:14:29 PM</div>
+		<div class="comment-body"><p>Pownce is Flex/Flash based, whereas Spaz is pure HTML and JS. There are definitely more issues with the HTML widgets in the current AIR beta.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="2136" class="comment-id anchor"></a>
+		<div class="comment-author">Marius Ooms</div>
+		<div class="comment-author-url">http://virb.com/mariusooms</div>
+		<div class="comment-date">08/20/2007 06:40:14 PM</div>
+		<div class="comment-body"><p>Thanks for developing spaz! I just installed it and noticed that the notification goes off for the public time-line. Is it possible to change this to only have notifications for twitter from people I&#8217;m following?</p>
+
+<p>I don&#8217;t intend to follow the whole world, just the ones I choose to and so this makes the notification sound obsolete and distracting, since it rings ever minute.</p>
+
+<p>Anyway, you get my drift. Is this a valid request? I&#8217;m already thrilled with what you have made.</p>
+
+<p>Thanks</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="2137" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/20/2007 06:45:15 PM</div>
+		<div class="comment-body"><p>@Marius: Yes, very valid.  First off, make sure you&#8217;re using the AIR version &#8212; the Realbasic app is not being developed anymore.  If you&#8217;re on the AIR version and hearing notification sounds, then you have the latest dev version.  I&#8217;m definitely tweaking when the notification sounds go off &#8212; my intention is to only have them go off when you have <em>new</em> messages from people you are following.  This should be the case when I release the final 0.2.0.</p>
+
+<p>Thanks for the compliments!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="2421" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/24/2007 04:03:04 AM</div>
+		<div class="comment-body"><p>Could Spaz.AIR go to older tweets, ie, past page 1 on home?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="2422" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/24/2007 04:07:00 AM</div>
+		<div class="comment-body"><p>Sorry for more comment stuff, just thought of something else. I only tweet when I&#8217;m at a computer (not gadgeted up enuff to use phone, blackberry whatever). I usually want to know what my ppls have said so I have to go back &#8220;x&#8221; pages to catch up. Could Spaz have a &#8220;pick up where you left off feature?&#8221; Could it somehow remember I exited 23 hours ago and start displaying tweets from that time forward, to the present?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="2441" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/24/2007 11:11:38 AM</div>
+		<div class="comment-body"><p>@Graeme: both good ideas.  The first one would probably be the better way to go, because while the API allows you to specify a &#8220;since&#8221; parameter when retrieving a timeline, it will still max out at 20 tweets.  Paging back through your friends timeline would give you the ability to view more than 20, and would be a lot easier to implement. ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="2494" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/25/2007 12:57:25 AM</div>
+		<div class="comment-body"><p>@funk Sure, no probs. If you can get the the normal paging stuff in, I&#8217;d be more than happy :-)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5349" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/19/2007 12:55:57 AM</div>
+		<div class="comment-body"><p>Howdy. Love the new 0.2.2 update, and the fact that the detection and installation were automatic.</p>
+
+<p>The paging seems good, gimme a few days to road test it.</p>
+
+<p>Two odd things:
+* No matter what I put for &#8220;Refresh interval&#8221; it reverts to 2 as soon as I leave the field.
+* There seems to be some lag or block on updating the personal timeline. Even if I know there&#8217;s new tweets and force a tab reload, they don&#8217;t show up. Eventually they do but I can&#8217;t figure what what trips the update.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5382" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">09/19/2007 11:04:57 AM</div>
+		<div class="comment-body"><p>@Graeme:</p>
+
+<p>Refresh needs to be an integer between 2 and 60 (this is described in the What&#8217;s New document). If you&#8217;re entering integers in that range and it&#8217;s still resetting to 2, tell me what you&#8217;re putting in and I&#8217;ll try to replicate here.</p>
+
+<p>The lag is on Twitter&#8217;s end &#8212; I&#8217;ve been seeing it some too.  Nothing&#8217;s changed in the code to retrieve that data, so AFAICT it is just Twitter being a little funky.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5384" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">09/19/2007 11:47:18 AM</div>
+		<div class="comment-body"><p>@Graeme:</p>
+
+<p>Actually, I just tracked the problem down to an issue when using paging with the API.  I have released a workaround with version 0.2.3, which you should be able to get with your auto-updating.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5403" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/19/2007 06:21:41 PM</div>
+		<div class="comment-body"><p>@funk, many thanks for such a quick response, the refresh does seem better.</p>
+
+<p>On the &#8220;Refresh Interval&#8221; param in preferences I&#8217;m still seeing the same behaviour. Here&#8217;s exactly what happens:
+* got to Prefs tab
+* click inside Refresh interval field
+* press Backspace to remove the &#8220;2&#8221;
+* type &#8220;5&#8221;
+* press Tab
+* value reverts to &#8220;2&#8221;</p>
+
+<p>alternatively&#8230;
+* same previous steps up to type &#8220;5&#8221;
+* don&#8217;t leave field but click on &#8220;Save Preferences&#8221;
+* value reverts to &#8220;2&#8221;</p>
+
+<p>If I manually edit &#8220;preferences.xml&#8221; and alter the interval (ie, &lt;network refreshinterval = &#8216;300000&#8217;/&gt;) it does pick it up on restart.</p>
+
+<p>If you want me to dump HTML or enable debugging or whatever, let me know. I can try tracking it through Firebug if you like.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5410" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">09/19/2007 09:19:06 PM</div>
+		<div class="comment-body"><p>@Graeme: I checked again, and was having the same problem.  No idea why I didn&#8217;t catch this.  A new version is out that fixes this.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5411" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme Dunlop</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/19/2007 09:20:48 PM</div>
+		<div class="comment-body"><p>@funk, what can I say except thanks again for a speedy update!!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5453" class="comment-id anchor"></a>
+		<div class="comment-author">Michael</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/20/2007 03:02:41 PM</div>
+		<div class="comment-body"><p>I&#8217;m getting errors loading &#8220;https://twitter.com/statuses/friends_timeline.xml&#8221; and also errors loading &#8220;https://twitter.com/statuses/replies.xml&#8221;.</p>
+
+<p>Any idea how I can resolve this problem?</p>
+
+<p>Thanks.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5458" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">09/20/2007 03:56:43 PM</div>
+		<div class="comment-body"><p>Not much. Can you load any data? If not, it&#8217;s likely something between you and twitter. Turning on debugging might be a good idea &#8212; I don&#8217;t have much to go on here.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5990" class="comment-id anchor"></a>
+		<div class="comment-author">seyDoggy</div>
+		<div class="comment-author-url">http://www.seydesign.com</div>
+		<div class="comment-date">10/02/2007 12:25:23 PM</div>
+		<div class="comment-body"><p>Tried to install spaz on a new system and it seems that Adobe released a new air beta yesterday. Current spaz wont work with the new beta.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5991" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/02/2007 12:28:27 PM</div>
+		<div class="comment-body"><p>Yeah, the current version needs Beta 1, and you CAN have Beta 1 and Beta 2 on the same machine <em>if</em> you install Beta 1 FIRST. I will have a Beta 2 version up ASAP&#8230; but if you poke around, you might find a dev version I&#8217;ve uploaded 8).</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5993" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/02/2007 06:39:16 PM</div>
+		<div class="comment-body"><p>Just an FYI &#8212; successfully loaded 0.2.6. Sequence was:
+* start 0.2.5
+* receive update notice and click Yes
+* update fails because it needs AIR beta 2
+* download and install AIR beta 2
+* restart 0.2.5
+* receive update notice and click Yes
+* update succeeds
+* happy user</p>
+
+<p>Spaz just keeps getting better! And with mousewheel support and keyboard shortcuts working, I couldn&#8217;t be happier. It&#8217;s a beautiful piece of work; gratz guys. Loving the &#8220;whitespace&#8221; theme, btw. And the Tokyo Subway sounds are great, too.</p>
+
+<p>(Cheez. Starting to sound like a fanboi. Tone it down, dude)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5994" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/02/2007 07:13:04 PM</div>
+		<div class="comment-body"><p>k, a few observations.</p>
+
+<ul>
+<li><p>can&#8217;t seem to page backwards from page 1 of friends timeline. keeps returning &#8220;Error loading https://twitter.com/statuses/friends_timeline.xml&#8221;</p></li>
+<li><p>the direct messages tab keeps returning &#8220;No data returned&#8221;, even when i request a manual reload</p></li>
+</ul>
+
+<p>everything else seems to be ok. i&#8217;ll keep an eye on the above; it might be twitter&#8217;s fault as it&#8217;s been a little flaky lately.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="5995" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/02/2007 07:22:01 PM</div>
+		<div class="comment-body"><p>See, you made up for fanboi-ishness by point out bugs!</p>
+
+<p>Yeah, I&#8217;ve seen some of these too.  I really wanted to get out a version that worked with Beta 2, but it definitely is rougher than I would have liked.  I&#8217;ll be working on a cleaned-up 0.2.7 when I get home from MAX.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6001" class="comment-id anchor"></a>
+		<div class="comment-author">Walt</div>
+		<div class="comment-author-url">http://www.waltribeiro.net</div>
+		<div class="comment-date">10/06/2007 02:57:54 PM</div>
+		<div class="comment-body"><p>interesting app&#8230;  Twitter is addictive</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6003" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/08/2007 08:51:31 PM</div>
+		<div class="comment-body"><p>Another observation: can&#8217;t load 0.2.6 on my home machine, which is running 0.2.0. I&#8217;ve tried uninstalling both AIR betas then reinstalling, then manually installing 0.2.6 &#8212; no joy. Also tried the one-click install above &#8212; no joy. It keeps complaining about the AIR version. Not at home right now, will post exact error message later.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6005" class="comment-id anchor"></a>
+		<div class="comment-author">Bryan Villarin</div>
+		<div class="comment-author-url">http://allnarfedup.com</div>
+		<div class="comment-date">10/09/2007 02:44:31 PM</div>
+		<div class="comment-body"><p>I&#8217;m with @&lt;strong&gt;Graeme&lt;/strong&gt; - I can&#8217;t get past Page 1, either. Other than that, it looks slick so far. Nice work!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6006" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/09/2007 07:20:36 PM</div>
+		<div class="comment-body"><p>The paging issue is one on Twitter&#8217;s side &#8212; it&#8217;s been disabled for the time being.</p>
+
+<p>Graeme, not sure about the issues you&#8217;re having. Best I&#8217;d could say is to report the problem to Adobe&#8217;s AIR team.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6008" class="comment-id anchor"></a>
+		<div class="comment-author">Bryan Villarin</div>
+		<div class="comment-author-url">http://allnarfedup.com</div>
+		<div class="comment-date">10/10/2007 01:09:05 PM</div>
+		<div class="comment-body"><p>&lt;strong&gt;@funkatron&lt;/strong&gt;: Thanks for the quick reply, man. :)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6009" class="comment-id anchor"></a>
+		<div class="comment-author">Spaztester!</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/10/2007 04:38:14 PM</div>
+		<div class="comment-body"><p>please insert system tray icon option in new version!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6010" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/10/2007 04:57:47 PM</div>
+		<div class="comment-body"><p>@Spaztester: definitely something I&#8217;m looking into ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6011" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/10/2007 06:33:27 PM</div>
+		<div class="comment-body"><p>OK, a few probs with 0.27 (which I&#8217;ve now overcome, see final bullet below):</p>
+
+<ul>
+<li><p>none of the windows/tabs contain anything &#8212; friends, replies, DMs, etc. The Prefs window shows up :-)  I assume it&#8217;s related to the new feature where stuff doesn&#8217;t show up until it renders correctly</p></li>
+<li><p>when I start it up, there&#8217;s an error window I can&#8217;t dismiss. Contents are as follows (kinda big, sorry)</p></li>
+</ul>
+
+<p>Error loading https://twitter.com/statuses/user_timeline.xml
+Spry.Data.updateRegion(friends-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(replies-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(dm-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(user-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(public-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(friendslist-detail) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(friendslist) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(followerslist-detail) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(followerslist) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(friends-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(replies-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(dm-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(user-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(public-timeline) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(friendslist-detail) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(friendslist) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(followerslist-detail) caught an exception: TypeError: Undefined value
+Spry.Data.updateRegion(followerslist) caught an exception: TypeError: Undefined value</p>
+
+<ul>
+<li><p>i tried switching themes with the vague idea it might help. it doesn&#8217;t.</p></li>
+<li><p>I then uninstalled it and killed all the Spaz folders I could find in Documents and Settings (only one I think under C:&#92;Documents and Settings&#92;&lt;user&gt;&#92;Application Data). When I reinstalled, all was sweetness and light! (erm, meaning it works).</p></li>
+</ul>
+
+<p>Hope this is helpful.</p>
+
+<p>BTW, for mine, a systray icon is useless.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6012" class="comment-id anchor"></a>
+		<div class="comment-author">xxdesmus</div>
+		<div class="comment-author-url">http://xxdesmusxx.net</div>
+		<div class="comment-date">10/12/2007 10:35:11 AM</div>
+		<div class="comment-body"><p>The app is completely failing at life for me. I input my login info&#8230;it checks, says it&#8217;s verified, but it refuses to load any of the timelines.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6013" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/12/2007 12:49:06 PM</div>
+		<div class="comment-body"><p>@xxdesmus: can you try on another machine and/or another network?</p>
+
+<p>Also, if you enable debugging and restart, the debug output is logged to a file in your Documents dir. you can email that to me if you want me to take a look.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6015" class="comment-id anchor"></a>
+		<div class="comment-author">xxdesmus</div>
+		<div class="comment-author-url">http://xxdesmusxx.net</div>
+		<div class="comment-date">10/13/2007 10:52:29 AM</div>
+		<div class="comment-body"><p>I have the log file, what&#8217;s your email address? or drop me an email   xxdesmus  @ Google&#8217;s Email Service.</p>
+
+<p>Thanks for the assistance.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6022" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/13/2007 05:43:32 PM</div>
+		<div class="comment-body"><p>@xxdesmus: received and responded.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6025" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/15/2007 02:23:39 AM</div>
+		<div class="comment-body"><p>@funk: props for the Markdown support. Fab idea.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6037" class="comment-id anchor"></a>
+		<div class="comment-author">James Francis</div>
+		<div class="comment-author-url">http://RippedNRich.oRg</div>
+		<div class="comment-date">10/19/2007 10:57:05 AM</div>
+		<div class="comment-body"><p>I really like the look and feel of Spaz&#8230; but the &#8220;users you are following&#8221; tab isn&#8217;t working&#8230; it says &#8220;no data returned&#8221;, but I know I am following people.  Thanks.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6038" class="comment-id anchor"></a>
+		<div class="comment-author">James Francis</div>
+		<div class="comment-author-url">http://RippedNRich.oRg</div>
+		<div class="comment-date">10/19/2007 11:03:03 AM</div>
+		<div class="comment-body"><p>Well, now nothing is working&#8230; it says &#8220;error loading&#8230;&#8221;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6039" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/19/2007 06:08:55 PM</div>
+		<div class="comment-body"><p>@James: the first issue is because of a change between AIR beta 1 and b2, the consequence of which is that some timelines are only returning data that is new in the past 24 hours. If you haven&#8217;t followed anyone new recently, you&#8217;ll see that.  I&#8217;ve fixed this in my current dev version, though, so you should see it working properly in the next release.</p>
+
+<p>The second thing you saw was probably Twitter mucking up or you exceeding the 70 requests per hour limit. The next version will report request limit probs more clearly, if they come up.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6040" class="comment-id anchor"></a>
+		<div class="comment-author">James Francis</div>
+		<div class="comment-author-url">http://RippedNRich.oRg</div>
+		<div class="comment-date">10/19/2007 06:18:29 PM</div>
+		<div class="comment-body"><p>Thanks Ed&#8230; love the hair!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6042" class="comment-id anchor"></a>
+		<div class="comment-author">Andy Merrett</div>
+		<div class="comment-author-url">http://andymerrett.co.uk</div>
+		<div class="comment-date">10/20/2007 02:14:58 PM</div>
+		<div class="comment-body"><p>Sounds intriguing, but I&#8217;m sorry - I&#8217;m <em>never</em> going to use a client that has such a derogatory title (in the UK, at least).</p>
+
+<p>There&#8217;s no chance in hell that I&#8217;m going to feel comfortable sending out Tweets signed as being sent from &#8220;Spaz&#8221;. Not to my UK contacts, at least.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6043" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/20/2007 04:23:04 PM</div>
+		<div class="comment-body"><p>@Andy: Sorry! I&#8217;m aware of the association it has in the UK, but certainly did not have it in mind when I named the app.  I might feel differently if it was a commercial application, but changing the name isn&#8217;t something I&#8217;m interested in doing.</p>
+
+<p>I might consider putting in a pref to disable reporting of the app to Twitter, though, if users were interested in that.  You can also download and modify the source code as you wish (http://code.google.com/p/spaz).</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6045" class="comment-id anchor"></a>
+		<div class="comment-author">Beogradoholik</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">10/21/2007 12:32:03 PM</div>
+		<div class="comment-body"><p>I can&#8217;t launch Spaz because AIR iz an older version, a there are no newer ones on Adobe&#8217;s site! What should I do???</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6046" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/21/2007 01:07:26 PM</div>
+		<div class="comment-body"><p>@Beogradoholik: AIR Beta 2 is the newest version, and that&#8217;s what Spaz works with.</p>
+
+<p>http://labs.adobe.com/downloads/air.html</p>
+
+<p>If you have that and are still having probs, trying uninstalling AIR completely, then restarting, then reinstalling. If you still have issues, you&#8217;d need to contact Adobe about the problem.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6056" class="comment-id anchor"></a>
+		<div class="comment-author">M</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">11/02/2007 01:41:33 PM</div>
+		<div class="comment-body"><p>I&#8217;m really excited to find Spaz because Twitterific made itself completely unusable in the last update.</p>
+
+<p>However, I have to say that the default style is THE ugliest thing I&#8217;ve ever seen and my repeated attempts to make it use a different style have failed miserably. Each time I choose a different style and then click &#8220;Save Preferences&#8221;, it either crashes or the style is gone when I restart the app. Any ideas?</p>
+
+<p>Oh, and the icon also disturbs me&#8230; kind of a lot. I will be replacing that immediately.</p>
+
+<p>All that being said, THANK YOU! I think this could be a really great app.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6057" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">11/02/2007 03:12:03 PM</div>
+		<div class="comment-body"><p>@ M:</p>
+
+<p>I&#8217;m aware of the issue with saving the theme prefs, and will fix shortly.</p>
+
+<p>Also, protip: doesn&#8217;t help to call the developer&#8217;s design work &#8220;THE ugliest thing [you&#8217;ve] ever seen,&#8221; especially when you want them to help you. ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6067" class="comment-id anchor"></a>
+		<div class="comment-author">Oblivion</div>
+		<div class="comment-author-url">http://EbloTheWeblog.com</div>
+		<div class="comment-date">11/05/2007 05:02:56 PM</div>
+		<div class="comment-body"><p>I twittered about this, but twitter is being useless today, so I thought I&#8217;d mention it here.</p>
+
+<p>This is a really cool app, but I&#8217;ve noticed (on WinXP) that it&#8217;s a memory hog.  On launch, Task Manager reports is using 40MB of RAM.  I just had to shut it down as it climbed to 110MB used. As I was typing a tweet, I could watch usage climb about 400k per letter typed.  Any idea what&#8217;s going on here?  Anything I can do to help debug?  You&#8217;d have to hold my hand, though - I&#8217;m not a developer.</p>
+
+<p>Thanks.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6068" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">11/05/2007 07:05:11 PM</div>
+		<div class="comment-body"><p>The memory leak appears (as far as I and Jonathan Snook can determine) to be a problem with AIR beta 2. I&#8217;ve not seen the memory climb the way you describe while typing, but on each timeline reload you will see a jump. There&#8217;s not much we can do about it until Adobe fixes the issue, I don&#8217;t think. Sorry!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6073" class="comment-id anchor"></a>
+		<div class="comment-author">Oblivion</div>
+		<div class="comment-author-url">http://EbloTheWeblog.com</div>
+		<div class="comment-date">11/06/2007 03:50:43 PM</div>
+		<div class="comment-body"><p>Thansk for the update on the memory leak.  I&#8217;ll just try to remember to restart the app every once in a while.  It&#8217;s still more useful than relying on Twitter page auto-refreshes or on GTalk updates.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6139" class="comment-id anchor"></a>
+		<div class="comment-author">Greg Fischer</div>
+		<div class="comment-author-url">http://072570.com</div>
+		<div class="comment-date">12/14/2007 11:08:32 PM</div>
+		<div class="comment-body"><p>Kudos on an awesome Twitter app. It&#8217;s definitely my favorite among the AIR apps out there. If I could code worth anything, Spaz is what i&#8217;d have written for myself in a Twitter client ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6142" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">12/16/2007 03:20:11 PM</div>
+		<div class="comment-body"><p>Thanks Greg!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6175" class="comment-id anchor"></a>
+		<div class="comment-author">Johnny C</div>
+		<div class="comment-author-url">http://proveisso.wordpress.com</div>
+		<div class="comment-date">01/02/2008 02:51:33 PM</div>
+		<div class="comment-body"><p>one thing: UTF. It sucks trying to speak with my friends in portuguese and not being able to use special characters like ã, é and so on&#8230;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6176" class="comment-id anchor"></a>
+		<div class="comment-author">Johnny C</div>
+		<div class="comment-author-url">http://proveisso.wordpress.com</div>
+		<div class="comment-date">01/02/2008 02:52:25 PM</div>
+		<div class="comment-body"><p>oh, sorry =x I forgot to say that except for that detail the software is awesome =D keep up the great work! =D</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6180" class="comment-id anchor"></a>
+		<div class="comment-author">dj paine</div>
+		<div class="comment-author-url">http://www.djp72.net/blog</div>
+		<div class="comment-date">01/07/2008 01:13:10 AM</div>
+		<div class="comment-body"><p>LOVE THE SPAZ!!
+here&#8217;s my review:</p>
+
+<p>http://www.djp72.net/blog/2008/01/07/in-love-with-part-three-spaz/</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6186" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">01/08/2008 12:06:34 PM</div>
+		<div class="comment-body"><p>@djpaine: thanks for the kind words!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6187" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">01/08/2008 12:07:16 PM</div>
+		<div class="comment-body"><p>@JohnnyC: You will have more luck with the new version that uses AIR Beta 3, I think. You should check the users group for more info.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6209" class="comment-id anchor"></a>
+		<div class="comment-author">李恒</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">01/21/2008 10:09:16 AM</div>
+		<div class="comment-body"><p>SNS给我们提供了太多种可能性，但我们的思维方式还是仅仅局限于猫扑，所以，我们只能制造热闹，制造口水，制造流量和虚拟的繁荣幻象，却无法给我们的日常生活提供价值。</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6241" class="comment-id anchor"></a>
+		<div class="comment-author">Allison Sheridan</div>
+		<div class="comment-author-url">http://podfeet.com</div>
+		<div class="comment-date">02/02/2008 02:39:03 AM</div>
+		<div class="comment-body"><p>i live my life behind a corporate firewall, so proxy access is a requirement for me.  any chance that&#8217;s coming soon?  Twitterpod is the only Twitter app I&#8217;ve found so far with proxy access, but it seems to hang up and not send data and then send a big burst, not really consistent enough for my tastes.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6248" class="comment-id anchor"></a>
+		<div class="comment-author">Tiara</div>
+		<div class="comment-author-url">http://wannabeakp.wordpress.com</div>
+		<div class="comment-date">02/04/2008 12:08:22 PM</div>
+		<div class="comment-body"><p>Is there any way to make the URLs open in Firefox instead of IE? I have Firefox set as my default browser but all links are opening in IE7 instead (maybe because it uses .url, which IE7 has a stronghold over?). If that would change, then Spaz would be PERFECT.</p>
+
+<p>Also, how do I see the directory listing of all my friends and followers?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6249" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/04/2008 01:45:16 PM</div>
+		<div class="comment-body"><p>@allison: I honestly haven&#8217;t looked at proxy support. I&#8217;m a little surprised that AIR doesn&#8217;t follow system-wide proxy settings, though. I&#8217;ll poke around a bit and see what&#8217;s involved. You might consider filing an issue (See &#8220;Get Help&#8221; above).</p>
+
+<p>@Tiara: this is an issue with AIR, and unfortunately not something I can fix. I&#8217;d recommend filing a bug with Adobe.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6293" class="comment-id anchor"></a>
+		<div class="comment-author">Nick</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/13/2008 09:36:17 AM</div>
+		<div class="comment-body"><p>hi there,
+the app looks awesome and i&#8217;m excited to try it!  however, when i try to install it gives me an error saying:
+&#8220;Sorry, an error has occurred.
+The application could not be installed because the AIR file is damaged. Try obtaining a new AIR file from the application author.&#8221;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6294" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/13/2008 11:14:38 AM</div>
+		<div class="comment-body"><p>@Nick</p>
+
+<p>I&#8217;ve seen this happen too, and I assume something has been corrupted in the download. you can grab the file manually at funkatron.com/getspaz. Sometimes that helps. Otherwise, you may want to search your machine for where AIR is caching the downloaded .air package and delete any of these; this may force a proper re-download.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6302" class="comment-id anchor"></a>
+		<div class="comment-author">richard</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/14/2008 07:35:09 PM</div>
+		<div class="comment-body"><p>nice app, but the name isnt really anything but offensive  is it?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6303" class="comment-id anchor"></a>
+		<div class="comment-author">Edward Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/14/2008 09:25:19 PM</div>
+		<div class="comment-body"><p>It is absolutely <em>not</em> offensive to me, no. I can&#8217;t control what cultural context you may use it in. Sorry!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6306" class="comment-id anchor"></a>
+		<div class="comment-author">Markus</div>
+		<div class="comment-author-url">http://www.polkarobot.de</div>
+		<div class="comment-date">02/15/2008 05:32:55 AM</div>
+		<div class="comment-body"><p>On first look the best Twitter client for Windows i&#8217;ve seen so far. Thanks!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6320" class="comment-id anchor"></a>
+		<div class="comment-author">Willis Whitlock</div>
+		<div class="comment-author-url">http://willisays.com</div>
+		<div class="comment-date">02/18/2008 08:44:05 PM</div>
+		<div class="comment-body"><p>I have spastic ataxia. I don&#8217;t know if that makes me an authority or what. I like the name of the app. Haven&#8217;t downloaded it yet, but I&#8217;m about to.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6321" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/18/2008 09:19:05 PM</div>
+		<div class="comment-body"><p>@Markus: Thank you!</p>
+
+<p>@Willis: I&#8217;m glad you like it. Enjoyed your blog, btw.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6336" class="comment-id anchor"></a>
+		<div class="comment-author">Karolinger</div>
+		<div class="comment-author-url">http://twitter.com/karolinger</div>
+		<div class="comment-date">02/22/2008 07:18:36 PM</div>
+		<div class="comment-body"><p>I&#8217;m getting an annoying error. Thus Spaz not getting any new messages.</p>
+
+<p>Here is the screenshot: http://img444.imageshack.us/img444/9085/spazerrorjs9.jpg</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6337" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/22/2008 09:14:03 PM</div>
+		<div class="comment-body"><p>You&#8217;ll get the best support for problems on the Spaz users group:</p>
+
+<p>http://groups.google.com/group/spaz-users</p>
+
+<p>However, the error is pretty well described in the message. Your account is probably sending more than 70 requests per hour. Make sure you do not run <em>any</em> other Twitter API programs at the same time, and you may lower your refresh rate in Spaz&#8217;s preferences. The minimum is every 3 minutes, which would be 60 requests per hour.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6345" class="comment-id anchor"></a>
+		<div class="comment-author">Christopher W.</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/25/2008 03:38:00 PM</div>
+		<div class="comment-body"><p>I&#8217;m really excited to see the app, but when I try to install I get the following error:</p>
+
+<p>&#8220;This application requires a version of Adobe AIR which is no longer supported. Please contact the application author for an updated version.&#8221;</p>
+
+<p>Just an FYI.</p>
+
+<p>Chris from Cincinnati</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6347" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/25/2008 05:13:07 PM</div>
+		<div class="comment-body"><p>Hey Chris. I&#8217;ve had probs installing some of the Spaz versions. What&#8217;s fixed it for me, is completely killing AIR first, then trying to re-install Spaz. AIR being beta, it&#8217;s still a bit odd at times with versions etc. You on Windows?</p>
+
+<p>BTW, the Spaz Users Group (http://groups.google.com/group/spaz-users) is a good place to get help. Welcome to Spaz!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6349" class="comment-id anchor"></a>
+		<div class="comment-author">Graeme</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/25/2008 06:54:08 PM</div>
+		<div class="comment-body"><p>Aha. It could be that Adobe officially released AIR 1.0 (I think) and since Spaz it written for beta 3, AIR 1.0 doesn&#8217;t like it.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6350" class="comment-id anchor"></a>
+		<div class="comment-author">Jenny LaVada</div>
+		<div class="comment-author-url">http://twitter.com/jenny9_02_06/with_friends</div>
+		<div class="comment-date">02/25/2008 08:46:16 PM</div>
+		<div class="comment-body"><p>Soo&#8230;any ideas as to when an update of Spaz will be happening?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6351" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/25/2008 08:55:50 PM</div>
+		<div class="comment-body"><p>Yeah, if you have only installed AIR 1.0, you may not be able to run Spaz. I&#8217;ll see if I can get a 1.0-compatible version in the next couple days.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6352" class="comment-id anchor"></a>
+		<div class="comment-author">Göte Borg</div>
+		<div class="comment-author-url">http://www.oribium.se/</div>
+		<div class="comment-date">02/25/2008 09:33:07 PM</div>
+		<div class="comment-body"><p>Thank you for this great piece of software.</p>
+
+<p>Are you considering to support UTF-8?</p>
+
+<p>Where can I find more information how to set up our corporate firewall to support Spaz?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6353" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/25/2008 09:56:44 PM</div>
+		<div class="comment-body"><p>@Göte: If you get on the spaz users group, we could discuss what problems you might be having with UTF-8 text in Spaz. From what I can determine, Spaz supports different character sets to the extent that all AIR HTML apps do.</p>
+
+<p>Spaz does all of its talking over ports 80 and 443.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6359" class="comment-id anchor"></a>
+		<div class="comment-author">jacob</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/27/2008 02:30:28 PM</div>
+		<div class="comment-body"><p>Hey, great app. Did you know that the send button is right over the scroll down button on the text entry field? You probably did. Thanks for the hard work.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6360" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/27/2008 03:04:19 PM</div>
+		<div class="comment-body"><p>@jacob: Yep, that doesn&#8217;t show up a whole lot, and I figured people would use their cursor keys to move up and down. I should probably tweak that, though.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6361" class="comment-id anchor"></a>
+		<div class="comment-author">Hans</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/28/2008 08:52:35 AM</div>
+		<div class="comment-body"><p>This is the best application I&#8217;ve came across so far. I was only wondering if links could also be opened in Firefox? They now open in IE. And when I have a look at the help and info and pull the scrollbar it sometimes stays transparent and it&#8217;s hard to close the pop up help.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6362" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/28/2008 10:27:34 AM</div>
+		<div class="comment-body"><p>@Hans:</p>
+
+<p>the linking issue is something with AIR &#8212; I can&#8217;t fix it myself! There&#8217;s some weirdness with those popups, yes, and we&#8217;ll probably move towards &#8220;normal&#8221; windows soon for those. Check the users group for more info (under Get Help above)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6369" class="comment-id anchor"></a>
+		<div class="comment-author">Discorax</div>
+		<div class="comment-author-url">http://www.ryancdavidson.com/personal</div>
+		<div class="comment-date">03/03/2008 12:12:41 PM</div>
+		<div class="comment-body"><p>Is anyone else having the problem with the &#8220;Exceeded Request Limit&#8221; Error 400 response from Twitter?</p>
+
+<p>I&#8217;ve been getting it off and on since I updated tot he beta 3 version of Spaz.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6370" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">03/03/2008 12:38:15 PM</div>
+		<div class="comment-body"><p>@Discorax: check the users group (look in &#8220;Get Help&#8221; above).</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

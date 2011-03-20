@@ -1,0 +1,172 @@
+---
+layout: post
+author: funkatron
+title: "Results of Spaz webOS Pricing Survey"
+url_title: results-of-spaz-webos-pricing-survey
+tags: "spaz, javascript, twitter, palm, pre, webos, pricing, app catalog"
+published: true
+categories:
+- My Projects
+- Development
+- Mobile
+- Spaz
+- webOS
+date: 2009-07-31
+summary: 
+old_entry_id: 2454
+---
+<p><a href="http://www.flickr.com/photos/gusset/3514558585/" title="Smell the Money"><img src="http://farm4.static.flickr.com/3663/3514558585_651ca7896a.jpg" alt="Smell the Money" /></a></p>
+
+<div class="photo-credit"><a href="http://www.flickr.com/photos/gusset/3514558585/">Photo by gusset</a></div>
+
+<p>Yesterday I put together a short survey that asked some questions about what people would be willing to pay for Spaz webOS. It&#8217;s been my plan all long to change a small fee (when possible &#8212; you can&#8217;t yet in the Palm App Catalog) for Spaz webOS, and use the revenue to support further development. Since I believe strongly that Spaz must be an open, transparent project, here are the results so far from 145 responses:</p>
+
+<ul>
+<li><a href="http://funkatron.com/content/Spaz-webOS_Pricing_Survey_Results-20090731.pdf">PDF of Spaz webOS Pricing Survey Response Summary data</a></li>
+</ul>
+
+<p>&#8230;and here are some comments on the results:</p>
+
+<h4>What is the most you would pay to purchase Spaz in the Palm App Catalog?</h4>
+
+<p>From doing a little math on this, it seems like $2 is the optimal price point in terms of revenue generation, followed closely by $3.</p>
+
+<ul>
+<li><a href="http://funkatron.com/content/Spaz-webOS_Revenue_Potential.pdf">PDF of &#8220;revenue potential&#8221; data</a></li>
+</ul>
+
+<h4>What 1-3 features would make you more likely to purchase Spaz in the app catalog?</h4>
+
+<p>First off, lots of people ignored the request to pick 1-3, which isn&#8217;t surprising (you couldn&#8217;t set a max number of choices). That being said, 4 items were far and away the most popular choices</p>
+
+<ol>
+<li><p><strong>Faster Performance (56%)</strong><br />
+Spaz does seem to perform slower than comparable apps. Part of this is because we use a combined timeline, and therefore it takes longer to build results. We also initially requested a LOT more messages from Twitter at startup than comparable apps, and processing them takes more time. We&#8217;ve lowered the default numbers (you can up them in prefs), but it&#8217;s still higher.</p>
+
+<p>We&#8217;ve also had some CPU usage issues. Those have been dramatically lowered since initial release, but there&#8217;s probably more we can do. This shows up especially while processing new messages.</p>
+
+<p>The other issue I think this response refers to is sluggish scrolling speed. This one perplexes me a bit, but I&#8217;m guessing we may be running into performance limits of the Pre&#8217;s webkit renderer. We&#8217;re going to do some experiments with stripping out CSS styling and markup on our timelines to see if the scroll speed improves in either case. If so, we will need to modify how we style and/or build the markup for our timeline.</p></li>
+<li><p><strong>Direct uploading to image hosting services like Twitpic (54%)</strong><br />
+This was <em>really</em> close to #1, which tells you how badly the lack of direct file upload APIs in webOS is hurting devs. What&#8217;s most frustrating is that the email-based workarounds actually took longer to implement than direct uploads would &#8212; we already have plenty of code from the desktop app we could have adapted. Here&#8217;s another plead to Palm to <em>please</em> expose the file upload APIs to 3rd-party developers ASAP!</p></li>
+<li><p><strong>New message notifications even if the app is closed (42%)</strong><br />
+I&#8217;ve heard this a lot. I kind of assumed people would just leave an app open if they wanted it still running, but how I use things isn&#8217;t necessarily how others will. One consequence of implementing this will be reduced battery life, so we will need to be careful about it.  Note that Palm recommends not doing background network requests more than 15min per hour. We won&#8217;t exceed that if and when we do implement this.</p></li>
+<li><p><strong>Facebook support</strong><br />
+This one kinda surprised me. I only added it as a bit of an afterthought, but I suppose it makes sense, especially since there&#8217;s not a good native Facebook app for the Pre. I actually know very little about the Facebook API and am not super duper excited about building for their walled garden, but if someone wants to build a SpazCore lib for it, we&#8217;ll probably implement something.</p></li>
+</ol>
+
+<p>Also of note were some of the &#8220;Other&#8221; responses. They included:</p>
+
+<ul>
+<li><p>&#8220;More optimized code (use less cpu!)&#8221;<br />
+This falls under Faster perf, fo sho.</p></li>
+<li><p>&#8220;tweet with google maps link to current location&#8221;<br />
+This is on the list to get implemented</p></li>
+<li><p>&#8220;hit user pic in timeline to @reply&#8221;<br />
+We&#8217;re going to implement something that lets you do actions on a message without going to the detail view. Kinda sucks right now.</p></li>
+<li><p>&#8220;low power consumption&#8221;<br />
+The way you do that is to make fewer network requests. This responder will not want background checking, then 8)</p></li>
+<li><p>&#8220;more identica/laconica support&#8221;<br />
+I&#8217;d like to see this happen too. If you want it to happen, volunteering to code a Laconica-specific API (or somehow scraping up funding to sponsor development) would help us out a lot. We don&#8217;t have time to do much with non-Twitter APIs right now.</p></li>
+<li><p>&#8220;Livejournal support&#8221;<br />
+Seems like a microblogging client isn&#8217;t a good match for this, but if we add ping.fm support, you should be able to post to LJ through that. As for reading LJ posts, I think RSS feed support would allow that.</p></li>
+<li><p>&#8220;It needs a non-offensive name before I would purchase it anywhere&#8221;<br />
+We had to get one of these, although I&#8217;m surprised we only got one in nearly 150 responses. It&#8217;s not changing. Read the FAQ. Sorry!</p></li>
+<li><p>&#8220;Since last 2 updates it really drains my battery.  LOVE it&#8217;s look and feel though.&#8221;<br />
+These are the kinds of things we need to get reported to us. Can&#8217;t fix it if you don&#8217;t report it. Go to <a href="http://spaz.tenderapp.com">our support site</a> and file an issue, please. Please make sure Spaz is the only culprit involved, though.</p></li>
+<li><p>&#8220;Direct blip.fm support (streaming via clicking a link)&#8221;<br />
+That would be interesting. If someone&#8217;s willing to look into it dev-wise, I have no issue with it.</p></li>
+<li><p>&#8220;Why? When tweed is free. And there&#8217;s more twitter apps to come.&#8221;<br />
+No applications are allowed to charge for apps at the moment. That will change in the future, though. I wouldn&#8217;t assume Tweed will remain free, but I have no idea what their plans are.</p></li>
+<li><p>&#8220;Copy and paste&#8221;<br />
+Talk to Palm, dude. 8)</p></li>
+<li><p>&#8220;Change the name!!!&#8221;<br />
+Okay, maybe we got another one, but this didn&#8217;t claim I was making fun of physically or mentally disabled people. Sorry, not changing.</p></li>
+<li><p>&#8220;None&#8221;<br />
+This surprised me a little. You could have written &#8220;shits money and cleans my house.&#8221; Surely that would make you more likely to buy it, yes?</p></li>
+</ul>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2454" data-url-title="results-of-spaz-webos-pricing-survey">
+	<ul>
+	
+	<li class="comment">
+		<a name="6877" class="comment-id anchor"></a>
+		<div class="comment-author">Javi</div>
+		<div class="comment-author-url">http://javierdimauro.com</div>
+		<div class="comment-date">08/05/2009 09:36:31 AM</div>
+		<div class="comment-body"><p>App stores should support free apps receive donations. That&#8217;s the most reasonable way, IMO.</p>
+
+<p>&#8220;This app is free software. You can download it for free, but you can also make a donation for the project&#8221;</p>
+
+<p>And, in the second case, let the users choose how much they want to pay for the app.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6878" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/05/2009 09:55:23 AM</div>
+		<div class="comment-body"><p>It would be great, but my experience has been that you&#8217;re better off charging a $1-2 than asking for donations, as almost no one donates. ever.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6892" class="comment-id anchor"></a>
+		<div class="comment-author">Seth</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/13/2009 11:30:37 AM</div>
+		<div class="comment-body"><p>I know that I&#8217;m unusual about this but I would pay as much as $9.99 if the app was good enough. I&#8217;m a previous Symbian user and I purchased &#8220;Gravity&#8221; for my Nokia 5800. It was expensive- but the app was very capable.</p>
+
+<p>Realistically, your app should probably be $1.99-2.99</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6894" class="comment-id anchor"></a>
+		<div class="comment-author">Jim Whitaker</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/14/2009 09:33:37 AM</div>
+		<div class="comment-body"><p>Personally I get the impression that most of the folks you survayed about priceing arnt prevouse &#8220;Palm&#8221; users.  Paying $100 for a good app in pretty much the rule,  if I can get it for $5 I wont know how to act ;-)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6923" class="comment-id anchor"></a>
+		<div class="comment-author">ssrjazz</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/04/2009 03:16:50 PM</div>
+		<div class="comment-body"><p>re: LJ support.</p>
+
+<p>RSS works only for non-private entries.  A LJ  client that could authenticate and get private friends entries too would rock.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6978" class="comment-id anchor"></a>
+		<div class="comment-author">Philippe Gamache</div>
+		<div class="comment-author-url">http://www.ph-il.ca</div>
+		<div class="comment-date">10/24/2009 11:35:53 PM</div>
+		<div class="comment-body"><p>identi.ca, Laconi.ca, status.net have a twitter compatible API&#8230; So this is not a real reason.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6979" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/24/2009 11:56:01 PM</div>
+		<div class="comment-body"><p>Actually it is, Philippe.</p>
+
+<p>Spaz on webOS already is usable with any system that has a Twitter-compatible API, including StatusNet. I interpret &#8220;more identica/laconica support&#8221; as meaning support for StatusNet-specific features. The Twitter-compatible API does not expose these features, so a StatusNet-specific library would need to be created.</p>
+
+<p>Would you like to work on this, Philippe?</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

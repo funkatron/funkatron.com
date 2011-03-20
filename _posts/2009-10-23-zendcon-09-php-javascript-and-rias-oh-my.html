@@ -1,0 +1,88 @@
+---
+layout: post
+author: funkatron
+title: "ZendCon 09: PHP, JavaScript, and RIAs, Oh My!"
+url_title: zendcon-09-php-javascript-and-rias-oh-my
+tags: "PHP, javascript, jquery, titanium, AIR, zendcon"
+published: true
+categories:
+- AIR
+- JavaScript
+- jQuery
+- PHP
+date: 2009-10-23
+summary: 
+old_entry_id: 2456
+---
+<p><a href="http://www.flickr.com/photos/dragonbe/4031585896/"><img src="http://farm4.static.flickr.com/3495/4031585896_a2070eb4fb.jpg" alt="Elephant is good student" /></a></p>
+
+<div class="photo-credit"><a href="http://www.flickr.com/photos/dragonbe/4031585896/">Photo by DragonBe</a></div>
+
+<blockquote>
+  <p>No more travels for me until SXSW in March, I believe. I&#8217;m far too tired.</p>
+</blockquote>
+
+<p>Did I say that? I actually knew very well that a week later, I would be traveling to San Jose for <a href="http://zendcon.com">ZendCon 09</a>. Foolish me.</p>
+
+<p>I spoke at ZendCon on Building Desktop RIAs with JavaScript and PHP. I&#8217;ve given this talk other places, but this time I showed off some fun PHP-powered jQuery within Titanium. Here&#8217;s a snippet:</p>
+
+<pre><code>&lt;script type="text/php"&gt;        
+    /**
+     * run the passed function when DOM Ready event runs 
+     */
+    $jQuery()-&gt;ready( function () use (&amp;$jQuery) {
+        /**
+         * set some CSS properties 
+         */
+        $jQuery('#phpjQ')-&gt;css('display', 'none')
+                        -&gt;css('background-color','#333')
+                        -&gt;css('padding','10px')
+                        -&gt;css('border','2px solid #000');
+        /**
+         * bind a delegated click event to the passed function 
+         */
+        $jQuery('#invokePHP')-&gt;live('click', function () use (&amp;$jQuery) {
+            /**
+             * set the text color and reveal 
+             */
+            $jQuery('#phpjQ')-&gt;css('color', 'red')-&gt;slideToggle(500);
+        } );                
+    } );
+&lt;/script&gt;       
+</code></pre>
+
+<h4>Building Desktop RIAs with JavaScript and PHP</h4>
+
+<ul>
+<li><a href="http://funkatron.com/content/zendcon09-RIAPHPJS.pdf">Slides</a></li>
+<li>Code: <a href="http://funkatron.com/content/zendcon09-RIAPHPJS-PHP.zip">Server-side PHP</a>, <a href="http://funkatron.com/content/zendcon09-RIAPHPJS-AIR.zip">AIR</a>, <a href="http://funkatron.com/content/zendcon09-RIAPHPJS-Titanium.zip">Titanium</a></li>
+</ul>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2456" data-url-title="zendcon-09-php-javascript-and-rias-oh-my">
+	<ul>
+	
+	<li class="comment">
+		<a name="7002" class="comment-id anchor"></a>
+		<div class="comment-author">Loh</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">11/13/2009 01:48:50 PM</div>
+		<div class="comment-body"><p>TY LOH!!!!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="7020" class="comment-id anchor"></a>
+		<div class="comment-author">izmir web tasarım</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">11/30/2009 04:10:32 AM</div>
+		<div class="comment-body"><p>Thanks for helpful information you catch up us with your instructional explanation.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

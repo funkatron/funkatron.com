@@ -1,0 +1,117 @@
+---
+layout: post
+author: funkatron
+title: "LAME optimization tests"
+url_title: lame_optimization_tests
+tags: ""
+published: true
+categories:
+- OS X
+date: 2003-05-16
+summary: 
+old_entry_id: 1809
+---
+<p>I did some tests last night using &#8212;alt-preset standard on 3.90.2, 3.93.1, and a new compile of 3.93.1 I did with several compiler optimization settings:</p>
+
+<pre>
+-faltivec -mcpu=7450 -mdynamic-no-pic -funroll-loops -ffast-math -fstrict-aliasing -O3
+</pre>
+
+<p>Here are the results of the tests I did. I wouldn&#8217;t call them scientific, but I did use the same file for each, and didn&#8217;t do anything else while it was encoding.</p>
+
+<h3>3.90.2 (<a href="http://www.funkatron.com/mt/files/lame-3.90.2.osx-minimal-binary.bz2">download</a>):</h3>
+
+<pre>
+[Funktanium-Powerbook:~]coj% lame --nohist --alt-preset standard ~/Desktop/machine_deadagent.wav
+LAME version 3.90.2  (http://www.mp3dev.org/)
+Using polyphase lowpass  filter, transition band: 18671 Hz - 19205 Hz
+Encoding /Users/coj/Desktop/machine_deadagent.wav
+     to /Users/coj/Desktop/machine_deadagent.wav.mp3
+Encoding as 44.1 kHz VBR(q=2) j-stereo MPEG-1 Layer III (ca. 7.3x) qval=2
+   Frame          |  CPU time/estim | REAL time/estim | play/CPU |    ETA
+12471/12474 (100%)|    0:26/    0:26|    5:20/    5:20|   12.345x|    0:00
+average: 232.3 kbps   LR: 4079 (32.70%)   MS: 8395 (67.30%)
+
+Writing LAME Tag...done
+</pre>
+
+<h3>3.93.1:</h3>
+
+<pre>
+[Funktanium-Powerbook:~]coj% ~/Documents/RealBasic/LameBrain/bin/lame --nohist --alt-preset standard ~/Desktop/machine_deadagent.wav
+LAME version 3.93  (http://www.mp3dev.org/)
+Using polyphase lowpass  filter, transition band: 18671 Hz - 19205 Hz
+Encoding /Users/coj/Desktop/machine_deadagent.wav
+     to /Users/coj/Desktop/machine_deadagent.wav.mp3
+Encoding as 44.1 kHz VBR(q=2) j-stereo MPEG-1 Layer III (ca. 7.3x) qval=2
+   Frame          |  CPU time/estim | REAL time/estim | play/CPU |    ETA
+12471/12474 (100%)|    0:24/    0:24|    4:59/    4:59|   13.254x|    0:00
+average: 231.8 kbps   LR: 4075 (32.67%)   MS: 8399 (67.33%)
+
+Writing LAME Tag...done
+</pre>
+
+<h3>3.93.1 with optimizations (<a href="http://www.funkatron.com/mt/files/lame_binary-g4optimized.gz">download</a>):</h3>
+
+<pre>
+[Funktanium-Powerbook:~]coj% /usr/local/lame_optimized/bin/lame --nohist --alt-preset standard ~/Desktop/machine_deadagent.wav
+LAME version 3.93  (http://www.mp3dev.org/)
+Using polyphase lowpass  filter, transition band: 18671 Hz - 19205 Hz
+Encoding /Users/coj/Desktop/machine_deadagent.wav
+     to /Users/coj/Desktop/machine_deadagent.wav.mp3
+Encoding as 44.1 kHz VBR(q=2) j-stereo MPEG-1 Layer III (ca. 7.3x) qval=2
+   Frame          |  CPU time/estim | REAL time/estim | play/CPU |    ETA
+12471/12474 (100%)|    0:16/    0:16|    4:32/    4:32|   19.578x|    0:00
+average: 231.8 kbps   LR: 4075 (32.67%)   MS: 8399 (67.33%)
+
+Writing LAME Tag...done
+</pre>
+
+<p>Note that I did NOT do any listening tests &#8212; this is just comparing speed. It looks to me that the plain 3.93.1 is faster than 3.90.2, and the optimized 3.93.1 is significantly faster than 3.93.1 standard. The optimizations I did might keep the binary from working on G3s and older G4s (&lt; 500Mhz, I think), so I want to run some tests on it before including it as standard in LameBrain.  If you are willing to give it a shot, please <a href="http://www.funkatron.com/mt/files/lame_binary-g4optimized.gz">download the binary and let me know the results.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="1809" data-url-title="lame_optimization_tests">
+	<ul>
+	
+	<li class="comment">
+		<a name="1586" class="comment-id anchor"></a>
+		<div class="comment-author">yoko</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/18/2003 03:05:46 PM</div>
+		<div class="comment-body"><p>Hi,
+I tested the optimized binary on my Quicksilver 867 and I get about 1.2 - 1.4x&#8230;
+Any idea why?
+Thanks</p>
+
+<h2>//yoko z.</h2>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1585" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">05/18/2003 03:36:14 PM</div>
+		<div class="comment-body"><p>Ya know, I&#8217;m getting some bad times now as well&#8230; I&#8217;m a bit confused about it.  I may go back to using the standard compile in LameBrain.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1584" class="comment-id anchor"></a>
+		<div class="comment-author">Inaki</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/19/2003 08:52:53 AM</div>
+		<div class="comment-body"><p>Hi,</p>
+
+<p>I too have tested the optimized binary on my Flatpannel iMac/800. I&#8217;ve got 2.4913x with the standard compile and 2.8805x with the optimized version. (ripping from cd, r3mix profile)</p>
+
+<p>Not a substancial speed gain, but faster anyway.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

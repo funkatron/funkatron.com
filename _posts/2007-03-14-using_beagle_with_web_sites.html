@@ -1,0 +1,24 @@
+---
+layout: post
+author: funkatron
+title: "Using Beagle with web sites?"
+url_title: using_beagle_with_web_sites
+tags: ""
+published: true
+categories:
+- Development
+- The Web Problem
+- PHP
+date: 2007-03-14
+summary: 
+old_entry_id: 2287
+---
+<p>So here&#8217;s a thought about a different approach to searching a content-thick web site, or relating a variety of content types to one another, based on my messing around more with <a href="http://code.google.com/p/macfuse/">MacFUSE</a>:</p>
+
+<p>What about using something like <a href="http://beagle-project.org">Beagle</a>, <a href="http://fuse.sourceforge.net/">FUSE</a> and <a href="http://rlove.org/log/2006070601">BeagleFS</a> to create a search engine of static content and related data?  This might be a little heavy because you&#8217;d basically have to create a new filesystem for each different query, but it would only get that hit the first time it&#8217;s created.  If that&#8217;s too much, though, maybe a PHP/Python/Ruby library to act as a query client against a Beagle database would be adequate.</p>
+
+<p>At <a href="http://www.cerias.purdue.edu">CERIAS</a> we have a ton of static content (lots of PDFs, a huge FTP site full of source code and message archives and OS mirrors, etc.).  Something like this could really help get a handle on this, both in relating disparate types of data to one another, and in finding the right content in this mass of files.</p>
+
+<p>Does this make sense?</p>
+
+<p>[tags]beagle, beaglefs, FUSE, metadata, searching, search engine, webdev[/tags]</p>

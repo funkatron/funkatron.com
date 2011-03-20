@@ -1,0 +1,34 @@
+---
+layout: post
+author: funkatron
+title: "Zend_Environment_Security and its relation to PhpSecInfo"
+url_title: zend_environment_security_and_its_relation_to_phpsecinfo
+tags: ""
+published: true
+categories:
+- PHPSecInfo
+- My Projects
+- Development
+- InfoSec
+- PHP
+date: 2007-02-22
+summary: 
+old_entry_id: 2271
+---
+<p>I just posted this to the <a href="http://lists.phpsec.org/mailman/listinfo/phpsecinfo">phpsecinfo mailing list</a>:</p>
+
+<blockquote>Folks who download today&#8217;s <a href="http://framework.zend.com/">Zend Framework</a> 0.8 release will notice the a new library in the &#8220;incubator&#8221; section: <a href="http://www.peptolab.com/">Simon Mundy</a>&#8217;s <a href="http://framework.zend.com/apidoc/incubator/Zend_Environment/Zend_Environment.html">Zend_Environment</a>.  People who look closer will notice that there is a &#8220;security&#8221; module for Zend_Environment, and a test framework called <a href="http://framework.zend.com/apidoc/incubator/Zend_Environment/Zend_Environment_Security_Test.html">Zend_Environment_Security_Test</a> that looks a lot like <a href="http://phpsecinfo.com">PhpSecInfo</a>.
+
+Zend_Environment_Security is basically a port of the tests I&#8217;ve written for PhpSecInfo to work with Simon&#8217;s Zend_Environment module.  It does *not* replace PhpSecInfo, but rather provide a similar testing capability built into the ZFW core.  PhpSecInfo could be described as the &#8220;parent&#8221; project, with Zend_Environment_Security being based on the work I do in PSI.  PSI is *definitely* the core, and will for the foreseeable future take priority over any &#8220;sibling&#8221; projects.
+
+Why did I only refer to my work on PSI, and not the other very helpful folks who have contributed?  Because I cannot convert any contributed code from PSI unless the contributors have signed the <a href="http://framework.zend.com/wiki/display/ZFPROP/Contributor+License+Agreement">ZFW Contributor License Agreement</a>.  For this reason, a few tests that are present in PhpSecInfo don&#8217;t have equivalents in Zend_Environment_Security.
+
+If you have contributed tests to PhpSecInfo, or plan on doing so, I&#8217;d like you to give serious consideration to signing the Zend CLA.  It won&#8217;t put any additional burden on you, as I&#8217;ll take care of porting contributed tests to the Zend_Environment_Security model.
+
+- <a href="http://framework.zend.com/wiki/display/ZFPROP/Contributor+License+Agreement">Zend Contributor License Agreement</a>
+
+Note that I will *not* require PhpSecInfo contributors to sign the Zend CLA.  If you choose not to do so, I will be happy to use your work in PhpSecInfo.
+
+I hope this clears up any confusion.  If you have questions, please let me know.</blockquote>
+
+<p>[tags]phpsecinfo, zend, zfw, zend framework, security[/tags]</p>

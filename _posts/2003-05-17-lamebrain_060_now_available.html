@@ -1,0 +1,99 @@
+---
+layout: post
+author: funkatron
+title: "LameBrain 0.6.0 Now Available"
+url_title: lamebrain_060_now_available
+tags: ""
+published: true
+categories:
+- OS X
+date: 2003-05-17
+summary: 
+old_entry_id: 1810
+---
+<p>Here&#8217;s what&#8217;s new in this version:</p>
+
+<ul>
+  <li>If you previous installed a preview version of 0.6.0, you should delete your preferences file BEFORE running 0.6.0 final.  It should be &lt;your home directory&gt;:Library:Preferences:LameBrain 0.6 Prefs</li>
+  <li>All main encoding windows (single file/batch/cd ripper) have been combined into a single window.  Stats have been moved to the LAME settings window under the Stats tab.  Size of LAME settings window has been reduced. Appropriate changes have been made to the Preferences window</li>
+  <li>ID3v1.1 tag viewing and editing is enabled using <a href="http://www.dakotacom.net/~donut/programs/id3ed.html">id3ed</a>.  Only v1.1 tags are currently supported</li>
+  <li>FreeDB server preference can now be selected from a dropdown menu.  You can add or remove servers by editing the data/freedb_mirrors.txt file</li>
+  <li>LAME executable has been moved to bin/ subdirectory</li>
+  <li>Profiles have been moved into &#8220;Profiles&#8221; subdirectory.  You will need to move your custom profiles into this folder for them to be usable</li>
+  <li>Extended ASCII chars are now converted to &#8220;_&#8221; in output filenames</li>
+  <li>Added debug logging functionality.  Debug info is logged to file in &#8220;logs/&#8221; subdir, and can be turned on or off in Preferences.  Logging can slow LB down and the file can get quite large, so this should only be used if you&#8217;re having problems</li>
+  <li>Added ability to view TOC.plist file of currently selected CD. Useful for debugging purposes</li>
+  <li>New, fancier About window. Woo!</li>
+  <li>Eject button removed since preview versions; will reappear soon</li>
+  <li>Experimental: LameBrain will try to copy the ID3 tags from an input mp3 file to the re-encoded version</li>
+  <li>Fancy new icons for the control bar by <a href="http://www.transmtt-r.com/">Ken Holewczynski</a></li>
+  <li>Clip player will now show artist and title if ID3 info is present</li>
+  <li>Fixed bug where LameBrain would crash if it found a mounted DVD</li>
+  <li>Fixed bugs with double-quotes in ID3 tags when CD ripping</li>
+  <li>Fixed bug where Year info was not retrieved from FreeDB</li>
+  <li>fixed issue where colons in CD info tags were causing Nil Object Exceptions when the .m3u file was written</li>
+ </ul>
+
+<p><a href="http://www.funkatron.com/mt/files/LameBrain.dmg.bz2">Download now</a></p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="1810" data-url-title="lamebrain_060_now_available">
+	<ul>
+	
+	<li class="comment">
+		<a name="1591" class="comment-id anchor"></a>
+		<div class="comment-author">Dave</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/18/2003 12:52:24 PM</div>
+		<div class="comment-body"><p>The downloaded file gives me a warning when I try to decompress it (with OpenUp, Stuffit or command line) and the resultant .dmg won&#8217;t mount.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1590" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">05/18/2003 01:25:46 PM</div>
+		<div class="comment-body"><p>Weird &#8212; seems to be working on this end.  Sometimes I&#8217;ve seen an issue 
+where a downloaded file is just read out of the cache, even when you try 
+to download it again, which can be a problem if the download was messed.</p>
+
+<p>Try using curl on the command line like so:</p>
+
+<p>curl -O &lt;a href=&#8221;http://www.funkatron.com/mt/files/LameBrain.dmg.bz2&#8221;&gt;http://www.funkatron.com/mt/files/LameBrain.dmg.bz2&lt;/a&gt;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1589" class="comment-id anchor"></a>
+		<div class="comment-author">Dave</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/19/2003 02:05:48 PM</div>
+		<div class="comment-body"><p>That worked! Thanks. Safari was repeatedly downloading a corrupted partial file.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1588" class="comment-id anchor"></a>
+		<div class="comment-author">Leif Myers</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/29/2003 07:46:05 AM</div>
+		<div class="comment-body"><p>I have a CD that LameBrain doesn&#8217;t seem to notice when I put it in, is that possibly because of spaces in the album title? Other CDs with single word titles have worked fine.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1587" class="comment-id anchor"></a>
+		<div class="comment-author">bvila</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/31/2003 02:50:43 PM</div>
+		<div class="comment-body"><p>Just downloaded the 0.6.0 version of LameBrain.  Every time I try to launch it, it crashes.  I deleted all prefs files and downloaded both with Safari and IE.  Still crashes every time.  Looks like it&#8217;s back to the old version for now.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

@@ -1,0 +1,43 @@
+---
+layout: post
+author: funkatron
+title: "Thunderbird + IPv6 = No LDAP For You!"
+url_title: thunderbird_ipv6_no_ldap_for_you
+tags: ""
+published: true
+categories:
+- General
+- Development
+date: 2006-02-08
+summary: 
+old_entry_id: 2072
+---
+<p>For a while now I&#8217;ve not been able to connect to the Purdue campus LDAP server from Thunderbird.  Today I got a bit more determined to figure out the issue, and discovered after about 5 hours that Thunderbird is just fucked in the following situation:</p>
+
+<p>1) You are running WinXP
+2) You have the Windows IPv6 stack installed
+3) You try to connect to an LDAP server from the Thunderbird Address Book</p>
+
+<p><a href="http://lair.moria.org/blog/entry/Work/Thunderbird_windowsXP_ipv6_and_LDAP_directories.txt" target="_blank">This guy</a> does a better job of explaining it than I ever could, and I only half understood what the fuck was going on anyway, but nevertheless, this is <i>beyond gay</i>.  All the other apps with LDAP server query functionality (like Ye Olde Windows Address Book) work fine.  I actually ended up installing Windump on my machine, and saw that while every other app connected to the LDAP server fine, Thunderbird&#8217;s packets went off on a fucking trip through Singapore and got sold into sex slavery.</p>
+
+<p>Anyway, the workaround &#8212; until the Thunderbird guys fix <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=228439" target="_blank">this 2+ year old bug</a> &#8212; is to go into the properties for your ethernet device and uninstall Microsoft Version 6 TCP/IP (or whatever they call it).  I guess I wasn&#8217;t using it anyway&#8230;</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2072" data-url-title="thunderbird_ipv6_no_ldap_for_you">
+	<ul>
+	
+	<li class="comment">
+		<a name="1717" class="comment-id anchor"></a>
+		<div class="comment-author">CS Lauritsen</div>
+		<div class="comment-author-url">http://planetlauritsen.com</div>
+		<div class="comment-date">12/08/2006 03:29:08 PM</div>
+		<div class="comment-body"><h2>Awesome! This has been pissing me off for at least a year. I couldn&#8217;t find anything with google until today, when your site came up. Thanks! I can use the &#8216;bird on winxp once again and all is well.</h2>
+</div>
+	</li>
+	 
+	</ul>
+</div>

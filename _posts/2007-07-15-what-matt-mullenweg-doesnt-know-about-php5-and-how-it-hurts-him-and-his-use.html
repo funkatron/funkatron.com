@@ -1,0 +1,540 @@
+---
+layout: post
+author: funkatron
+title: "What Matt Mullenweg doesn&#8217;t know about PHP5, and how it hurts him and his users"
+url_title: what-matt-mullenweg-doesnt-know-about-php5-and-how-it-hurts-him-and-his-use
+tags: "wordpress, photomatt, matt mullenweg, ignorance, php5, php4, security"
+published: true
+categories:
+- Development
+- InfoSec
+- The Web Problem
+- PHP
+date: 2007-07-15
+summary: 
+old_entry_id: 2355
+---
+<p>Matt Mullenweg, the dude behind Wordpress, has posted something of <a href="http://photomatt.net/2007/07/13/on-php/">a rant</a> about PHP5 in the light of the upcoming drop of PHP4 support:</p>
+
+<blockquote>None of the most requested features for WordPress would be any easier (or harder) if they were written for PHP 4 or 5 or Python. They&rsquo;d just be different. The hard part usually has little to do with the underlying server-side language.</blockquote>
+
+<p>Here&#8217;s a hint: don&#8217;t give the users what they <em>say</em> they want until you give them what they <em>need.</em> &#8212; even if they don&#8217;t realize what that is.  Here&#8217;s some PHP5-only features that could be helping Wordpress users <em>right now</em>:</p>
+
+<ul>
+<li><p><strong>Parameterized SQL input to eliminate SQL injection attacks (security)</strong><br />
+Strictly enforcing the use of parameterized SQL input in Wordpress development would dramatically reduce, and in all likelyhood <em>eliminate</em>, the possibility of SQL  injection attacks against Wordpress.  Using <a href="http://us.php.net/pdo">the PHP5-only PDO extension</a> would allows this <em>even with databases that don&#8217;t natively support this feature</em>.</p></li>
+<li><p><strong><a href="http://us.php.net/filter">Filter extension</a> to combat XSS, CSRF, etc. attacks (security)</strong><br />
+The PHP5-only filter extension adds fast, built-in input filtering functions.  Given the history of problems Wordpress has with handling user input properly, enforcing the use of this or another solid input filtering system would surely reduce the amount of input handling errors in the WP codebase.</p></li>
+<li><p><strong>Turning off remote file inclusion by default (security)</strong><br />
+Remote file inclusion vulnerabilities account for approximately 40% of all security issues with PHP-based applications.  The <a href="http://us2.php.net/manual/en/ref.filesystem.php#ini.allow-url-include"><code>allow_url_include</code></a> configuration setting, added in PHP 5.2.0, disables remote file inclusion by default.</p></li>
+<li><p><strong>Prepared statement/transaction support in <a href="http://us.php.net/pdo">PDO</a> and <a href="http://us.php.net/manual/en/ref.mysqli.php">MySQLi</a> (performance)</strong><br />
+Prepared statements not only provide the benefits of parameterized input mentioned above, but significant performance increases can be had with them.  AFAIK, it&#8217;s not possible to support these features in MySQL under PHP4.</p></li>
+<li><p><strong><a href="http://us.php.net/manual/en/language.oop5.php">Improved OOP features</a> and support (code quality, extensibility)</strong><br />
+This would aid developers first, which in turn would benefit users, by making (in my opinion and based on anecdotal evidence) a large project like Wordpress easier to maintain.  Code reusability is improved, quality is increased, and hackish approaches like global variables become unnecessary.</p>
+
+<p>I&#8217;ve hacked the guts of Wordpress and written numerous plugins, and I&#8217;m <em>still</em> shocked at what a garbled mess the WP codebase is, and how much easier it is to write extensions for content management systems that embrace OOP.  Of course, OOP is very possible in PHP4, but PHP5 adds a number of features that make a significant difference in team development (public/private/protected properties and methods, for example).</p>
+
+<p>(A cynic might suggest that one reason to <em>not</em> clean up the WP architecture is because that would break backwards compatibility with the extensive library of plugins that has a lot to do with Wordpress&#8217; success.  There would be some irony in that, no?)</p></li>
+</ul>
+
+<p>I think this line from Matt&#8217;s post might be telling:</p>
+
+<blockquote>Even hosted PHP-powered services who have no shared host compatibility concerns like 30boxes, Digg, Flickr, and WordPress.com, have been slow to move and when they do it will probably be because of speed or security, not features.</blockquote>
+
+<p>The thing is, support of PHP5-only features in WP would give it better speed and security <em>right now</em>.  And especially in the case of security, Matt&#8217;s reliance on what users <em>say</em> they want is a critical error: users don&#8217;t ask about security until well after it becomes a serious issue.  Wordpress has one of the worst security records of any PHP application, so I&#8217;ll go out on a limb and say that it&#8217;s a problem <strong>now</strong>.  Even if WP users aren&#8217;t talking about it, <strong>WP&#8217;s core dev team should have addressed this already</strong>.</p>
+
+<p>I&#8217;ve said before that web app developers are the stewards of their users&#8217; data.  Our users need and expect us to anticipate and address their security.  If we don&#8217;t do that, and simply <a href="http://www.logicalfallacies.info/appealtopopularity.html">base our actions on popular opinion</a>, we&#8217;re being <strong>irresponsible</strong>.</p>
+
+<hr />
+
+<p>On a basically unrelated note, it <em>really</em> is disappointing to see Matt sink to <a href="http://www.logicalfallacies.info/personalattack.html">ad-hominem attacks</a> when making his argument:</p>
+
+<blockquote>In 2007, [the PHP site] still doesn&rsquo;t have obvious permalinks. They do have a RSS 1.0 feed though, remember those?</blockquote>
+
+<blockquote> Some app makers felt sorry for PHP 5 and decided to create the world&rsquo;s ugliest advocacy site&#8230;</blockquote>
+
+<p>That&#8217;s bush league, Matt.  Cut the elitism BS and stick to a proper, logically sound argument.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2355" data-url-title="what-matt-mullenweg-doesnt-know-about-php5-and-how-it-hurts-him-and-his-use">
+	<ul>
+	
+	<li class="comment">
+		<a name="1834" class="comment-id anchor"></a>
+		<div class="comment-author">Joshua May</div>
+		<div class="comment-author-url">http://www.notjosh.com/blog</div>
+		<div class="comment-date">07/15/2007 10:59:58 PM</div>
+		<div class="comment-body"><p>yeah, I agree. It&#8217;s just a cat-fight, though. Not everyone would be happy, and that was obvious, but it&#8217;d kind of sad to see someone in that position reacting that way.</p>
+
+<p>That said, I completely understand where he&#8217;s coming from. But I still think it&#8217;s much better to embrace progress. Early adoption is key.</p>
+
+<p>Consider me still not a Wordpress user or advocate.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1835" class="comment-id anchor"></a>
+		<div class="comment-author">Ronald van den Heetkamp</div>
+		<div class="comment-author-url">http://www.0x000000.com</div>
+		<div class="comment-date">07/16/2007 05:21:41 AM</div>
+		<div class="comment-body"><p>I don&#8217;t agree with your arguments, and it&#8217;s almost like you are saying that everyone MUST comply to PHP5 fanboys.</p>
+
+<p>And if you talk about the security features, you still rely on the PHP5 backend, which hardly anyone inspects for flaws. Ever saw the PHP5 security buglist? it&#8217;s almost as large as PHP4 to PHP4.6 combined. More features, more stuff to attack, more unknown and potential holes.</p>
+
+<p>I praise the effort of PHP5 but I don&#8217;t need it, hence I could get away free with using php3 if I wanted and still be secure, cause it still depends on how you handle data as a programmer. No short cuts while relying on the PHP5 backend to solve your problems. It can supplement, but It poses a danger if one trusts upon it blindly.</p>
+
+<p>And the Apache 1.337 =&gt; Apache 2.00 discussion is a wise lesson, newer doesn&#8217;t mean more secure, It maybe easier to do stuff than before, but it isn&#8217;t &#8220;more&#8221; secure.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1836" class="comment-id anchor"></a>
+		<div class="comment-author">Matt</div>
+		<div class="comment-author-url">http://photomatt.net/</div>
+		<div class="comment-date">07/16/2007 05:51:59 AM</div>
+		<div class="comment-body"><p>Thanks for the thoughtful entry! This is just the kind of thing I was hoping people would post. Just a few notes:</p>
+
+<ol>
+<li>We now have parameterized SQL in core.</li>
+<li>We&#8217;re not concerned with databases besides MySQL.</li>
+<li>We have fine HTML filtering with KSES. The filtering has never been a problem, it&#8217;s just places where it&#8217;s been not applied.</li>
+<li>While it would be nice to get a little more performance by using prepared statements, SQL is generally less than 5% of execution time.</li>
+<li>OOP - In our experience strict OO can be fairly intimidating to casual coders, who are the people who have created the countless plugins for WP that make it as popular as it is today and, as you note, we&#8217;d like to maintain backward compatibility for. However internal APIs and code has embraced OO methods where appropiate.</li>
+</ol>
+
+<p>While significant efforts have been made in auditing WP&#8217;s code, and we will continue to do so, I&#8217;m operating under the assumption that someday someone will find something, so our focus is on notification and ease of upgrading. Since people are using WP as a platform we need to make it upgrade like one.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1837" class="comment-id anchor"></a>
+		<div class="comment-author">Patrick Lee</div>
+		<div class="comment-author-url">http://www.alimadzi.com</div>
+		<div class="comment-date">07/16/2007 10:11:05 PM</div>
+		<div class="comment-body"><p>I&#8217;m on the fence with this one.  While I love all the advantages that PHP 5.2 has over PHP 4.4, I can understand Matt&#8217;s argument about the legions of plugin developers who don&#8217;t grok OOP.  However, Josh has some great points about enforcing security by default using PDO, Filter, and other features only available in PHP 5+.</p>
+
+<p>The great thing about open source software is that people who are not happy with the status quo have the freedom to fork the project and go their own way.  There&#8217;s nothing to stop somebody from creating &#8220;wOOrdpress&#8221;.  Get it?  OO?</p>
+
+<p>Would this be a good thing for the Wordpress community as a whole?  Hard to say, but my guess is probably not.  Will the whole GoPHP5 movement really result in a mass upgrade?  I hope so, but I don&#8217;t know that either.  I just know that Wordpress is arguably the most popular and most extensible PHP app in existence today and we should probably think twice before we really rock the boat.</p>
+
+<p>Does something need to be done to finally squelch the lingering code issues that WP has?  Absolutely.  Is a complete rewrite using PHP5-only features the answer we&#8217;re looking for?  Magic 8 Ball says&#8230; &#8220;Ask again later.&#8221;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1838" class="comment-id anchor"></a>
+		<div class="comment-author">Patrick Lee</div>
+		<div class="comment-author-url">http://www.alimadzi.com</div>
+		<div class="comment-date">07/16/2007 10:12:08 PM</div>
+		<div class="comment-body"><p>Sorry, where I said Josh in the first paragraph, I should have said Ed.  Oops.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1840" class="comment-id anchor"></a>
+		<div class="comment-author">Nate Klaiber</div>
+		<div class="comment-author-url">http://nateklaiber.com</div>
+		<div class="comment-date">07/17/2007 09:25:49 AM</div>
+		<div class="comment-body"><p>Just as there are developers who don&#8217;t &lt;em&gt;get&lt;/em&gt; PHP5 and its OO features, there are other developers who don&#8217;t want to traverse through a procedural mess. I am one of those people. Sure, I would love to extend a few things about my WP installation, but the codebase beneath is simply functions strung together, PHP/HTML intermixed at many different levels.</p>
+
+<p>So because there are hack developers who know little PHP and can work with the procedural mess, that is what keeps you from moving to a cleaner OO system?</p>
+
+<p>I hope as someone else pointed out, that someone will extend it to be OO. For now, I have found the best option is to simply move away from WordPress as it can&#8217;t do the things I need my site to do (without me hacking the procedural mess, no thanks). This doesn&#8217;t make Wordpress bad, I am just on the other side of the fence in that I prefer clean code and standards within.</p>
+
+<p>I think the real issue is that people try to stretch Wordpress into something it isn&#8217;t. Again, nothing against WP - it is a great blogging system. Some people try and make it do things it simply wasn&#8217;t created for.</p>
+
+<p>Then again, maybe I should upgrade and check out the recent changes that Matt listed above before I speak any more.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1841" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/17/2007 07:52:04 PM</div>
+		<div class="comment-body"><p>Like you, I&#8217;ve spend a lot of time digging through the core WordPress code, and it is an ungodly, unmanageable mess.</p>
+
+<p>I can only roll my eyes when I read Matt&#8217;s &#8220;expert&#8221; opinions on PHP.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1842" class="comment-id anchor"></a>
+		<div class="comment-author">Matt</div>
+		<div class="comment-author-url">http://photomatt.net/</div>
+		<div class="comment-date">07/17/2007 08:01:40 PM</div>
+		<div class="comment-body"><p>Then write a better app, and make it popular.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1843" class="comment-id anchor"></a>
+		<div class="comment-author">Jacob Santos</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/17/2007 10:30:37 PM</div>
+		<div class="comment-body"><p>Um, procedural code isn&#8217;t a bad thing. The WordPress code is very easy to extend and that in my opinion is worth more than anything. I believe more applications should duplicate the plugin (hook, action, event) model of WordPress.</p>
+
+<p>Unless you work with WordPress and other OO applications, you can&#8217;t really appreciate the ease. Also, reading WordPress code is a lot cleaner than some other applications.</p>
+
+<p>Sometime, look at the horror that is Coppermine and you&#8217;ll be impress by that of WordPress. However, the Gallery 2 code is solid.</p>
+
+<p>I actually started an OO fork of WordPress Yesterday, but I&#8217;m not sure how far I&#8217;ll get with it. Probably abandon it after a couple of weeks, after I realize it is a waste of time and WordPress code is good enough Procedural.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1844" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/17/2007 11:28:26 PM</div>
+		<div class="comment-body"><p>@Ronald van den Heetkamp: I am not implying anything I did not say.</p>
+
+<p>@sean: I think Matt&#8217;s a smart guy, and his opinions are as valid as any.  I happen to disagree with him in this case.</p>
+
+<p>@Matt: Popularity has many potential fathers, and quality is all too infrequently one of them.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1845" class="comment-id anchor"></a>
+		<div class="comment-author">Thomas Lee</div>
+		<div class="comment-author-url">http://www.vector-seven.com</div>
+		<div class="comment-date">07/17/2007 11:30:14 PM</div>
+		<div class="comment-body"><p>On the topic of parameterized queries and prepared statements with PDO, you might want to check out the successor to PEAR DB - MDB2:</p>
+
+<p>http://pear.php.net/MDB2</p>
+
+<p>You&#8217;ll likely want to load the &#8220;Extended&#8221; module too:</p>
+
+<p>$db =&amp; MDB2::connect($dsn);
+$db-&gt;setFetchMode(MDB2_FETCHMODE_ASSOC);
+$db-&gt;loadModule(&#8220;Extended&#8221;, NULL, FALSE);</p>
+
+<p>MDB2 works in PHP4 too if you&#8217;re feeling sinful. :)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1846" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/17/2007 11:34:12 PM</div>
+		<div class="comment-body"><p>@Thomas: Thanks for the info!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1847" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/18/2007 12:05:34 AM</div>
+		<div class="comment-body"><p>@funkatron - WordPress wouldn&#8217;t dominate the blogging software &#8220;market&#8221; if Matt wasn&#8217;t a smart guy. We all know he&#8217;s smart.</p>
+
+<p>Another intelligent man who used his smarts to dominate a market is Bill Gates. However Bill&#8217;s poor coding skills are legendary. The success of Windows is a testament to his marketing skills, not his coding abilities.</p>
+
+<p>The same holds true for Matt. The WordPress code is proof enough that he&#8217;s not the greatest programmer. It breaks dozens of fundamental coding practices &#8212; Poor abstraction, reusability, no inline documentation, etc. If you don&#8217;t even understand and use the fundamentals of programming, how can you say with authority that PHP4 is just fine, and PHP5 has nothing to offer?</p>
+
+<p>So yes, he&#8217;s a smart guy. He&#8217;s been a great marketer. But he&#8217;s no programmer, which is why I couldn&#8217;t care less what he has to say on the subject.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1848" class="comment-id anchor"></a>
+		<div class="comment-author">Alex</div>
+		<div class="comment-author-url">http://alexking.org</div>
+		<div class="comment-date">07/18/2007 03:08:40 AM</div>
+		<div class="comment-body"><p>I think there&#8217;s a fundamental point being missed here. I&#8217;ve watched Matt work for several years and argued against him on numerous points during that time. While I don&#8217;t always agree with him or his arguments, like most smart people Matt is willing to be convinced by good arguments on the other side.</p>
+
+<p>The real issue that I see is that for many PHP5 is still lacking a &#8220;OMG I have to upgrade right now because I want <em>that</em>&#8221; feature. That will drive upgrades much more than an pro PHP5 campaigns, etc.</p>
+
+<p>You may not agree with Matt&#8217;s opinions on this topic, but I can&#8217;t imagine it&#8217;s the first time you&#8217;ve heard them. Think about that for a little bit. Certainly we can all agree that compelling features make for quicker adoption of upgrades.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1849" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/18/2007 03:49:41 AM</div>
+		<div class="comment-body"><p>@Alex - I think this is where we start getting into a cylindrical stale-mate. Web hosts aren&#8217;t looking for &#8220;OMG&#8221; features. They&#8217;re only looking for demand to upgrade.</p>
+
+<p>There&#8217;s no demand on web hosts to upgrade when insanely huge, popular applications like WP still work with dusty ol&#8217; PHP 4.3.</p>
+
+<p>Matt isn&#8217;t going to push forward, partially because web hosts still support 4.3, so there&#8217;s no demand for him to leave PHP4 behind.</p>
+
+<p>And around and around we go. Web hosts and application developers are both staring at each other, waiting for the other one to make the first move.</p>
+
+<p>So what&#8217;s the other reason Matt won&#8217;t leave PHP4 behind? It&#8217;s possibly because he doesn&#8217;t think PHP5 has any &#8220;OMG&#8221; features, and that&#8217;s what funkatron&#8217;s post is all about.</p>
+
+<p>He&#8217;s trying to point out that PHP5 has some serious OMG features that could benefit WP in so many ways. But Matt either doesn&#8217;t understand, or doesn&#8217;t care.</p>
+
+<p>All the code Matt creates (or code written by others that he manages) is written in PHP4 (that I know of), so I have to wonder if he&#8217;s even tried using PHP5 in a serious real world way. You can&#8217;t say you don&#8217;t like something, or say you don&#8217;t see the value of it until you&#8217;ve tried it, right?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1850" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/18/2007 11:49:10 AM</div>
+		<div class="comment-body"><p>@alex: &#8220;Certainly we can all agree that compelling features make for quicker adoption of upgrades.&#8221;</p>
+
+<p>True, yes, but&#8230; let&#8217;s look at something matt said in his post:</p>
+
+<p>&#8220;What was it that made PHP 4 so successful? What are we doing to emphasize those strengths? Why wasn’t PHP 5 compelling to that same audience? &#8220;</p>
+
+<p>I think a lot of what made PHP4 so successful was simply timing, good integration with Apache, and a shallow learning curve.  All of these things are also present in PHP3.  A couple features in PHP4 aided things a bit, like native sessions (although pure PHP solutions existed, which Matt seems to prefer), but I don&#8217;t think it&#8217;s the case that particular PHP4-only features dramatically increased adoption. PHP4 had a fully rewritten engine, but feature-wise 4 was very much an <em>evolutionary</em> change, just like PHP5 and just like PHP6 seems to be. Things that have been present in <em>all</em> PHP versions since 3 were, imho, what led to PHP&#8217;s dominance.</p>
+
+<p>The difference between the jump from 3 to 4 and 4 to 5 is that PHP has a far, far larger audience to deal with, and a MUCH larger group of applications which may have bc issues (although I think those are fairly minor in most cases).  I suspect that is why adoption of PHP5 is slower, and not because of anything inherent to PHP4 that&#8217;s not there in PHP5.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1851" class="comment-id anchor"></a>
+		<div class="comment-author">Michal Migurski</div>
+		<div class="comment-author-url">http://mike.teczno.com</div>
+		<div class="comment-date">07/19/2007 12:09:27 PM</div>
+		<div class="comment-body"><p>Use or non-use of OOP is unrelated to the garbled mess inside WP (it makes me shudder, too). If anything, bad OOP is significantly harder to follow than bad functional/procedural code, because it adds a full extra dimension of inheritance to the what-the-heck-is-this-program-doing search space.</p>
+
+<p>The other arguments offered in this post boil down saving users from themselves: if we could just force everyone to move to a language version that limited their actions in some crucial way (enforced prepared statements, input filtering), there would be no security problems. Aside from being unrealistic, you deny the ease of use and approach that made PHP4 and WordPress catch on as strongly as they did. This is Matt&#8217;s core point: messiness supports and allows popularity.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1852" class="comment-id anchor"></a>
+		<div class="comment-author">Jeff Eaton</div>
+		<div class="comment-author-url">http://jeff.viapositiva.net</div>
+		<div class="comment-date">07/19/2007 01:46:28 PM</div>
+		<div class="comment-body"><p>&lt;blockquote&gt;And around and around we go. Web hosts and application developers are both staring at each other, waiting for the other one to make the first move.&lt;/blockquote&gt;
+&#8230;And that&#8217;s precisely the reason a number of OSS projects formed the GoPHP5 group. To collectively take the first step and get the ball rolling with hosting, application, and other upgrades. It&#8217;s baffled me that some people talk about that move as a &#8216;political move,&#8217; or &#8216;playing power games with users,&#8217; and so on. It&#8217;s all about breaking the stalemate that locks apps out of useful new work that the PHP development team is producing.</p>
+
+<p>On a completely unrelated site note, Ed, I was very amused to see your name pop up in my news. I was a big Cult of Jester fan back in the day. ;)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1853" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/19/2007 01:46:41 PM</div>
+		<div class="comment-body"><p>@michal</p>
+
+<p>Agreed, badly organized code is a challenge to follow, no matter if it&#8217;s procedural or no.  I do tend to find OOP easier to grok out of the box, but that may just be me.</p>
+
+<p>I think you mis-characterize my post, though.  I&#8217;m pointing out features that PHP5 provides which would, I believe, improve Wordpress.  When I do talk about enforcement of certain coding styles, those are things that would be done on a <em>project</em> level. The context is the Wordpress project, not <em>all</em> PHP development.</p>
+
+<p>I&#8217;d have to see a much more fleshed-out argument that &#8220;messiness&#8221; supports and allows popularity on a per-project level.  I do think that PHP&#8217;s popularity owes a lot, not so much to being messy, but to being <em>accessible</em> (maybe we mean the same thing, though).  However, I don&#8217;t think the feature set changes between 3 and 4 were any more significant than from 4 and 5, and I don&#8217;t believe they contributed significantly to PHP&#8217;s rise in popularity.  I&#8217;d certainly like to head arguments to the contrary, though.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1854" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/19/2007 02:07:39 PM</div>
+		<div class="comment-body"><p>@Jeff: rock on!  I&#8217;m still doing music, and you can buy the old COJ stuff online and directly from me.</p>
+
+<p>Check out http://cultofjester.com</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1855" class="comment-id anchor"></a>
+		<div class="comment-author">0x000000</div>
+		<div class="comment-author-url">http://www.0x000000.com</div>
+		<div class="comment-date">07/19/2007 03:33:40 PM</div>
+		<div class="comment-body"><p>@funkatron</p>
+
+<p>I sure applaud the new features, but I also say it isn&#8217;t smart to rely on it solely. I rather would see a very stripped version of PHP, cleaned from all those functions, which all do more or less the same.</p>
+
+<p>I started OO scripting in 2004 and in the end I dropped it because it didn&#8217;t save me any time, and it did not made my apps run any better. No one has ever convinced me of the benefits after that because I still think it&#8217;s a useless concept.</p>
+
+<p>For what it&#8217;s worth;
+My scripting mantra is simple, I don&#8217;t make it anymore complex than it already is.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1856" class="comment-id anchor"></a>
+		<div class="comment-author">jharr</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/19/2007 04:19:28 PM</div>
+		<div class="comment-body"><p>If PHP5 were so compelling people would be using it.  If it&#8217;s &#8216;features&#8217; need this much effort to expose/build-up/market then something is really missing, regardless of how valuable it may truly be to developers.  Just because an initiative is open-source vs commercial doesn&#8217;t mean it won&#8217;t suffer the same pitfalls, marketing woes and customer push-back.</p>
+
+<p>I find humor in the fact that you dismiss Matt as an elitist in your post then go on to support the opinion that PHP4&#8217;s popularity and appeal to less sophisticated developers make it a mess and play up the OOP snobbery.  Glass houses and whatnot.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1857" class="comment-id anchor"></a>
+		<div class="comment-author">Nate Klaiber</div>
+		<div class="comment-author-url">http://www.nateklaiber.com</div>
+		<div class="comment-date">07/19/2007 04:33:20 PM</div>
+		<div class="comment-body"><p>@jharr
+OOP snobbery? That has to be one of the funniest things I have heard all day long.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1858" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/19/2007 04:55:57 PM</div>
+		<div class="comment-body"><p>@jharr:&#8221;If PHP5 were so compelling people would be using it.&#8221;</p>
+
+<p>I think you&#8217;re oversimplifying the issue and underestimating the challenge of dealing with an enormous user base in an open-source project.  Indeed, I&#8217;m not even trying to argue that everyone <em>should</em> be using PHP5 &#8212; I do, and I enjoy many of its features, but anyone can feel free to continue to use PHP4 if they wish.  I simply was addressing the idea that PHP5 had little to offer Wordpress &#8212; I don&#8217;t feel that&#8217;s true, and made a post about that. You&#8217;re inferring things that aren&#8217;t there.</p>
+
+<p>&#8220;I find humor in the fact that you dismiss Matt as an elitist in your post&#8230;&#8221;</p>
+
+<p>I did no such thing. If I were to dismiss him, I wouldn&#8217;t have addressed his points in detail.  I did, however, point out that he could make his argument without ad-hominem attacks.  Matt&#8217;s an intelligent guy, and he doesn&#8217;t need to do that.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1859" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/19/2007 05:03:50 PM</div>
+		<div class="comment-body"><p>@0x000000: OOP is certainly no magic bullet, and the gain (or loss) of productivity will likely vary dramatically from coder to coder, and from project to project.  I do think that OOP has the <em>potential</em> to help a lot in larger projects with several developers.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1860" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/19/2007 11:01:11 PM</div>
+		<div class="comment-body"><p>I&#8217;m really enjoying this thread, but I hope it doesn&#8217;t turn into a OOP vs. Procedure war. That&#8217;s been raging on the net for a decade or more, and it&#8217;s pointless to start it up here.</p>
+
+<p>&lt;blockquote&gt;
+If PHP5 were so compelling people would be using it.
+&lt;/blockquote&gt;</p>
+
+<p>Lots of PHP developers would <em>love</em> to use PHP5 exclusively. I talk to them all the time. And many that do start using PHP5 never want to go back to PHP4.</p>
+
+<p>But they can&#8217;t use PHP5 because it&#8217;s still not wildly supported among web hosts. If you want wide adoption of your application, you need to write it for PHP4, because many web hosts still aren&#8217;t using PHP5 yet.</p>
+
+<p>The features <em>are</em> there, and developers <em>do want</em> to use them. I disagree fully with your point, and agree with funkatron by saying you&#8217;re oversimplifying the issue.</p>
+
+<p>On a side note, I&#8217;d use PHP5 for SimpleXML alone.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1861" class="comment-id anchor"></a>
+		<div class="comment-author">Richard Davey</div>
+		<div class="comment-author-url">http://www.corephp.co.uk</div>
+		<div class="comment-date">07/20/2007 12:13:09 PM</div>
+		<div class="comment-body"><p>I&#8217;m with Sean on this one - the problem for the vast majority of developers out there isn&#8217;t that they don&#8217;t want to move to PHP5, it is that they <em>cannot</em> because their host doesn&#8217;t support it.</p>
+
+<p>When the PHP developers broke all chance web hosts had of making a painless upgrade from 4 to 5, they broke with it all chance of quick adoption. Sadly I believe ultimately the blame must lay with them and no-one else. It was an internals design decision that caused this mess beyond anything else.</p>
+
+<p>If they do the same from PHP 5 to 6 then quite frankly most of us can kiss our beloved language goodbye within a very short period of time (which, as a full-time professional PHP developer, scares me greatly).</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1863" class="comment-id anchor"></a>
+		<div class="comment-author">0x000000</div>
+		<div class="comment-author-url">http://www.0x000000.com</div>
+		<div class="comment-date">07/21/2007 08:04:39 AM</div>
+		<div class="comment-body"><p>@funkatron</p>
+
+<p>Yep, in larger projects with multiple programmers OOP is a blessing. That is quite true. But like above stated, a new OOP vs Procedure war is a bit too much and I won&#8217;t join it. ^^</p>
+
+<p>If any, my point was actually that PHP5 doesn&#8217;t make it anymore secure persee, it&#8217;s not like: I install PHP5 and I&#8217;m safe. That is giving developers the wrong example.</p>
+
+<p>Most PHP scripters think they are safe, I guess it&#8217;s a good start by changing attitudes of PHP scripters by convincing them it&#8217;s okay to upgrade to PHP5, but it doesn&#8217;t mean you back sit back and relax now.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1865" class="comment-id anchor"></a>
+		<div class="comment-author">Ray</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/23/2007 02:10:21 AM</div>
+		<div class="comment-body"><p>Finally, someone else sees that he&#8217;s an elitist, narcissistic prick.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1866" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/23/2007 11:23:06 AM</div>
+		<div class="comment-body"><p>@0x000000 I hope no one gets the impression I think PHP5 is somehow a magic security bullet.  The context of other posts on this blog and my projects would hopefully indicate otherwise.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1868" class="comment-id anchor"></a>
+		<div class="comment-author">James Asher</div>
+		<div class="comment-author-url">http://17thdegree.com</div>
+		<div class="comment-date">07/25/2007 12:11:14 AM</div>
+		<div class="comment-body"><p>Maybe it&#8217;s just me, but how is it that webhosts don&#8217;t offer php5?  I&#8217;ve been with Dreamhost for years now and they&#8217;ve had a PHP5 offering since 2005.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1869" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/25/2007 12:45:31 AM</div>
+		<div class="comment-body"><p>@James Asher - I agree. It&#8217;s possible that in same circumstances it&#8217;s a matter of stability, and in others it&#8217;s just laziness.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1870" class="comment-id anchor"></a>
+		<div class="comment-author">Richard Davey</div>
+		<div class="comment-author-url">http://www.corephp.co.uk</div>
+		<div class="comment-date">07/25/2007 04:15:00 AM</div>
+		<div class="comment-body"><p>And we all know how reliable Dreamhost are ;)</p>
+
+<p>Sarcasm aside I don&#8217;t believe it&#8217;s as simple as that. In order to offer both flavours you have to have one of them running as CGI, or split them out across different servers, both of which are quite messy solutions. If you host a number of high traffic PHP 4 sites and then swap them all to the CGI vrsion just so you can get PHP 5 on there, you are going to notice the hit on your servers.</p>
+
+<p>If you are a decently sized host then you replicate this across thousands of servers, it is no trivial matter.</p>
+
+<p>If PHP 6 will not work with PHP 5 (which I highly suspect) then web hosts are shit-out of luck - at the moment they can at least juggle 4 and 5 via CGI and Module, but which one gets the elbow when 6 comes along?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1871" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/25/2007 08:39:40 AM</div>
+		<div class="comment-body"><p>@Richard</p>
+
+<p>FWIW, I have generally been happy with Dreamhost, and despite the fact that they&#8217;ve had some pretty dramatic issues over the last year, I think that they do a lot comparatively to provide a more secure PHP environment than most large hosts in their cost range.</p>
+
+<p>I do think that the PHP group would be well-advised to consult a lot more with large web hosting teams on issues like the ones you&#8217;ve highlighted.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1872" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">07/25/2007 08:41:17 AM</div>
+		<div class="comment-body"><p>Although I should say that I don&#8217;t use DH as my primary hosting anymore.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1873" class="comment-id anchor"></a>
+		<div class="comment-author">Owen</div>
+		<div class="comment-author-url">http://asymptomatic.net</div>
+		<div class="comment-date">07/25/2007 08:46:25 AM</div>
+		<div class="comment-body"><p>It comes as no surprise to me that WordPress isn&#8217;t interested in these modern coding techniques, after seeing - in only one of many examples - the revision process to the Widget plugin, which is now just a shadow of its formerly entirely OO self.  It&#8217;s simultaneously ironic that they&#8217;re convinced that they&#8217;re user-centered in design when the contributing developers (core and plugin) that made the product popular are the users they&#8217;re alienating by dragging their feet with their dedication to PHP4.  WordPress, for reasons I haven&#8217;t been able to understand, has the power to affect positive change, but doesn&#8217;t bother.</p>
+
+<p>For anyone interested in a PHP5-based, object-oriented project - to follow through on matt&#8217;s brazen yet tired refrain of &#8220;if you think you can do better&#8221; - please check out &lt;a href=&#8221;http://habariproject.org&#8221;&gt;Habari&lt;/a&gt; where we&#8217;ve got a bunch of developers (including many prior WP contributors) working within a truly open-source contribution model where contributor opinion on the technology used actually factors into the decision-making.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

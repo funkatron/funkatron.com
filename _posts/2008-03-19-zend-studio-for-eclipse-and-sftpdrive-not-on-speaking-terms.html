@@ -1,0 +1,101 @@
+---
+layout: post
+author: funkatron
+title: "Zend Studio for Eclipse and SFTPDrive not on speaking terms"
+url_title: zend-studio-for-eclipse-and-sftpdrive-not-on-speaking-terms
+tags: "php, zend, zend studio for eclipse, eclipse, sftp, sftpdrive"
+published: true
+categories:
+- PHP
+date: 2008-03-19
+summary: 
+old_entry_id: 2423
+---
+<p><a href="http://www.flickr.com/photos/funkatron/2345662532/" title="ZendStudio for Eclipe can't see SFTPDrive mounts by funkatron, on Flickr"><img src="http://farm3.static.flickr.com/2028/2345662532_52398c22b3.jpg" width="500" height="415" alt="ZendStudio for Eclipe can't see SFTPDrive mounts" /></a></p>
+
+<p><strong>Update</strong>: This seems to have fixed itself one night. Maybe I rebooted? Who knows. Anyway, all seems good now.</p>
+
+<hr />
+
+<p>So I use <a href="http://www.sftpdrive.com/">SFTPDrive</a> on my Vista workstation at work to mount remote filesystems. It generally works pretty well, and I&#8217;ve never had an issue where a program didn&#8217;t treat my mount as a local drive &#8212; until I decided to give upgrading to <a href="http://www.zend.com/en/products/studio/">Zend Studio for Eclipse</a> a go (licenses for which were generously donated to <a href="http://cerias.purdue.edu">CERIAS</a> by <a href="http://zend.com">Zend</a>). For some reason, ZSfE just doesn&#8217;t show me my &#8220;k:&#8221; drive (the SFTP mount) when browsing for a project directory. This throws a real wrench in my usual workflow &#8212; ZS 5.5 had built-in SFTP support, and I could also use the local mount if I wanted.</p>
+
+<p>I did look in Zend&#8217;s Support KB and the forums, but did not come across anything like this. Have you? Any alternatives for directly connecting and editing over SFTP?</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2423" data-url-title="zend-studio-for-eclipse-and-sftpdrive-not-on-speaking-terms">
+	<ul>
+	
+	<li class="comment">
+		<a name="6390" class="comment-id anchor"></a>
+		<div class="comment-author">Sean Coates</div>
+		<div class="comment-author-url">http://blog.phpdoc.info/</div>
+		<div class="comment-date">03/19/2008 01:01:16 PM</div>
+		<div class="comment-body"><p>It&#8217;s been a long time since I&#8217;ve used Eclipse (in any form other than FlexBuilder) for day-to-day work, but I do seem to recall it having reasonable sftp support by plugin.</p>
+
+<p>This came up on a search: http://www.jcraft.com/eclipse-sftp/</p>
+
+<p>Odd that it doesn&#8217;t see your drive, though.</p>
+
+<p>S</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6391" class="comment-id anchor"></a>
+		<div class="comment-author">Josh Johnston</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">03/19/2008 02:55:42 PM</div>
+		<div class="comment-body"><p>Create a new PHP Project. Don&#8217;t add any content to it initially. In the left hand side PHP Explorer, right click on the project and choose New &gt; Remote Folder.</p>
+
+<p>This lets you link a remote folder to a local project. There is a big push to &#8216;fix&#8217; remote editing in ZSfE. 5.5 had awesome remote file support, 6.0 is mediocre at best. If you check the Zend Neon Group mailing list on Yahoo you can track its status.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6392" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com/public-uploads/spaziki</div>
+		<div class="comment-date">03/19/2008 03:56:46 PM</div>
+		<div class="comment-body"><p>@Josh: very helpful, thanks. I eventually ended up doing the same thing in a slightly different way, but it looks like were good. Initially I had experimented with the Remote Systems stuff and making a &#8220;Remote Project,&#8221; but that didn&#8217;t appear to support any kind of &#8220;code insight&#8221;-type stuff, which is really the main reason I use an IDE.</p>
+
+<p>I was also frustrated to find that the info on creating SFTP connections in the Help info is just plain <em>wrong</em>. It puts FTP and SFTP in the same boat, but the directions actually only work for plain FTP connections.  This kind of documentation goofiness seems to have plagued Zend for quite a while now.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6400" class="comment-id anchor"></a>
+		<div class="comment-author">Q</div>
+		<div class="comment-author-url">http://phpslacker.com</div>
+		<div class="comment-date">03/25/2008 08:09:58 AM</div>
+		<div class="comment-body"><p>Honestly man, I aint being snotty&#8230;</p>
+
+<p>the root cause of ur problem is Windows Vista</p>
+
+<p>Throw it away, I never appreciated my macbook until I had to use Vista yesterday for a whole 3 hours&#8230; it sucked</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6401" class="comment-id anchor"></a>
+		<div class="comment-author">Josh Johnston</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">03/25/2008 09:05:40 AM</div>
+		<div class="comment-body"><p>@Q I run ZSfE on a MacBook Pro and I have the same issues. I enjoy Vista-bashing as much as the next guy but this is a case where it is not at fault.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6659" class="comment-id anchor"></a>
+		<div class="comment-author">Aleksandr</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">01/31/2009 12:38:52 PM</div>
+		<div class="comment-body"><p>@Josh Johnston: Thank you!!! You save me a lot of time!!!</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

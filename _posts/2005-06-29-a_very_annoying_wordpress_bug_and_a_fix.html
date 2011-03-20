@@ -1,0 +1,39 @@
+---
+layout: post
+author: funkatron
+title: "A very annoying Wordpress bug, and a fix"
+url_title: a_very_annoying_wordpress_bug_and_a_fix
+tags: ""
+published: true
+categories:
+- The Web Problem
+- PHP
+date: 2005-06-29
+summary: 
+old_entry_id: 1945
+---
+<p><a href="http://trac.wordpress.org/ticket/1355">#1355 (General category always assigned) - WordPress Trac - Trac</a></p>
+
+<p>So basically, whenever you post with an external client, no matter what categories you select, your default category is ALSO assigned.  This is particularly annoying when you use your category in your nicely formatted URLs, because the default cat is often the one that gets used (I guess because it&#8217;s the first one encountered in the DB query), and pings sent out when you post will reference and URL with the default cat in it.  Removing the default cat from that post will then result in &#8220;not found&#8221; errors.</p>
+
+<p>This problem was <a href="http://wordpress.org/support/topic/9698">first reported in April</a>.  I&#8217;m kind of bummed that a couple releases have gone by with no one taking a couple minutes to patch the code.  For now, I&#8217;m doing it manually, but if another release comes out without it and I have to do some diff/patching shit, I&#8217;ll be very annoyed.</p>
+
+<p>Rarr!</p>
+
+<p><b>Update:</b> The patching directions in the forum thread are a little misleading, as the new 1.5.1.3 version of xmlrpc.php has changed a lot, so line numbers are quite different.  Here&#8217;s what I did to get it working.</p>
+
+<p>Old:</p>
+
+<blockquote><pre>
+620   } else {
+621     $post_category[] = $post_default_category;
+622   }
+</pre></blockquote>
+
+<p>New:</p>
+
+<blockquote><pre>
+620   } elseif (!$post_category) {
+621     $post_category[] = $post_default_category;
+622   }
+</pre></blockquote>

@@ -1,0 +1,18 @@
+---
+layout: post
+author: funkatron
+title: "Update on ATOM support in RSS Viewer for Konfabulator"
+url_title: update_on_atom_support_in_rss_viewer_for_konfabulator
+tags: ""
+published: true
+categories:
+- My Projects
+- The Web Problem
+- Design
+- OS X
+- Widgets
+date: 2005-07-29
+summary: 
+old_entry_id: 1971
+---
+<p>Okay, it looks like <a href="http://www.jeremie.com/Dev/XML/">the parser I am using now</a> just won&#8217;t work &#8212; it doesn&#8217;t appear to retrieve XML node attributes properly, and ATOM feeds seem to use <code>href</code> attributes in their <code>&lt;link&gt;</code> tags  to link to stuff, as opposed to RSS/RDF which uses the contents of the tag.  So I&#8217;m switching to <a href="http://www.gazingus.org/html/XML_Parser_in_JavaScript.html">this much newer and better XML Parser for Javascript</a>, which closely follows the <a href="http://java.sun.com/j2se/1.4.2/docs/api/org/w3c/dom/package-summary.html">org.w3c.dom</a> parser classes in Java.  It means I&#8217;ll have to rewrite the feed parsing, but that&#8217;s really not a huge deal.</p>

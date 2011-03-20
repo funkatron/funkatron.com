@@ -1,0 +1,486 @@
+---
+layout: post
+author: funkatron
+title: "PHP Advent 2008 Post: JSON is Everybody&#8217;s Friend"
+url_title: php-advent-2008-post-json-is-everybodys-friend
+tags: "json, php, javascript, ajax, advent"
+published: true
+categories:
+- JavaScript
+- jQuery
+- PHP
+date: 2008-12-23
+summary: 
+old_entry_id: 2441
+---
+<p><a href="http://flickr.com/photos/thomashawk/268524287/" title="Security"><img src="http://farm1.static.flickr.com/113/268524287_6d0b9122f7.jpg" alt="Security" /></a></p>
+
+<p><em>Reposting something you wrote is a lot easier than coming up with original content. This article was <a href="http://phpadvent.org/2008/json-is-everybodys-friend-by-ed-finkler">originally posted</a> as part of the <a href="http://phpadvent.org/2008/">2008 PHP Advent Calendar</a></em></p>
+
+<p>Last year I wrote some kind of feel-good, hippie crap for the PHP Advent
+Calendar. This year I got a haircut, took a shower, and am ready to tell you
+about something practical: working with <a href="http://json.org/">JavaScript Object Notation (JSON)</a>
+in PHP.</p>
+
+<p>&#8220;JSON?!&#8221; you cry. &#8220;But that&#8217;s for JavaScript fruitcakes!&#8221; And you&#8217;d be right.
+But JSON, while valid JavaScript code, is actually a very effective serialized
+data format for exchanging data between applications written in a variety of
+languages. And as of PHP 5.2, we have <a href="http://php.net/json"><em>native</em> support for JSON encoding and
+decoding</a>.</p>
+
+<h3>But I Love XML!</h3>
+
+<p>Who doesn&#8217;t? The thing is, for moving data around&#8212;not documents, but data&#8212;I
+think JSON is superior to XML. This is mainly because JSON tends to map better
+to the data models in most programming languages&#8212;arrays, objects, etc. JSON
+<em>is</em> serialized JavaScript, so it&#8217;s easy peasy representing these kinds of
+things. Moving between JSON and your language&#8217;s internal data models is
+usually just a single function call. Smarter people than me can debate the
+pros and cons of XML and JSON in various scenarios, but for a lot of what I
+do, JSON does the same thing and requires less work.</p>
+
+<h3>Get Your PHP Objects On</h3>
+
+<p>In PHP 5.2+, there are two functions that handle JSON: <a href="http://us2.php.net/manual/en/function.json-encode.php"><code>json_encode()</code></a>,
+which takes a PHP data structure and returns a JSON string, and
+<a href="http://php.net/manual/en/function.json-decode.php"><code>json_decode()</code></a>, which takes a JSON string and converts it into a PHP
+data structure. Let&#8217;s take a look at <code>json_encode()</code> and how it handles
+converting a PHP object into JSON:</p>
+
+<pre><code>&amp;lt;?php
+// make a simple object
+$obj-&gt;body           = 'another post';
+$obj-&gt;id             = 21;
+$obj-&gt;approved       = true;
+$obj-&gt;favorite_count = 1;
+$obj-&gt;status         = NULL;
+
+// convert into JSON
+$json_obj = json_encode($obj);
+echo $json_obj;
+</code></pre>
+
+<p>This will output the following JSON string:</p>
+
+<pre><code>{"body":"another post","id":21,"approved":true,"favorite_count":1,"status":null}
+</code></pre>
+
+<p>Now, let&#8217;s take that JSON and turn it back into PHP:</p>
+
+<pre><code>// convert back into PHP
+$new_obj = json_decode($json_obj);
+var_dump($new_obj);
+</code></pre>
+
+<p>And we&#8217;ll have the following PHP object:</p>
+
+<pre><code>object(stdClass)#2 (5) {
+  ["body"]=&gt;
+  string(12) "another post"
+  ["id"]=&gt;
+  int(21)
+  ["approved"]=&gt;
+  bool(true)
+  ["favorite_count"]=&gt;
+  int(1)
+  ["status"]=&gt;
+  NULL
+}
+</code></pre>
+
+<p>Notice that the data types are retained in the process. JSON supports strings,
+numbers, objects, arrays (kinda), booleans and <code>NULL</code>. Things like methods,
+constants, and non-public properties are dropped in the encoding process, as
+shown in the example below:</p>
+
+<pre><code>&amp;lt;?php
+class Foo {
+  const     ERROR_CODE = '404';
+  public    $public_ex = 'this is public';
+  private   $private_ex = 'this is private!';
+  protected $protected_ex = 'this should be protected';
+
+  public function getErrorCode() {
+    return self::ERROR_CODE;
+  }
+}
+
+$foo = new Foo
+$foo_json = json_encode($foo
+echo $foo_json
+</code></pre>
+
+<p>This outputs the following JSON:</p>
+
+<pre><code>{"public_ex":"this is public"}
+</code></pre>
+
+<p>Also note that when you decode JSON into a PHP object, the object type is
+always <code>stdClass</code>. If we use <code>$foo_json</code> from above&#8230;</p>
+
+<pre><code>$foo_new = json_decode($foo_json);
+var_dump($foo_new);
+</code></pre>
+
+<p>&#8230;we&#8217;ll get back the following object:</p>
+
+<pre><code>object(stdClass)#4 (1) {
+ ["public_ex"]=&gt;
+ string(14) "this is public"
+}
+</code></pre>
+
+<h3>Arrays, Indexed &amp; Associative</h3>
+
+<p>Array support in JSON is limited to <em>indexed</em> arrays&#8212;those with sequential,
+numeric keys. Associative arrays are converted into an object with
+corresponding properties.</p>
+
+<pre><code>&amp;lt;?php
+// here's an indexed array. JSON natively handles these
+$arr = array('orange', 'yellow', 'green', 122);
+$json_arr = json_encode($arr);
+echo $json_arr."\n";
+</code></pre>
+
+<p>That gives us this JSON:</p>
+
+<pre><code>["orange","yellow","green",122]
+</code></pre>
+
+<p>And we can convert it back into PHP&#8230;</p>
+
+<pre><code>$new_arr = json_decode($json_arr);
+var_dump($new_arr);
+</code></pre>
+
+<p>&#8230;without losing anything in the process.</p>
+
+<pre><code>array(4) {
+  [0]=&gt;
+  string(6) "orange"
+  [1]=&gt;
+  string(6) "yellow"
+  [2]=&gt;
+  string(5) "green"
+  [3]=&gt;
+  int(122)
+}
+</code></pre>
+
+<p>With associative arrays, the array is converted to an object. Also note that
+all associative keys are converted into strings in the process:</p>
+
+<pre><code>// associative PHP arrays are converted into objects
+$assoc = array('orange'=&gt;'yellow', 'green'=&gt;122, 9=&gt;122);
+$json_assoc = json_encode($assoc);
+</code></pre>
+
+<p>The encoded JSON will be <code>{"orange":"yellow","green":122,"9":122}</code>. Decoding
+<em>that</em> gives us this PHP object:</p>
+
+<pre><code>object(stdClass)#5 (3) {
+  ["orange"]=&gt;
+  string(6) "yellow"
+  ["green"]=&gt;
+  int(122)
+  ["9"]=&gt;
+  int(122)
+}
+</code></pre>
+
+<p>You can, however, convert the JSON object back into a PHP associative array by passing <code>TRUE</code> as the second param to <code>json_decode()</code> (thanks Richard Orelup).</p>
+
+<h3>Playing Well with Others</h3>
+
+<p>That&#8217;s all fine and good, but it might help to actually do something useful
+with all this encodin&#8217; and decodin&#8217;. JSON is a really good choice for moving
+data between client-side JavaScript applications and server-side applications,
+because JSON <em>is</em> JavaScript code, and maps perfectly onto JavaScript&#8217;s data
+structures.</p>
+
+<p>So, let&#8217;s contrive a simple application that passes a &#8220;counter&#8221; object back
+and forth between the client and server. The counter object stores information
+on how often the PHP server application and the JavaScript client application
+&#8220;touch&#8221; it. First, we&#8217;ll make a PHP script to serve up some JSON code to our
+JavaScript client. It will look for an <code>action</code> parameter in <code>$_GET</code>, perform
+the requested action, and serve up some JSON in return.</p>
+
+<pre><code>&amp;lt;?php
+if ($_GET['action'] === "getinit") {
+
+  // make the PHP object and add a PHP touch
+  $counter-&gt;php_touches    = 1;
+  $counter-&gt;js_touches    = 0;
+  send_as_json($counter);
+
+} elseif ($_GET['action'] === "updatedata") {
+  // decode JSON
+  $counter = json_decode($_POST['counter']);
+
+  // increment php touch counter
+  $counter-&gt;php_touches++;
+
+  // serve up as JSON
+  send_as_json($counter);
+
+} else {
+  send_as_json(false);
+}
+
+
+function send_as_json($obj) {
+
+  // convert object to JSON
+  $json = json_encode($obj);
+
+  // set appropriate headers
+  header('Content-Type: application/json');
+
+  // output JSON string as body
+  echo $json;
+}
+</code></pre>
+
+<p>The <code>getinit</code> action will create a <code>$counter</code> object, initialize it with a
+couple of variables to track &#8220;touches&#8221; by PHP and JSON, and serve up the
+object as JSON via the <code>send_as_json()</code> function. The <code>updatedata</code> action will
+take JSON from the <code>$_POST</code> array, decode it into the <code>$counter</code> object,
+increment the <code>php_touches</code> property, and serve up the modified object as
+JSON.</p>
+
+<p>In the <code>send_as_json()</code> function, note the <code>header()</code> call that sets the
+<code>Content-Type</code> to <code>application/json</code>. Setting the content type correctly is
+good practice, and will sometimes avoid <a href="http://jibbering.com/blog/?p=514">unexpected security issues</a>.</p>
+
+<p>On the client side, we&#8217;ll make a short HTML page with some embedded JavaScript
+to interact with our PHP service.</p>
+
+<pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"/&gt;
+  &lt;title&gt;JSON PHP Example&lt;/title&gt;
+  &lt;!-- Load the Google JS libs hosting API --&gt;
+  &lt;script src="http://www.google.com/jsapi"&gt;&lt;/script&gt;
+  &lt;!-- Load the newest jquery major version 1 from Google --&gt;
+  &lt;script type="text/javascript" charset="utf-8"&gt;
+    google.load("jquery", "1");
+  &lt;/script&gt;
+  &lt;!-- load the JSON2.js parser --&gt;
+  &lt;script src="JSON2.js"&gt;&lt;/script&gt;
+
+  &lt;script type="text/javascript" charset="utf-8"&gt;
+    var counter;
+
+    function processData(data, textStatus) {
+      counter = JSON.parse(data);
+      counter.js_touches++;
+      $('#js-count').val( parseInt(counter.js_touches));
+      $('#php-count').val( parseInt(counter.php_touches));
+    }
+
+    // when the DOM is ready, do this stuff
+    $(document).ready( function() {
+      $.get('jsonphp.php?action=getinit', processData, 'text');
+      $('#increment-button').click( function() {
+        counter.js_touches = parseInt( $('#js-count').val() );
+        counter.php_touches = parseInt( $('#php-count').val() );
+        var json = JSON.stringify(counter);
+        $.post('jsonphp.php?action=updatedata', { 'counter':json }, processData, 'text');
+      });
+    });
+  &lt;/script&gt;
+
+  &lt;style type="text/css" media="screen"&gt;
+    body, input {
+      font-family: Baskerville, Georgia, "Times New Roman", serif;
+    }
+    table {
+      border:1px solid #CCC;
+      padding:.2em;
+      margin: .2em;
+    }
+    td.label {
+      text-align:right;
+      font-weight:bold;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td class="label"&gt;JavaScript Touches:&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" id="js-count" value="0" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class="label"&gt;PHP Touches:&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" id="php-count" value="0" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;form&gt;
+    &lt;input type="button" name="increment" value="Increment!" id="increment-button" /&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Rendered in the browser, the page will look something like this:</p>
+
+<p><img src="http://funkatron.com/content/jsonphp.html-screenshot.png" alt="Screenshot" /></p>
+
+<p>Note that we&#8217;re using the jQuery library (loaded from the Google JavaScript
+Libraries API) to handle DOM manipulation and Ajax calls. We&#8217;re also using the
+JSON2.js parser, available at <a href="http://json.org/json2.js">JSON.org</a>, to safely parse and create JSON.
+The default method for decoding JSON into a JavaScript object or array is
+<code>eval()</code>, but that leaves us open to <a href="http://funkatron.com/site/comments/safely-parsing-json-in-javascript/">all sorts of code injection issues</a>.</p>
+
+<p>Jumping into our JavaScript code, the <code>$().ready()</code> is the most interesting
+portion. The <code>ready()</code> method called on <code>$(document)</code> takes the anonymous
+function passed into it, and executes the function as soon as the document is
+&#8220;ready&#8221;&#8212;that is, when the DOM is completed and can be safely messed with. So,
+when the DOM is ready, two things will happen:</p>
+
+<ul>
+<li><p>A <code>GET</code> request is made to <code>jsonphp.php?action=getinit</code>, and the results
+are passed as text to the <code>processData()</code> function</p></li>
+<li><p>An event listener is assigned to the click event for the button with the
+<code>id</code> of <code>increment-button</code>. This listener will fire a function that:</p>
+
+<ol>
+<li><p>Grabs the values for the touch counts out of the form fields</p></li>
+<li><p>Assigns them to the <code>counter</code> object</p></li>
+<li><p>Encodes the <code>counter</code> object as JSON</p></li>
+<li><p><code>POST</code>s <code>counter</code> to the server</p></li>
+</ol></li>
+</ul>
+
+<p>So, each time we click the &#8220;Increment!&#8221; button, the object is sent from the
+JavaScript application to the PHP application as JSON. Each side will
+increment its own counter in the object, and the JavaScript application will
+display those values to us in the page. If we want, we can even change the
+values, and the JavaScript application will bind the new values to the object
+before sending it to the server.</p>
+
+<h3>What&#8217;s It All Mean, Dave?</h3>
+
+<p>Metaphysically, I have no idea. But practically, JSON support in PHP means
+that our favorite server-side language is an even <em>better</em> glue language&#8212;
+something it&#8217;s been good at for a long time. Now, go forth and make the next
+mega-ajax-crowdsourced-mashup masterpiece.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2441" data-url-title="php-advent-2008-post-json-is-everybodys-friend">
+	<ul>
+	
+	<li class="comment">
+		<a name="6624" class="comment-id anchor"></a>
+		<div class="comment-author">till</div>
+		<div class="comment-author-url">http://till.klampaeckel.de/blog</div>
+		<div class="comment-date">12/24/2008 09:42:12 AM</div>
+		<div class="comment-body"><p>Enjoyed reading this. Thanks very much! :)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6625" class="comment-id anchor"></a>
+		<div class="comment-author">Chris Shiflett</div>
+		<div class="comment-author-url">http://shiflett.org/</div>
+		<div class="comment-date">12/24/2008 12:25:24 PM</div>
+		<div class="comment-body"><p>I would never have a superfluous slash in a URL like this:</p>
+
+<p>http://phpadvent.org/2008/</p>
+
+<p>My URLs are hand-crafted just for you, Ed. :-)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6626" class="comment-id anchor"></a>
+		<div class="comment-author">Chris Shiflett</div>
+		<div class="comment-author-url">http://shiflett.org/</div>
+		<div class="comment-date">12/24/2008 12:25:59 PM</div>
+		<div class="comment-body"><p>Oh cool, your blog no longer hates me.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6627" class="comment-id anchor"></a>
+		<div class="comment-author">Richard Orelup</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">12/24/2008 01:18:08 PM</div>
+		<div class="comment-body"><p>Just reading through and had one correction with the associative arrays coming back as objects.  json_decode has an optional parameter that if you send as true it will come back as an array instead of an object.</p>
+
+<p>$json_assoc = json_decode($assoc, true);</p>
+
+<p>Other then that great article that I know I will keep around to give to my students to help them understand json.</p>
+
+<p>Thanks,
+Richard</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6628" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">12/24/2008 07:52:17 PM</div>
+		<div class="comment-body"><p>Thanks Richard! I&#8217;ve updated the article accordingly. I&#8217;d be very interested to know if the article is useful to your students.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6630" class="comment-id anchor"></a>
+		<div class="comment-author">Mark McDonnell</div>
+		<div class="comment-author-url">http://www.storm-media.co.uk/</div>
+		<div class="comment-date">12/26/2008 07:36:27 PM</div>
+		<div class="comment-body"><p>Unfortunately the example code you provided doesn&#8217;t work.</p>
+
+<p>It&#8217;s fine for the initial load, but when you click on the &#8216;increment&#8217; button the js_touch field gets set to NULL and the php_touch field stays as 1.</p>
+
+<p>I used Firebug to try and work out what was happening and I could see that although the data was being sent as &#123;&#8221;php_touches&#8221;:1,&#8221;js_touches&#8221;:1&#125; the PHP script was sending back only &#123;&#8221;php_touches&#8221;:1&#125; so it looks like the js_touch part of the posted JSON data isn&#8217;t being decoded properly.</p>
+
+<p>I would be interested to know how to fix this bug. Any help appreciated!</p>
+
+<p>Kind regards,</p>
+
+<p>M.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6631" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">12/26/2008 11:12:20 PM</div>
+		<div class="comment-body"><p>I double-checked by copying and pasting the exact code listings here, and it works fine. I tested it with Firefox 3.0.5 and PHP 5.2.5, both on OS X.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6632" class="comment-id anchor"></a>
+		<div class="comment-author">Mark McDonnell</div>
+		<div class="comment-author-url">http://www.storm-media.co.uk/</div>
+		<div class="comment-date">12/27/2008 01:49:41 PM</div>
+		<div class="comment-body"><p>Hmmm, interesting.</p>
+
+<p>I also did a copy and paste, I&#8217;m using Windows XP Professional with PHP 5.2.8 and it doesn&#8217;t seem to work.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6633" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">12/27/2008 03:13:54 PM</div>
+		<div class="comment-body"><p>I unfortunately don&#8217;t have a 5.2.8 install to test with. I&#8217;d be curious to know if this is a change in behavior between 5.2.5 and 5.2.8.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

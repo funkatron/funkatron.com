@@ -1,0 +1,60 @@
+---
+layout: post
+author: funkatron
+title: "RSS Viewer 0.3"
+url_title: rss_viewer_03
+tags: ""
+published: true
+categories:
+- PHP
+date: 2004-01-06
+summary: 
+old_entry_id: 1833
+---
+<p>Can you tell what my new favorite project is?</p>
+
+<div class="pullquote"><a href="http://www.funkatron.com/mt/images/rss-viewer-0.3.png" onclick="window.open('http://www.funkatron.com/mt/images/rss-viewer-0.3.png','popup','width=985,height=737,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=yes,left=0,top=0');return false"><img src="http://www.funkatron.com/mt/images/rss-viewer-0.3-tm.jpg" height="112" width="149" align="right" border="1" hspace="5" vspace="5" alt="screenshot" title="" longdesc="" /></a>New this version:
+<ul><li>Combined feeds and items sidebar frames into a single menu system</li><li>Added fancy gradients to make it look more 1337</li></ul></div>
+
+<p>I&#8217;m rather proud of the new menu system.  It dynamically loads the feeds when requested, as opposed to having to build the whole menu tree when the feeds frame loads.  Here&#8217;s how it works:</p>
+
+<ol><li>User clicks on feed title, triggering javascript that loads an url w/ parameters into a hidden frame</li><li>php script takes url parameters, downloads feed, and generates the html along with a javascript command to insert the html into the feeds menu</li><li>when page is loaded into hidden frame, the generated javascript is executed, and the items html is inserted and shown</li></ol>
+
+<p>It&#8217;s convoluted, but it seems to work!</p>
+
+<p><b>Update:</b>  Links would be good.</p>
+
+<ul><li><a href="http://www.funkatron.com/rss_viewer/">Demo</a></li><li><a href="http://www.funkatron.com/apps/funkatron_rss_viewer/rss_viewer-0.3.tgz">Download</a></li></ul>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="1833" data-url-title="rss_viewer_03">
+	<ul>
+	
+	<li class="comment">
+		<a name="1642" class="comment-id anchor"></a>
+		<div class="comment-author">Hayden Searle</div>
+		<div class="comment-author-url">http://www.xteam.co.nz</div>
+		<div class="comment-date">04/18/2004 11:02:22 PM</div>
+		<div class="comment-body"><p>Do you have a username and pass for your demo version? I&#8217;m trying to get this going on my Red Hat server so I can view my feeds from work (cant run Mozilla there) and I&#8217;m having issues with it. My error is Fatal error: Cannot instantiate non-existent class: config in /var/www/html/rss_viewer/required.php on line 14</p>
+
+<p>Any help would be great.</p>
+
+<h2>Apart from that is looks awesome</h2>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1641" class="comment-id anchor"></a>
+		<div class="comment-author">Hayden Searle</div>
+		<div class="comment-author-url">http://www.xteam.co.nz/rss_viewer</div>
+		<div class="comment-date">08/22/2004 08:38:29 PM</div>
+		<div class="comment-body"><p>Its all working and has been for some time now. This is a really nice script. Thanks for releasing it</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

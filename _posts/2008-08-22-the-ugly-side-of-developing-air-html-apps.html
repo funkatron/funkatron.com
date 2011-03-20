@@ -1,0 +1,156 @@
+---
+layout: post
+author: funkatron
+title: "The ugly side of developing AIR HTML apps"
+url_title: the-ugly-side-of-developing-air-html-apps
+tags: ""
+published: true
+categories:
+- AIR
+- Development
+- JavaScript
+- OS X
+- Spaz
+- XULRunner
+date: 2008-08-22
+summary: 
+old_entry_id: 2436
+---
+<p><a href="http://flickr.com/photos/ashleyrosex/2371956135/" title="i will take over the world."><img src="http://farm3.static.flickr.com/2396/2371956135_2b1bb98f24.jpg" alt="i will take over the world." title="i will take over the world." /></a></p>
+
+<p>I&#8217;ve been developing with AIR for over a year now. It&#8217;s all been HTML/JavaScript apps, but the complexity of most of them has been pretty low. <a href="http://funkatron.com/spaz">Spaz, the Twitter client I created</a>, definitely isn&#8217;t simple, though &#8211; mostly because I&#8217;m kind of a crappy coder, but also because it just does a <em>lot</em> of stuff.</p>
+
+<p>Lately I&#8217;ve been getting a little bummed about AIR, because I&#8217;m starting to bump into limitations of the platform more and more. What&#8217;s particularly frustrating is that some of these limitations are specific to HTML AIR app dev. So what follows is a couple of issues that have been particularly troublesome when developing Spaz and other HTML/JS AIR apps.</p>
+
+<h3>AIR gets greedy under OS X</h3>
+
+<p>Julien Viet, who has contributed significantly to <a href="http://funkatron.com/spaz">Spaz</a>, made <a href="http://blog.julienviet.com/2008/08/21/air-ajax-runtime-footprint/">a post recently about the base resources used by the AIR runtime</a>. In it he finds that the basic &#8220;Hello World&#8221; sample app provided by Adobe used about 20MB of RAM, and hovered at about 2% CPU usage even when idling. I replicated these tests on my Macbook (2.2Ghz, 4GB) under OS X 10.5.4 and WinXP SP2, and had similar results:</p>
+
+<p><a href="http://www.flickr.com/photos/funkatron/2786328117/" title="AIR HTML app - Base CPU and memory usage (WinXP SP2) by funkatron, on Flickr"><img src="http://farm4.static.flickr.com/3101/2786328117_1e05b1fc9c_s.jpg" width="75" height="75" alt="AIR HTML app - Base CPU and memory usage (WinXP SP2)" /></a> <a href="http://www.flickr.com/photos/funkatron/2786274247/" title="AIR HTML app - Base CPU and memory usage by funkatron, on Flickr"><img src="http://farm4.static.flickr.com/3294/2786274247_8d861eba94_s.jpg" width="75" height="75" alt="AIR HTML app - Base CPU and memory usage" /></a></p>
+
+<p>I also created <a href="http://funkatron.com/content/HelloWorld-Flex-AIR.zip" title="Zip archive">a Flex-based &#8220;Hello World&#8221; application</a> to compare base usage if the Webkit renderer isn&#8217;t being used. Memory usage was slightly lower, but otherwise it was comparable to the HTML app.</p>
+
+<p><a href="http://www.flickr.com/photos/funkatron/2786341667/" title="AIR Flex app - Base CPU and memory usage (WinXP) by funkatron, on Flickr"><img src="http://farm4.static.flickr.com/3270/2786341667_76e8da9cee_s.jpg" width="75" height="75" alt="AIR Flex app - Base CPU and memory usage (WinXP)" /></a> <a href="http://www.flickr.com/photos/funkatron/2786295423/" title="AIR Flex app - Base CPU and memory usage by funkatron, on Flickr"><img src="http://farm4.static.flickr.com/3149/2786295423_46092b58c9_s.jpg" width="75" height="75" alt="AIR Flex app - Base CPU and memory usage" /></a></p>
+
+<p>The constant CPU usage seems to be specific to OS X: WinXP will jump back and forth between 0% and 2%. This is consistent with my observations of CPU usage in Spaz as well: in OS X, we get 10-15% CPU usage constantly, but under XP and Vista, CPU usage is 0% while idling.  Initial memory usage is also about 30% higher with Spaz under OS X than it is under Windows. Something is goofy with AIR on OS X.</p>
+
+<p>That aside, I don&#8217;t think the memory and CPU usage of AIR are surprising, considering the technology. AIR is a full Flash runtime, and HTML apps add a Webkit renderer on top of that. The memory and CPU usage is in line &#8212; or a bit lower &#8212; than most <a href="http://fluidapp.com/">SSBs</a>. Using traditional browser tech to build a desktop app is going to be a tradeoff in terms of memory and CPU usage, just like many other technologies that make development easier.  But for one reason or another, the expectation seems to be that AIR is a lightweight technology, and it&#8217;s really not.</p>
+
+<h3>AIR HTML apps are leaky</h3>
+
+<p>What is particularly problematic is that there seem to be memory leaks within the Webkit engine as used in AIR &#8211; or at very least, it&#8217;s pretty easy to leak memory. Apps like Spaz run into this problem because it&#8217;s constantly pulling in large amounts of new data and images, and is often left running for hours or days on end.</p>
+
+<p>Some of this is almost certainly because you can get away with that kind of thing on a web site, where users are unlikely to leave a single page open for days on end. Even if a web site does causes a big leakage, the browser almost always gets blamed. The libraries and tools available for HTML/JS devs, being browser-focused, typically don&#8217;t pay much attention to long-term performance issues.</p>
+
+<h3>Essential tools, like profilers and step debuggers, are non-existent</h3>
+
+<p>But memory leaks are a problem for most desktop app developers. That&#8217;s why memory profiling tools are common in desktop frameworks. And Adobe certainly understands this to be the case with Flex, as it&#8217;s FlexBuilder 3 IDE ships with memory and peformance profiling tools, as well as a full-featured debugger with breakpoints et al. That&#8217;s perfect if I was writing something in Flex, but <strong>it is completely useless for HTML/JavaScript AIR apps</strong>.  I was able to get Spaz to run from within Flex Builder with <a href="http://www.stratulat.com/blog/use-flex-builder-3-to-create-a-javascript-air-application" title="Use Flex Builder 3 to create a JavaScript AIR application">a tiny bit of hackery</a>, but the profiler gets no information about what&#8217;s going on within Webkit.</p>
+
+<p>Other common choices for debugging web apps aren&#8217;t available either: Firebug is Mozilla-specifc, and the <a href="http://trac.webkit.org/wiki/Drosera">Drosera</a> debugger and Web Inspector tools can&#8217;t hook into AIR&#8217;s Webkit instances.  The information on Drosera does say:</p>
+
+<blockquote>
+  <p>In WebKit there is a WebScriptDebugServer which is started when WebKit starts and listens for a DCOM connection. Once a connection is made it will begin to interact with Drosera via Drosera&#8217;s ServerConnection class. WebScriptDebugServer informs Drosera about every line of JavaScript executed.</p>
+</blockquote>
+
+<p>I would assume that WebScriptDebugServer exists inside AIR&#8217;s Webkit, but AFAIK this has not been utilized in any way.  Adobe does have a nice AIR-specific tool called the AIR Introspector in the SDK, and it does offer some very useful functionality, but it too lacks step debugging and profiling capabilities.</p>
+
+<p>That leaves us with good old console logging as our <em>only</em> option for debugging AIR HTML apps.  That&#8217;s okay for simpler stuff, but tracking down execution bugs in more complex applications becomes extremely tedious. And console logging is basically useless for memory profiling, as there&#8217;s no insight into the underlying operations of Webkit.</p>
+
+<p>I&#8217;m proud of the work I&#8217;ve done on Spaz, but as the application has grown in complexity, I&#8217;ve found the limitations of HTML app dev in AIR more and more problematic. Adobe has consistently stated that the HTML dev side of AIR is as important as the Flash/Flex side. To quote Mike Chambers:</p>
+
+<blockquote>
+  <p>Adobe AIR is as much about JavaScript, HTML, CSS, etc&#8230; as it is about Flash / Flex. <a href="http://www.mikechambers.com/blog/2007/10/25/mozilla-prism-and-the-disingenuous-web/#comment-9529">#</a></p>
+</blockquote>
+
+<p>If that truly is the case, Adobe needs to commit to providing a toolset for HTML/JS developers comparable to what Flex developers have.  Until that&#8217;s changes, Mozilla&#8217;s <a href="http://developer.mozilla.org/En/XULRunner">XULRunner</a> and <a href="http://developer.mozilla.org/En/Prism">Prism</a> platforms are looking more and more appealing.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2436" data-url-title="the-ugly-side-of-developing-air-html-apps">
+	<ul>
+	
+	<li class="comment">
+		<a name="6531" class="comment-id anchor"></a>
+		<div class="comment-author">Ryan Stewart</div>
+		<div class="comment-author-url">http://www.digitalbackcountry.com</div>
+		<div class="comment-date">08/23/2008 02:18:51 PM</div>
+		<div class="comment-body"><p>This is really good feedback, so thanks for posting it. I&#8217;ll forward it on to the product teams because we definitely want to make HTML development as easy as Flex development is for AIR.</p>
+
+<p>=Ryan
+ryan@adobe.com</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6532" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/23/2008 02:55:52 PM</div>
+		<div class="comment-body"><p>Thanks Ryan. The guys on the Romanian team, especialy Dragos, have been very receptive to feedback and have been very helpful, so I don&#8217;t want this to seem unappreciative. They do very good work, and I would love to see them get more resources to improve the HTML side of AIR even more.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6533" class="comment-id anchor"></a>
+		<div class="comment-author">tom</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/24/2008 10:47:21 AM</div>
+		<div class="comment-body"><p>Before you start with xulrunner: debugging it is very painful as well. We used it for a large-ish project with lots of forms (business logic) in 2007, but the following post from 2004 is still valid in many points: http://www.jerf.org/resources/xblinjs/whyNotMozilla/index.html</p>
+
+<p>The first few week were bliss, xulrunner certainly allows you to prototype quickly.</p>
+
+<p>The following two month we hit so many walls that we re-did the gui in pygtk.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6534" class="comment-id anchor"></a>
+		<div class="comment-author">funkyboy</div>
+		<div class="comment-author-url">http://spreadingfunkyness.com</div>
+		<div class="comment-date">08/25/2008 03:07:09 AM</div>
+		<div class="comment-body"><p>Hi,</p>
+
+<p>thanks for sharing. I can confirm many of the issues with Flex. Although there is a profiler, it is not easy to solve memory leaks, especially because you have no control over Garbage Collection.
+Let&#8217;s hope next releases of the framework will allow a lower level management of memory allocation/release.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6536" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/26/2008 09:03:38 AM</div>
+		<div class="comment-body"><p>@tom: thanks for the feedback there. I think my approach might be a bit different in that I&#8217;d be placing most of the app inside an HTML renderer widget. That was I can still write in HTML and JS, and I should be able to use debugging tools like Firebug with a little muckery. I am interested in looking at pygtk, though.</p>
+
+<p>@funkyboy: I thought there was <em>some</em> (not a lot) of control over GC via the system.gc() call:
+http://livedocs.adobe.com/labs/air/1/aslr/flash/system/System.html#gc()
+Still, that&#8217;s not the same as easily discovering mem leaks. I think pushing Adobe for this kind of debugging is a good idea.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6537" class="comment-id anchor"></a>
+		<div class="comment-author">funkyboy</div>
+		<div class="comment-author-url">http://spreadingfunkyness.com</div>
+		<div class="comment-date">08/26/2008 09:12:23 AM</div>
+		<div class="comment-body"><p>It is a very very very very vague suggestion to the GC.
+Let&#8217;s says you can tell it to act, but it takes much personal initiative in deciding when to intervene. :)</p>
+
+<p>More here (from one of the ebay desktop developers): http://www.craftymind.com/2008/04/09/kick-starting-the-garbage-collector-in-actionscript-3-with-air/</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6538" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/26/2008 10:14:37 AM</div>
+		<div class="comment-body"><p>funkyboy: That article made me want to shoot myself in the face.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

@@ -1,0 +1,134 @@
+---
+layout: post
+author: funkatron
+title: "RSS Viewer widget for Konfabulator: updated"
+url_title: rss_viewer_widget_for_konfabulator_updated
+tags: ""
+published: true
+categories:
+- General
+- My Projects
+- The Web Problem
+- Design
+- OS X
+- Widgets
+date: 2005-07-26
+summary: 
+old_entry_id: 1966
+---
+<p>So I&#8217;ve <em>finally</em> updated my old <a href="http://www.funkatron.com/apps/widgets/RSS%20Viewer.zip">RSS Viewer widget for Konfabulator</a>.  This version has been updated to work with Konfab 2.x, and adds a couple minor features.</p>
+
+<p><img src="http://www.funkatron.com/apps/widgets/rss_widget_screenshot.png" border="1" /></p>
+
+<ul><li><a href="http://www.funkatron.com/apps/widgets/RSS%20Viewer.zip">RSS Viewer for Konfabulator</a></li></ul>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="1966" data-url-title="rss_viewer_widget_for_konfabulator_updated">
+	<ul>
+	
+	<li class="comment">
+		<a name="1678" class="comment-id anchor"></a>
+		<div class="comment-author">kingler</div>
+		<div class="comment-author-url">http://kingler.is-a-geek.net</div>
+		<div class="comment-date">07/26/2005 11:07:04 AM</div>
+		<div class="comment-body"><p>Nice job! I like the widget. 
+Just one question, How is the feed updated? Every hour or every day?
+didn&#8217;t see any option for that.</p>
+
+<h2>Another thing is that the title line is not enough to show multiple feed titles. might be good if it can be changed to a rolling list or something.</h2>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1677" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">07/26/2005 11:20:59 AM</div>
+		<div class="comment-body"><p>Every 30 minutes, I believe.  It&#8217;s hard-coded for now.</p>
+
+<p>no, it&#8217;s not long enough.  rolling is a good idea&#8230; now I just have to figure out how to do that. 8)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1676" class="comment-id anchor"></a>
+		<div class="comment-author">Smoove</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/27/2005 01:07:56 AM</div>
+		<div class="comment-body"><p>Just tried the updated RSS Viewer.  It just sits there trying to parse the RSS feeds.</p>
+
+<p>the feeds are:</p>
+
+<p>http://whirlpool.net.au/whirlpool.rdf | http://www.winbeta.org/feeds/backend.php?page=longhorn&amp;feed=RSS2</p>
+
+<p>Any ideas?  These work fine in other RSS readers.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1675" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/27/2005 11:18:55 AM</div>
+		<div class="comment-body"><p>Try changing the following line in class.feed.js:</p>
+
+<p>this.raw = runCommand(&#8220;curl -f -s -L &#8212;connect-timeout 10 &#8212;max-time 30 &#8221; + this.url);</p>
+
+<p>to:</p>
+
+<p>this.raw = runCommand(&#8220;curl -f -s -L &#8212;connect-timeout 10 &#8212;max-time 30 &#8216;&#8221; + this.url + &#8220;&#8217;&#8221;);</p>
+
+<p>[You&#8217;re putting single quotes around the URL]</p>
+
+<p>I know nothing about JS / Konfabulator / etc., but there seems to be something happening such that the URLs are not being interpreted / loaded properly if not placed in single quotes.  Fixed my similar problems anyway.</p>
+
+<p>GREAT widget, btw, much appreciated.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1674" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">07/27/2005 11:48:55 AM</div>
+		<div class="comment-body"><p>I bet the problem is that I was using curl to download the feeds.  That works fine on OS X (which was konfab&#8217;s only platform when I was using it), and if you have a Windows binary in your path it works on Windows, but not on most Windows boxes.  I have a version I&#8217;ll upload later today that uses the built-in functionality in newer versions of Konfab to retrieve the feed.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1673" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">07/27/2005 01:57:08 PM</div>
+		<div class="comment-body"><p>Sean,</p>
+
+<p>That will help if you&#8217;re on OS X, but Windows doesn&#8217;t ship with it, which is obviously a problem for cross-platform support.  The new version I&#8217;m about to upload doesn&#8217;t use curl anymore.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1672" class="comment-id anchor"></a>
+		<div class="comment-author">Sean</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">07/27/2005 02:33:38 PM</div>
+		<div class="comment-body"><p>Ed,</p>
+
+<p>I&#8217;m gonna have to take your word for that - again, I know so little about JS / Konfab / et. al., but I&#8217;m running XP right now and your widget worked for me from the time I downloaded it; just not on sites which had any characters (&#8216;&amp;&#8217;, &#8216;%&#8217;, etc.) in the URLs, and that&#8217;s the only thing that changed for me with the above&#8230; in any case, as you say, with the new version it&#8217;ll be easier for everyone - thanks for bringing it back with the new versions!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1671" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">07/27/2005 04:04:26 PM</div>
+		<div class="comment-body"><p>Huh.  I wonder if Konfab packages curl into their UnixUtils stuff in the engine.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

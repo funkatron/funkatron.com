@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<div class="post">
+
+	<h1 id="{{ page.id }}"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+
+
+	<div class="post-meta">
+		<ul class="categories">
+			{% for cat in page.categories %}
+				<li class="category">{{cat}}</li>
+			{% endfor %}
+		</ul>
+
+		<div class="date">{{ post.date | date: "%A, %B %d, %Y" }}</div>
+	</div>
+
+	<div class="content">{{ content }}</div>
+	
+	<div class="related-posts">
+		<h3>Related Posts</h3>
+		<ul>
+		{% for rp in site.related_posts limit:5 %}
+			<li class="related-post"><a href="{{rp.url}}">{{rp.title}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+

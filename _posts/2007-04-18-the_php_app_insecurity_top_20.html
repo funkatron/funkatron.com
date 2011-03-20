@@ -1,0 +1,64 @@
+---
+layout: post
+author: funkatron
+title: "The PHP App Insecurity Top 20"
+url_title: the_php_app_insecurity_top_20
+tags: ""
+published: true
+categories:
+- General
+- InfoSec
+- The Web Problem
+- PHP
+date: 2007-04-18
+summary: 
+old_entry_id: 2316
+---
+<p>I&#8217;ve spent some of my down time in the past couple weeks working with the <a href="http://nvd.nist.gov">NIST NVD</a> data to get stats on PHP application vulnerabilities.  What follows is a breakdown of the 20 PHP-based applications that had the highest aggregate vulnerability scores (NIST assigns a score from 1-10 for the severity of each entry), and the highest total number of vulnerabilities, over the past 12 months.  Of the two, I feel that the aggregate score is a better indicator of security issues.</p>
+
+<p>A few caveats:</p>
+
+<ul>
+<li>The data here covers the period between April 1 2006 and April 1 2007.</li>
+<li>This obviously only includes <strong>reported</strong> vulnerabilities.  There are surely a lot more applications that are very insecure, but for one reason or another haven&#8217;t had as many reports.</li>
+<li>I chose 20 as the cutoff mainly for the sake of making the data a little easier to swallow (and chart nicely). There are about 1,800 distinct apps in the NIST NVD that are (as far as I could determine) PHP-based.</li>
+</ul>
+
+<p>Without further ado, here are the tepid Excel charts:</p>
+
+<p><a href="http://blog.funkatron.com/wp-content/php-top20-april-score.png"><img src="http://blog.funkatron.com/wp-content/_php-top20-april-score.png" alt="Nist NVD Data - April 1 2006 to April 1 2007 - PHP Apps by Score Count" title="" /></a></p>
+
+<p><a href="http://blog.funkatron.com/wp-content/php-top20-april-entries.png"><img src="http://blog.funkatron.com/wp-content/_php-top20-april-entries.png" alt="Nist NVD Data - April 1 2006 to April 1 2007 - PHP Apps by Entry Count" title="" /></a></p>
+
+<p>A couple notes:</p>
+
+<ul>
+<li>There are 25 entries in the top &#8220;20&#8221; by vulnerability count, due to matching vulnerability counts.</li>
+<li>I&#8217;d never even <strong>heard</strong> of <a href="http://www.mybboard.net/">MyBulletinBoard</a>, the top entry in both lists.  It hasn&#8217;t had any vulnerabilities in the NVD since September of 2006, which says something about how numerous and severe the entries between April and September 2006 were.  This appears to be the same product as &#8220;MyBB,&#8221; so perhaps the situation has improved, as MyBB only has one NVD entry in the entire period (<a href="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-0544">CVE-2007-0544</a>).</li>
+<li>Wordpress has had a bad start to 2007, with numerous vulnerabilities that significantly increased its ranking.  March 2007 was particularly bad, with 7 new vulnerabilities reported.</li>
+<li>Bulletin board/forum software is by far the most common type of application in the top 20.  A couple forum apps that have very <strong>low</strong> numbers of vulnerability reports: <a href="http://getvanilla.com/">Vanilla</a> and <a href="http://fudforum.org/">FUDForum</a>.</li>
+</ul>
+
+<p>I do intend to keep this data up-to-date if people find it interesting, so let me know if you&#8217;d like me to do so, or if you&#8217;d like to see other types of analysis.</p>
+
+<p>[tags]php, security, application security, vulnerabilities, nist, nvd, statistics[/tags]</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2316" data-url-title="the_php_app_insecurity_top_20">
+	<ul>
+	
+	<li class="comment">
+		<a name="1794" class="comment-id anchor"></a>
+		<div class="comment-author">christ1an</div>
+		<div class="comment-author-url">http://christ1an.blogspot.com</div>
+		<div class="comment-date">04/19/2007 09:16:53 AM</div>
+		<div class="comment-body"><p>Interesting, thanks.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

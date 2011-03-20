@@ -1,0 +1,17 @@
+---
+layout: post
+author: funkatron
+title: "Chris Shiflett: More on Filtering Input and Escaping Output"
+url_title: chris_shiflett_more_on_filtering_input_and_escaping_output
+tags: ""
+published: true
+categories:
+- InfoSec
+- PHP
+date: 2005-02-16
+summary: 
+old_entry_id: 1856
+---
+<p><a href="http://shiflett.org/archive/98">Chris Shiflett: More on Filtering Input and Escaping Output</a></p>
+
+<p>I found this post quite educational, especially about what items in the various superglobals ($_GET, $_POST, $_SERVER, $_COOKIE, $_SESSION) are tainted.  Basically, the gist is that $_GET, $_POST, and $_COOKIE are always provided from the user, and therefore have to be considered tainted.  $_SESSION is stored by the server, and <em>shouldn&#8217;t</em> be tainted if you did your job right (i.e., you didn&#8217;t store any tainted data in the session).  $_SERVER, though, is more complex, because some of the values in that array come from the web browser, despite the name of the array.  Check the comments for more detail.</p>

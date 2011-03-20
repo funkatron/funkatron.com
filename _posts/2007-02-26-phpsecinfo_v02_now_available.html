@@ -1,0 +1,66 @@
+---
+layout: post
+author: funkatron
+title: "PHPSecInfo v0.2 now available"
+url_title: phpsecinfo_v02_now_available
+tags: ""
+published: true
+categories:
+- PHPSecInfo
+- My Projects
+- InfoSec
+- PHP
+date: 2007-02-26
+summary: 
+old_entry_id: 2273
+---
+<div align="center">
+<a href="http://phpsec.org/images/psi_ss1.png"><img src="http://phpsec.org/images/th_psi_ss1.png" alt="PHPSecInfo Screenshot" /></a> <a href="http://phpsec.org/images/psi_ss2.png"><img src="http://phpsec.org/images/th_psi_ss2.png" alt="PHPSecInfo Screenshot" /></a>
+</div>
+
+<p>The newest version of PHPSecInfo, version 0.2, is now available.  Here are the major changes:</p>
+
+<ul>
+ <li>Added link to &#8220;more info&#8221; in output.  These lead to pages on the phpsec.org site giving more details on the test and what to do if you have a problem</li>
+ <li>Modified CSS to improve readability and avoid license issue with PHP (the old CSS was derived from the output of <code>phpinfo()</code>)</li>
+ <li>New test: <code>PhpSecInfo_Test_Session_Save_Path</code></li>
+ <li>Added display of &#8220;current&#8221; and &#8220;recommended&#8221; settings in test result output</li>
+ <li>Various minor changes and bug fixes; <a href="http://phpsec.org/projects/phpsecinfo/CHANGELOG">see the CHANGELOG</a> for details</li>
+</ul>
+
+<h3>-<strong><a href="http://phpsec.org/projects/phpsecinfo/phpsecinfo.zip">Download now</a></strong></h3>
+
+<h3>-<strong><a href="http://lists.phpsec.org/mailman/listinfo/phpsecinfo">Join the mailing list</a></strong></h3>
+
+<p>[tags]php, phpsecinfo, infosec, audit, tool, security[/tags]</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2273" data-url-title="phpsecinfo_v02_now_available">
+	<ul>
+	
+	<li class="comment">
+		<a name="1771" class="comment-id anchor"></a>
+		<div class="comment-author">AB</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">03/01/2007 08:09:58 PM</div>
+		<div class="comment-body"><p>Just a notice your suite does not work out of the box on my build.  I get require_once() errors which means the relative paths are wrong.</p>
+
+<p>PHP 5.2.1, Lighttpd 1.4.13.  I figure these should not make a difference so the soltuion might be to sniff the real path and use that in the requires.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1770" class="comment-id anchor"></a>
+		<div class="comment-author">Ed</div>
+		<div class="comment-author-url">http://www.funkatron.com</div>
+		<div class="comment-date">03/01/2007 08:40:56 PM</div>
+		<div class="comment-body"><p>That&#8217;s the first time I&#8217;ve heard of such a problem.  I&#8217;d have to investigate further&#8230; but I&#8217;d bet that something is goofy with your include path &#8212; maybe it&#8217;s missing &#8220;./&#8221;</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

@@ -1,0 +1,157 @@
+---
+layout: post
+author: funkatron
+title: "Help Derek Allard with his open source licensing concerns"
+url_title: help-derek-allard-with-his-open-source-licensing-concerns
+tags: "bambooinvoice, derek allard, codeigniter, gpl, creativecommons, opensource, copyright"
+published: true
+categories:
+- The Web Problem
+- PHP
+date: 2007-10-12
+summary: 
+old_entry_id: 2408
+---
+<p><a href="http://flickr.com/photos/pugno_muliebriter/1384247192/"><img src="http://farm2.static.flickr.com/1271/1384247192_1328157f35.jpg?v=0" alt="fuzzy copyright" /></a></p>
+
+<p>My friend <a href="http://www.derekallard.com/">Derek Allard</a>, of <a href="http://codeigniter.com/">CodeIgniter</a> fame, <a href="http://www.derekallard.com/blog/post/bambooinvoice-may-be-moving-away-from-the-gpl-open-source-license/">is concerned</a> about the GPL licensing he chose for his open-source web application <a href="http://www.bambooinvoice.org/">BambooInvoice</a>:</p>
+
+<blockquote>
+  <p>Around February of this year, a CodeIgniter user contacted me privately to point out that someone was re-distributing BambooInvoice as their own work.  I&#8217;m not going to use any names or URLs (no point in adding any publicity to them), but they essentially called it &#8220;their business&#8221;-Invoice.  So they offered it for download under a different name, and claimed it was their invoicing software.  They offered a &#8220;demo&#8221; (identical in every way to Bamboo) and it was apparent to me that all they really did was a giant search and replace of the word &#8220;Bamboo&#8221; with &#8220;their business&#8221;.  No credit to me.  No mention of Bamboo, no CodeIgniter license (that was visible), nothing - just a wholesale search and replace.</p>
+</blockquote>
+
+<p>Derek has clearly thought about this issue a lot, but I bet he could use some sage advice from people who have been through similar situations.  If you have, please consider reading <a href="http://www.derekallard.com/blog/post/bambooinvoice-may-be-moving-away-from-the-gpl-open-source-license/">his post</a> and offering some input. Derek&#8217;s given a lot to the OSS community via CodeIgniter, and I think we should help him out here.</p>
+
+<ul>
+<li><a href="http://www.derekallard.com/blog/post/bambooinvoice-may-be-moving-away-from-the-gpl-open-source-license/">BambooInvoice may be moving away from the GPL Open Source License</a></li>
+</ul>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2408" data-url-title="help-derek-allard-with-his-open-source-licensing-concerns">
+	<ul>
+	
+	<li class="comment">
+		<a name="6014" class="comment-id anchor"></a>
+		<div class="comment-author">Derek Allard</div>
+		<div class="comment-author-url">http://www.derekallard.com</div>
+		<div class="comment-date">10/12/2007 02:46:54 PM</div>
+		<div class="comment-body"><p>Thanks Ed.  Appreciate the added thoughts.  I&#8217;ve gotten lots of feedback, mostly very helpful - but it is a tough choice&#8230;</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6016" class="comment-id anchor"></a>
+		<div class="comment-author">Daniel Errante</div>
+		<div class="comment-author-url">http://bizwidgets.biz/blog/</div>
+		<div class="comment-date">10/13/2007 01:02:04 PM</div>
+		<div class="comment-body"><p>The only bad thing about PHP is it&#8217;s not compiled&#8230;Of course we can learn a lot more from having open source applications, but commercially this is a concern for companies that develop web applications to make money!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6017" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/13/2007 02:28:28 PM</div>
+		<div class="comment-body"><p>@Daniel: There are PHP &#8220;encoders&#8221; that compile the PHP to bytecode and allow for redistribution of the result. IonCube and Zend Encoder are a couple products that do this.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6018" class="comment-id anchor"></a>
+		<div class="comment-author">Daniel Errante</div>
+		<div class="comment-author-url">http://bizwidgets.biz/blog/</div>
+		<div class="comment-date">10/13/2007 03:47:38 PM</div>
+		<div class="comment-body"><p>I looked into ioncube and zend encoder. they seem like expensive options. are there any alternatives that are under $100, or maybe even free?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6020" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/13/2007 05:27:44 PM</div>
+		<div class="comment-body"><p>@Daniel: PHPShield is $75, but I can&#8217;t say anything about the quality of the product.  If price is a major issue, you might look at an obfuscator instead of an encoder, or rethink whether blocking access to source is something you want to do. Personally, I would never purchase a web app that didn&#8217;t give me source access.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6021" class="comment-id anchor"></a>
+		<div class="comment-author">Daniel Errante</div>
+		<div class="comment-author-url">http://bizwidgets.biz/blog/</div>
+		<div class="comment-date">10/13/2007 05:32:36 PM</div>
+		<div class="comment-body"><p>I don&#8217;t know if this is the best place to talk about all of this, but as long as we are I have a few more questions then!</p>
+
+<p>I like open source because I usually like to customize an application to what I need it to do, but if my company&#8217;s purpose is to deliver &#8216;boxed&#8217; web solutions such as an e-commerce package:
+1. What&#8217;s stopping someone from buying the software once and redistributing it like the BambooInvoice software.
+2. What is the best way to keep track of people using your software, in case they purchase one license but use the software on more than one domain name?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6023" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">10/13/2007 05:57:14 PM</div>
+		<div class="comment-body"><p>@Daniel,</p>
+
+<p>I can give a couple opinions, but I&#8217;m not an expert on the issue of selling open-source software. Mind if I make a blog post out of it?</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6024" class="comment-id anchor"></a>
+		<div class="comment-author">Daniel Errante</div>
+		<div class="comment-author-url">http://bizwidgets.biz/blog/</div>
+		<div class="comment-date">10/13/2007 06:01:23 PM</div>
+		<div class="comment-body"><p>Sure, I will keep researching and look forward to your new article :)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6030" class="comment-id anchor"></a>
+		<div class="comment-author">Alex Vargas</div>
+		<div class="comment-author-url">http://www.a--optic.com</div>
+		<div class="comment-date">10/16/2007 10:40:02 PM</div>
+		<div class="comment-body"><p>Daniel Errante, 
+     Open-source can be used to leverage a well defined and constructed business. What I think you have overlooked is that hiding code only stops people for a short time. Any software can be reversed engineered, eventually. A good business can adapt quickly before some competitor will put them out of business. Open Source like the GPL can help in many ways like TiVO, they use the linux kernel and repurpose it. With many programming hours and the proper hardware one could recreate that and sell it (those who have see the technical side not the business side of ow to get clients and distribute the product, but that is beside the point). In the case of BambooInvoice (way different case) , I think he should prosecute the company for stealing not repurposing his code. Making a business of more than 80% that was not developed or planned from that company is downright stealing!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6031" class="comment-id anchor"></a>
+		<div class="comment-author">Daniel Errante</div>
+		<div class="comment-author-url">http://bizwidgets.biz/blog/</div>
+		<div class="comment-date">10/16/2007 10:48:55 PM</div>
+		<div class="comment-body"><p>I am hesitant to encrypt my code first because it seems costly and second, I agree that the code can be broken. Apple spent a long time locking down the iPhone only to have hackers break in two months later. It seems like a wasted effort, however with PHP, I can&#8217;t tell if someone is using my code, selling it or re-writing it. I would just like to know! At least Apple knows when they are breaking in to the phone. They are actually profiting more from the hacker&#8217;s purchase of the iPhone!</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6032" class="comment-id anchor"></a>
+		<div class="comment-author">Derek Allard</div>
+		<div class="comment-author-url">http://www.derekallard.com</div>
+		<div class="comment-date">10/16/2007 11:48:31 PM</div>
+		<div class="comment-body"><p>Just to be clear, my goal is NOT to prevent people from seeing code, customizing, or using BambooInvoice&#8230; my concern mostly was that they could take the work, and essentially claim it as their own.  When I saw it I thought &#8220;darn, what actual recourse do I have here&#8230; doesn&#8217;t look like they&#8217;ve broken the GPL I distributed BI under&#8221;.  So really, I just want something that explicitly says &#8220;hey, modify to your hearts content, but no pretending this work is your work&#8221;.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6041" class="comment-id anchor"></a>
+		<div class="comment-author">Tarique Sani</div>
+		<div class="comment-author-url">http://sanisoft.com/blog/author/tariquesani/</div>
+		<div class="comment-date">10/20/2007 08:06:17 AM</div>
+		<div class="comment-body"><p>As far as my understanding goes Copyright notices cannot be removed under GPL - removing them is a violation of GPL itself - and even if I am wrong there Section 7b of GPL V3 allows you to place additional terms which require preservation of any reasonable legal notices or author attributions.</p>
+
+<p>for further reference I guess you can also contact http://gpl-violations.org/</p>
+
+<p>HTH</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

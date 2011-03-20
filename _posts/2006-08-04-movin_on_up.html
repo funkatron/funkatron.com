@@ -1,0 +1,14 @@
+---
+layout: post
+author: funkatron
+title: "Movin on up!"
+url_title: movin_on_up
+tags: ""
+published: true
+categories:
+- General
+date: 2006-08-04
+summary: 
+old_entry_id: 2146
+---
+<p>So while I&#8217;ve been generally very happy with Dreamhost, the shared account i have just hasn&#8217;t been able to keep up with the needs of one of my particularly popular sites.  So, I signed up for a VPS account with <a href="http://vpslink.com">http://vpslink.com</a>.<br /><br />If you&#8217;re not familiar with VPS hosting, it stands for Virtual Private Server.  I think there are a few different ways of implementing it, with VPSLink using Virtuozzo (<a href="http://www.swsoft.com/en/products/virtuozzo/">http://www.swsoft.com/en/products/virt<wbr />uozzo/</a>), but basically it entails setting up several virtual machines on one actual server.  These VMs act completely independently of one another, and the customer has full root access on it, but you share the resources of the physical machine with other users.  Basically it ends up being somewhere between a shared account and a dedicated machine in terms of price and performance.<br /><br />I decided on Ubuntu 6.06 for my OS.  I like the Debian package manager, but Ubuntu is a little bit more current with the software they support, and I have a tendency to want to try out new stuff.  It&#8217;s still been really easy for me to set up, even thought I&#8217;m only using the shell account to install and config shit.  It&#8217;s been a good learning experience and assessment of my real knowledge of system administration:<br /><br />&#8212; I know how to set up Apache, PHP and related shit very, very well<br />&#8212; I know how to set up MySQL and PostgreSQL pretty well<br />&#8212; I know very little about setting up mail servers (well, until now)<br />&#8212; DNS and Bind is just beyond me<br /><br />I&#8217;m avoiding messing with DNS too much right now, because looking at Bind and the docs for it made my head explode, but I was able to get Postfix and Dovecot up and running with some research and careful reading of HOWTOs.  Apache et al was a piece of cake, and mega fast thanks to aptitude / apt-get and the much quicker US ubuntu package mirrors.<br /><br />Even without an opcode cache installed, a little testing with http_load indicates that the new system is maybe 10 times faster than my dreamhost shared hosting.  This is encouraging.</p>

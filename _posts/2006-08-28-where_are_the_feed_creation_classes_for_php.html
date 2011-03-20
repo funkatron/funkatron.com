@@ -1,0 +1,20 @@
+---
+layout: post
+author: funkatron
+title: "Where are the feed creation classes for PHP?"
+url_title: where_are_the_feed_creation_classes_for_php
+tags: ""
+published: true
+categories:
+- General
+date: 2006-08-28
+summary: 
+old_entry_id: 2164
+---
+<p>Everybody and their mom has feed parsers built into their fancy frameworks and component libraries, and a couple stand-alone components do an excellent job of making feed consumption a piece of cake, but XML feed <em>creation</em> tools are really lacking in PHP.&nbsp; Of all the major general purpose PHP framework/component&nbsp;collections I know of (PEAR, EZC, ZFW, Cake, Symfony, CodeIgniter), none include a class for creating XML feeds.</p>
+
+<p>The best tool I&#8217;ve seen for the job is Kai Blankenhorn&#8217;s <a href="http://www.bitfolge.de/rsscreator-en.html">FeedCreator</a>.&nbsp; I&#8217;ve used it quite a bit, and it&#8217;s a well-designed class that makes feed creation very easy.&nbsp; It&#8217;s not thoroughly documented, though, and hasn&#8217;t been updated since 2004, so no ATOM 1.0 support.&nbsp; More problematic is that it doesn&#8217;t support enclosures, making it&nbsp;mostly useless&nbsp;for folks wanting to *Cast stuff.</p>
+
+<p>A couple of forks have popped up here and there to address these problems.&nbsp; <a href="http://feedcreator.org/">This one</a>&nbsp;by Mohammad Hafiz bin Ismail&nbsp;has the advantage of looking more like a serious attempt to restart development of the project, rather than a onetime hack to add a couple features.&nbsp; It doesn&#8217;t look like a lot of development has gone on since the initial upload, though, and that&#8217;s a bummer.</p>
+
+<p>So tell me: am I missing something, or is this an area where more work needs to be done?</p>

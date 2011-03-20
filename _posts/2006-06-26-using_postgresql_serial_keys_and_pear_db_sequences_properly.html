@@ -1,0 +1,53 @@
+---
+layout: post
+author: funkatron
+title: "Using PostgreSQL SERIAL keys and PEAR DB sequences properly"
+url_title: using_postgresql_serial_keys_and_pear_db_sequences_properly
+tags: ""
+published: true
+categories:
+- General
+date: 2006-06-26
+summary: 
+old_entry_id: 2125
+---
+<p>Our internal CRUD app framework uses DB_DataObject as its data access layer, and DB_DO is in turn built on top of the <a target="_blank" href="http://pear.php.net/package/DB/">Pear_DB</a> layer.  Pear_DB has <a target="_blank" href="http://pear.php.net/manual/en/package.database.db.intro-sequences.php">a special sequence system</a> that works great out of the box with MySQL AUTO_INCREMENT keys, but it needs a little fiddling to play nice with PostgreSQL&#8217;s SERIAL metatype.  Basically, if you don&#8217;t tweak the sequence stuff a bit, Pear_DB won&#8217;t be able to retrieve the next ID # in the sequence.  This is an ignorable problem for single-table situations, but can cause problems (including data loss) with many-to-many relationships and other more complex cases.</p>
+
+<p>The easiest way to get the Pear_DB sequences to play nice with your PostgreSQL sequences is to redefine the <tt>sequenceKey()</tt> method in your DB_DataObject-extending class:</p>
+
+<pre class="code">class Otacon_Contact extends DB_DataObject 
+{
+     [...]
+
+    /* the code above is auto generated do not remove the tag below */
+    ###END_AUTOCODE
+
+    /* this is required to get PEAR DB sequences working properly */
+    function sequenceKey() { return array('contact_id', false, 'contact_contact_id_seq'); }
+
+     [...]
+}
+
+</pre>
+
+<p>In the example above, <tt>contact_id</tt> is the primary_key of the table, and <tt>contact_contact_id_seq</tt> is the sequence that <tt>contact_id</tt> gets its next value from.  This makes the Pear_DB sequence stuff to query this sequence to get the next value for your primary key, and you should be golden.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2125" data-url-title="using_postgresql_serial_keys_and_pear_db_sequences_properly">
+	<ul>
+	
+	<li class="comment">
+		<a name="1722" class="comment-id anchor"></a>
+		<div class="comment-author">ucho</div>
+		<div class="comment-author-url">http://litestep.boo.pl</div>
+		<div class="comment-date">07/11/2006 08:02:55 AM</div>
+		<div class="comment-body"><h2>They should put this in both PSQL and PEAR::DB manual :P</h2>
+</div>
+	</li>
+	 
+	</ul>
+</div>

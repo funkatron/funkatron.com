@@ -1,0 +1,126 @@
+---
+layout: post
+author: funkatron
+title: "KCacheGrind equivalent for OS X"
+url_title: kcachegrind_equivalent_for_os_x
+tags: ""
+published: true
+categories:
+- General
+date: 2006-07-29
+summary: 
+old_entry_id: 2144
+---
+<p>AFAICT, there is no OS X-native <a href="http://valgrind.org/info/tools.html" target="" title="">cachegrind</a> file visualization app for OS X.  <strong>THIS BLOWS ASS</strong>.  Right now I&#8217;m on hour 5 of compiling shit from <a href="http://fink.sourceforge.net/" target="" title="">Fink</a> to get <a href="http://kcachegrind.sourceforge.net/" target="" title="">KCacheGrind</a> installed, and even then I have to run that shit in the XWindows env.  Turdly.<br /><br />I&#8217;m sorta kicking around the idea of writing one of my own in RealBasic, which would be handy because it would be cross-platform out of the box.  Thoughts?</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2144" data-url-title="kcachegrind_equivalent_for_os_x">
+	<ul>
+	
+	<li class="comment">
+		<a name="1731" class="comment-id anchor"></a>
+		<div class="comment-author">JW</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/07/2006 05:09:04 PM</div>
+		<div class="comment-body"><p>While it didn&#8217;t take me anywhere near that long to get kcachegrind compiled and installed via fink, a native app would be great.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="1730" class="comment-id anchor"></a>
+		<div class="comment-author">Israel Alvarez</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/15/2006 10:24:37 AM</div>
+		<div class="comment-body"><p>Yes, this does suck. CURSE YOU ANDREW ROHL, he-who-created-the-povray-port-for-fink-whihc-wouldn&#8217;t-compile-and-halted-the-install-of-bundle-kde-because-he-forgot-to-add-a-.1-to-the-name-of-the-tarball. That little annoyance took me about 2 hours to track &amp; fix. Not to mention that XFree didn&#8217;t compile so I had to switch to x.org.</p>
+
+<p>So yeah, we need a native kcachegrind. I&#8217;m willing to take a shot at it with RealBasic, once I figure out what functionality it should have, once I actually get kcachegrind running. Hopefully soon.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6333" class="comment-id anchor"></a>
+		<div class="comment-author">Sven</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">02/22/2008 02:07:35 PM</div>
+		<div class="comment-body"><p>So, how&#8217;s that OS X native, RealBasic based version of kcachegrind coming along? I&#8217;d guess in the year and a half since you first mentioned it you must have made some pretty significant progress.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6334" class="comment-id anchor"></a>
+		<div class="comment-author">Ed Finkler</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">02/22/2008 02:59:19 PM</div>
+		<div class="comment-body"><p>Bwahahahahha</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6365" class="comment-id anchor"></a>
+		<div class="comment-author">philip olson</div>
+		<div class="comment-author-url">http://blog.roshambo.org/</div>
+		<div class="comment-date">02/29/2008 02:31:35 AM</div>
+		<div class="comment-body"><p>+1 :)</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6772" class="comment-id anchor"></a>
+		<div class="comment-author">Colin</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">05/05/2009 02:54:19 AM</div>
+		<div class="comment-body"><p>So this thread is ancient, so you all may have what you&#8217;re looking for already, but anyway, it looks like kcachegrind is available via darwin ports:</p>
+
+<p>http://kcachegrind.darwinports.com/</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6888" class="comment-id anchor"></a>
+		<div class="comment-author">Craig</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">08/10/2009 11:23:44 AM</div>
+		<div class="comment-body"><p>Darwin ports (or Mac ports) appears to be no better than Fink. Both massive overkill when you just want one binary. 90 minutes of building and half a gigabyte under /opt for it to bomb out on libtiff because my XCode version isn&#8217;t new enough by one minor version, even though the gcc version is fine. It pulled down a <em>lot</em> of stuff that&#8217;s already on the system by default, or has an equivalent. e.g. it&#8217;s building sed, perl, mesa, python, etc, all for kcachegrind! It was quicker to download and install Fedora under VirtualBox and use the linux kcachegrind binary from yum! Not impressed.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6889" class="comment-id anchor"></a>
+		<div class="comment-author">funkatron</div>
+		<div class="comment-author-url">http://funkatron.com</div>
+		<div class="comment-date">08/10/2009 11:27:58 AM</div>
+		<div class="comment-body"><p>I would agree. The state of package managers on OS X isn&#8217;t close to Linux. OTOH, there just isn&#8217;t the support there for it. A shame.</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6917" class="comment-id anchor"></a>
+		<div class="comment-author">Michael Knight</div>
+		<div class="comment-author-url"></div>
+		<div class="comment-date">09/01/2009 12:01:24 AM</div>
+		<div class="comment-body"><p>I haven&#8217;t tried this yet, but there is http://www.maccallgrind.com/</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6963" class="comment-id anchor"></a>
+		<div class="comment-author">Benjamin</div>
+		<div class="comment-author-url">http://bigbluehat.com/</div>
+		<div class="comment-date">10/02/2009 03:32:35 PM</div>
+		<div class="comment-body"><p>MacCallGrind is actually not to bad. Very basic, no graphs, etc, but does display time results, call tree, and line numbers pretty well. Plenty of features could be added to make it more useful, though.</p>
+
+<p>Another web-based option is Carica CacheGrind:
+http://sourceforge.net/projects/ccg/</p>
+
+<p>Like webgrind you can bank on httpd (if you&#8217;re using apache) to run at about 95% CPU usage for a good long while if you&#8217;re parsing large cachegrind files (as I am&#8230;).</p>
+
+<p>MacCallGrind is much faster, but could use more &#8220;goodies.&#8221;</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

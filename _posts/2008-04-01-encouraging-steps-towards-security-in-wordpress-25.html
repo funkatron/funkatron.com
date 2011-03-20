@@ -1,0 +1,56 @@
+---
+layout: post
+author: funkatron
+title: "Encouraging steps towards security in Wordpress 2.5"
+url_title: encouraging-steps-towards-security-in-wordpress-25
+tags: "wordpress, wpids, salting, passwords, cookies, security, infosec"
+published: true
+categories:
+- InfoSec
+- PHP
+date: 2008-04-01
+summary: 
+old_entry_id: 2424
+---
+<p><a href="http://flickr.com/photos/parl/3594329/"><img src="http://farm1.static.flickr.com/2/3594329_f3e39a44ed.jpg?v=0" alt="Table Salt" title="Table Salt" /></a></p>
+
+<p>Anyone who gets me liquored up knows that I&#8217;m not a fan of Wordpress. I think it&#8217;s <em>great</em> from a user (that is, the person writing the content) standpoint, but it has lagged behind severely in terms of security, and I don&#8217;t believe its popularity is the sole reason WP has been the subject of dozens of vulnerability reports every year. That being said, the WP 2.5 release appears to offer significant improvements in a couple areas: password hashes and cookie data encryption. From <a href="http://wordpress.org/development/2008/03/wordpress-25-brecker/" title="the WP blog">the WP blog</a>:</p>
+
+<blockquote>
+
+<p>Salted passwords &#8212; we now use the <a href="http://www.openwall.com/phpass/">phpass</a> library to stretch and salt all passwords stored in the database, which makes brute-forcing them impractical. If you use something like mod_auth_mysql we&#8217;ve created a plugin that will allow you to use legacy MD5 hashing. (The hashing is completely pluggable.) Users will automatically switch to the more secure passwords next time they log in.</p>
+
+<p>Secure cookies &#8212; cookies are now encrypted based on the protocol described in <a href="http://www.cse.msu.edu/~alexliu/publications/Cookie/cookie.pdf">this PDF paper</a>. which is something like <code>user name|expiration time|HMAC( user name|expiration time, k)</code> where <code>k = HMAC(user name|expiration time, sk)</code> and where <code>sk</code> is a secret key, which you can define in your config.</p>
+
+</blockquote>
+
+<p>These are good steps, and while I think they took way too long to happen, I&#8217;m glad they finally did. I do still feel that WP suffers from an architecture that makes it too easy to make input filtering mistakes, and I would strongly recommend a tool like <a href="http://php-ids.org/2008/02/21/wpids-version-012-released/">WPIDS</a> for all self-hosting Wordpress users.</p>
+
+
+
+
+	 
+
+<div class="comments" data-entry-id="2424" data-url-title="encouraging-steps-towards-security-in-wordpress-25">
+	<ul>
+	
+	<li class="comment">
+		<a name="6408" class="comment-id anchor"></a>
+		<div class="comment-author">Vidyut Luther</div>
+		<div class="comment-author-url">http://www.phpcult.com/</div>
+		<div class="comment-date">04/02/2008 07:52:41 PM</div>
+		<div class="comment-body"><p>Heh, they said phpASS.. hehehhuhuhuh..</p>
+</div>
+	</li>
+	
+	<li class="comment">
+		<a name="6505" class="comment-id anchor"></a>
+		<div class="comment-author">Matt</div>
+		<div class="comment-author-url">http://www.ebcak.com</div>
+		<div class="comment-date">07/14/2008 12:49:29 AM</div>
+		<div class="comment-body"><p>Going to check WPIDS. With all of the SQL injection/ hacking going on, it&#8217;s good to know that we can fight back.</p>
+</div>
+	</li>
+	 
+	</ul>
+</div>

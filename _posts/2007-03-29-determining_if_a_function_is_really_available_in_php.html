@@ -1,0 +1,28 @@
+---
+layout: post
+author: funkatron
+title: "Determining if a function is *really* available in PHP"
+url_title: determining_if_a_function_is_really_available_in_php
+tags: ""
+published: true
+categories:
+- PHPSecInfo
+- My Projects
+- Development
+- PHP
+date: 2007-03-29
+summary: 
+old_entry_id: 2302
+---
+<p>After pounding for a few hours, I think I finally got the UID and GID tests for <a href="http://phpsecinfo.com">PHPSecInfo</a> in an acceptable state.  Two things have made this hard:</p>
+
+<ol>
+<li>You can really only do this with an exec() call to the &#8220;id&#8221; UNIX command, or the posix_* functions, either of which are frequently disabled</li>
+<li>There basically is not a foolproof way to programatically tell if a function is available or not in PHP</li>
+</ol>
+
+<h1>2 is the real rub, and quite annoying.  <code>is_callable()</code> will return TRUE even if a function has been disabled in php.ini with <code>disabled_functions</code> (which, in my mind, is contrary to what &#8220;is_callable&#8221; implies).  <code>function_exists()</code> will return FALSE if the function is disabled in php.ini, but will return TRUE if the function is being blocked by <code>safe_mode</code>.</h1>
+
+<p>For now, the tests try <code>exec('id')</code> first, seeing if it passes <code>function_exists()</code> <i>and</i> <code>safe_mode</code> is disabled.  If it fails those, the <code>posix_*</code> functions are checked against <code>function_exists</code> (they aren&#8217;t affected by <code>safe_mode</code>.  If those fail as well, the test will be skipped.</p>
+
+<p>[tags]phpsecinfo, uid, gid, posix, exec, safe_mode, disabled_functions, function_exists, is_callable[/tags]</p>

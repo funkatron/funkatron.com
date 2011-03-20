@@ -1,0 +1,17 @@
+---
+layout: page
+title: A List of Posts
+---
+
+<h2>{{page.title}}</h2>
+
+<ul>
+{% for post in site.posts %}
+
+<li>
+	<div><a href="{{ post.url }}">{{ post.title }}</a></div>
+	<div class="date">{{ post.date | date: "%A, %B %d, %Y" }}</div>
+</li>
+
+{% endfor %}
+</ul>

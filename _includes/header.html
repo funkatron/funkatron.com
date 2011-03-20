@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{page.title}}</title>
+	
+	<script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="http://ajax.cdnjs.com/ajax/libs/less.js/1.0.41/less-1.0.41.min.js"></script>
+	<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+	
+	<script src="../js/jqwidont.js"></script>
+	<script src="../js/jquery.lettering.js"></script>
+	
+	<link rel="stylesheet" href="../css/site.css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+	
+	<style type="text/css" media="screen">
+
+	</style>
+
+	<script>
+	$(document).ready(function() {
+		$("#title").lettering();
+		
+		$('h1, h2').widont();
+		
+	});
+	
+	</script>
+</head>
+<body id="{{ page.id }}">
+	
+	<div id="page-content">
+
+		<div id="header">
+			<h1 id="title">FUNKATRON</h1>
+			<div id="nav">
+				<div id="nav-items">
+					<a href="#!posts" class="word1">POSTS</a> <a href="#!items"  class="word2">ITEMS</a> <a href="#!about"  class="word3">ABOUT</a> <a href="#!contact" class="word4">CONTACT</a>
+				</div>
+			</div>
+		</div>
