@@ -9,11 +9,11 @@ layout: default
 	<div class="post-meta">
 		<ul class="categories">
 			{% for cat in page.categories %}
-				<li class="category">{{cat}}</li>
+				<li class="category"><a href="/categories.html#{{cat}}">{{cat}}</a></li>
 			{% endfor %}
 		</ul>
 
-		<div class="date">{{ post.date | date: "%A, %B %d, %Y" }}</div>
+		<div class="date">{{ page.date | date: "%A, %B %d, %Y" }}</div>
 	</div>
 
 	<div class="content">{{ content }}</div>
