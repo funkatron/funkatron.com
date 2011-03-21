@@ -4,7 +4,7 @@ title: Funkatron.com
 ---
 
 <div id="posts">
-	{% for post in site.posts limit:5 %}
+	{% for post in site.posts limit:2 %}
 	<div class="post">
 	
 		<h2><a href="{{post.url}}">{{post.title}}</a></h2>
@@ -12,7 +12,7 @@ title: Funkatron.com
 		<div class="post-meta">
 			<ul class="categories">
 				{% for cat in post.categories %}
-					<li class="category">{{cat}}</li>
+					<li class="category"><a href="/categories.html#{{cat}}">{{cat}}</a></li>
 				{% endfor %}
 			</ul>
 
