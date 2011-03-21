@@ -44,7 +44,7 @@ ul > li {
 #header {
   font-family: "Gill Sans", "Gill Sans MT", "Lucida Sans Unicode", "Lucida Sans", "Helvetica", Arial, sans-serif;
   width: 600px;
-  height: 600px;
+  height: 400px;
   background-color: #000000;
   color: #ffffff;
   text-align: center;
@@ -54,7 +54,7 @@ ul > li {
   margin-right: auto;
 }
 #header h1#title {
-  top: 4.1em;
+  top: 2.5em;
   color: #ffffff;
   position: absolute;
   width: 600px;
@@ -74,7 +74,7 @@ ul > li {
 }
 #header #nav {
   position: absolute;
-  top: 15em;
+  top: 10.2em;
   font-size: 16pt;
   letter-spacing: 0.135em;
   width: 600px;
@@ -142,33 +142,34 @@ div.post div.content > p > a > img {
   margin-right: auto;
   max-width: 600px;
 }
-div.post ul.categories {
-  display: none;
+div.post div.post-meta {
+  overflow: auto;
+  border-top: 1px solid #cccccc;
+  font-size: .9em;
+  padding-top: 1em;
+}
+div.post div.post-meta div.date {
+  font-style: italic;
+  display: inline-block;
+  float: right;
+}
+div.post div.post-meta ul.categories {
   margin: 0;
   padding: 0;
   list-type: none;
   float: left;
 }
-div.post ul.categories > li.category {
+div.post div.post-meta ul.categories > li.category {
   font-style: italic;
   margin: 0;
   padding: 0;
   display: inline;
-  margin-right: 1em;
 }
-div.post ul.categories > li.category :after {
+div.post div.post-meta ul.categories > li.category:after {
   content: ', ';
 }
-div.post ul.categories > li.category :last-of-type:after {
+div.post div.post-meta ul.categories > li.category:last-of-type:after {
   content: '';
-}
-div.post div.post-meta {
-  overflow: auto;
-}
-div.post div.post-meta div.date {
-  font-style: italic;
-  display: inline-block;
-  float: left;
 }
 div.post div.content blockquote {
   font-style: italic;

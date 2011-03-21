@@ -56,7 +56,7 @@ ul>li {
 #header {
 	font-family:@font_header;
 	width: 600px;
-	height:600px;
+	height:400px;
 	background-color:@color_alt2;
 	color:@color_bg;
 	text-align:center;
@@ -65,7 +65,7 @@ ul>li {
 	.center_margin;
 	
 	h1#title {
-		top:4.1em;
+		top:2.5em;
 		color:@color_bg;
 		position:absolute;
 		width: 600px;
@@ -88,7 +88,7 @@ ul>li {
 
 	#nav {
 		position:absolute;
-		top:15em;
+		top:10.2em;
 		font-size:16pt;
 		letter-spacing: 0.135em;
 		width:600px;
@@ -157,33 +157,35 @@ div.post {
 	
 	
 	
-	ul.categories {
-		display:none;
-		margin:0;
-		padding:0;
-		list-type:none;
-		float:left;
-		
-		 >li.category {
-			font-style:italic;
-			margin:0;
-			padding:0;
-			display:inline;
-			margin-right: 1em;
-
-			:after { content:', ' }
-			
-			:last-of-type:after { content:''}
-		}
-	}
 
 
 		
 		
 
 	div.post-meta {
+		
 		overflow: auto;
-		div.date { font-style:italic; display:inline-block; float:left }
+		border-top: 1px solid @color_border;
+		font-size: .9em;
+		padding-top: 1em;
+		
+		div.date { font-style:italic; display:inline-block; float:right }
+		
+		ul.categories {
+			margin:0;
+			padding:0;
+			list-type:none;
+			float:left;
+
+			 >li.category {
+				font-style:italic;
+				margin:0;
+				padding:0;
+				display:inline;
+			}
+			>li.category:after { content:', ' }
+			>li.category:last-of-type:after { content:''}
+		}
 	}
 
 	div.content {
