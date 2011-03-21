@@ -4,17 +4,16 @@ title: Categories
 ---
 <h2>{{page.title}}</h2>
 <ul>
-	
-	
-{% assign sorted_categories = site.categories|sort %}
-{% for category in sorted_categories %}
+
+
+{% for category in site.categories %}
   <li><a href="#{{ category | first }}">{{ category | first }}</a></li>
 {% endfor %}
 </ul>
 
 <h2>Articles by Category:</h2>
 <ul>
-{% for category in sorted_categories %}
+{% for category in site.categories %}
   <li><a name="{{ category | first }}">{{ category | first }}</a>
     <ul>
     {% for posts in category %}
