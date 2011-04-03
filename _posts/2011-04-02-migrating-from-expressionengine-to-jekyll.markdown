@@ -2,7 +2,7 @@
 layout: post
 title: "Migrating from ExpressionEngine to Jekyll"
 author: funkatron
-published: false
+published: true
 categories:
 - ExpressionEngine
 - Jekyll
@@ -12,12 +12,13 @@ date: 2011-04-02
 
 ---
 
+[![Migration](http://farm2.static.flickr.com/1075/864841518_b67e0849d9_z.jpg)](http://www.flickr.com/photos/noodlefish/864841518/ "Migration by Noodlefish")
 
 I've run Funkatron.com on [ExpressionEngine](http://expressionengine.com) for a long time. It's a strong, flexible, powerful CMS that I recommend to many folks who need to build content-driven sites, especially those where the site will be administered by non-programmers. It's a very solid choice for consultants and freelancers, who can build the relatively small license cost into their fees -- and probably save the client in the long run.
 
-However, over the years, I've found it to be overkill for a blog site. If you're only maintaining one or two types of content (like blog posts and links), the overhead involved in maintaining the system becomes unweildly. I've long put off upgrading to EE2 because I dreaded having to convert my templates, find replacements for incompatible addons, and finding all the little bugs that seem to pop up in a major version upgrade.
+However, over the years, I've found ExpressionEngine to be overkill for a blog site. If you're only maintaining one or two types of content (like blog posts and links), the overhead involved in maintaining the system becomes unwieldy. I've long put off upgrading to EE2 because I dreaded having to convert my templates, find replacements for incompatible addons, and finding all the little bugs that seem to pop up in a major version upgrade.
 
-[Jekyll](http://jekyllrb.com/) is quite the opposite of a system like ExpressionEngine. It's entirely command-line driven, so you *have* to be comfortable with the shell and some scripting. It's really aimed at web programmers who want a simple tool to publish a blog, without worrying about all the overhead of databases, web-based adminstration, and a monster code base. You have very fine-grained control over how everything works.
+[Jekyll](http://jekyllrb.com/) is quite the opposite of a system like ExpressionEngine. It's entirely command-line driven, so you *have* to be comfortable with the shell and some scripting. It's really aimed at web programmers who want a simple tool to publish a blog, without worrying about all the overhead of databases, web-based administration, and a monster code base. You have very fine-grained control over how everything works.
 
 The simplicity of Jekyll has been appealing to me since I encountered it when messing around with the [GitHub Pages](http://pages.github.com/) feature. I never ended up doing a lot with GitHub Pages, but the idea of a simple, script-driven blog generator has continued to be very appealing to me.
 
@@ -29,16 +30,16 @@ This post won't go into every detail about running a Jekyll site. You should def
 
 The biggest challenge was sorting out how to get the data out of ExpressionEngine. Each entry in my blog "weblog" (an EE term for a collection of a content type) consisted of these fields:
 
-  - title
-  - date
-  - author
-  - categories
-  - slug
-  - summary - *rarely used*
-  - post body
-  - post body format - *a formatter that is applied on output, so you can write posts in textile of markdown and they come out as HTML*
-  - extended text - *rarely used*
-  - keywords/tags - *comma-separated*
+- title
+- date
+- author
+- categories
+- slug
+- summary - *rarely used*
+- post body
+- post body format - *a formatter that is applied on output, so you can write posts in textile of markdown and they come out as HTML*
+- extended text - *rarely used*
+- keywords/tags - *comma-separated*
 
 From that, I needed to get my posts into flat files, consisting of [some Yaml at the top](https://github.com/mojombo/jekyll/wiki/yaml-front-matter), and the post content underneath.
 
@@ -50,19 +51,17 @@ I basically followed the approach [Robin Fay suggests in her blog](http://conten
 
 1. I made a template group in ExpressionEngine called `exp`
 2. I created a template in the `exp` group called `comments`.
-  <script src="https://gist.github.com/874509.js?file=comments.html"></script>
+  <script src="https://gist.github.com/874509.js?file=comments.html"> </script>
   Yes, this will output the comments as HTML. More on that later.
-  
 3. I created a template in the `exp` group called `posts_jekyll`.
-  <script src="https://gist.github.com/874507.js?file=export_jekyll.html"></script>
-  Here I am generating the Yaml "front matter" to include some required stuff (like `layout` and `title`) and also include some custom properties, like `author` and `old_entry_id`. I'm also spitting out `category` in the Yaml-prescribed way to do an array of items. Some of these custom properties I didn't end up needing, but I think it's much better to have more data than less, especially when I wasn't 100% sure of what I'd need.    
-  
+  <script src="https://gist.github.com/874507.js?file=export_jekyll.html"> </script>
+  Here I am generating the Yaml "front matter" to include some required stuff (like `layout` and `title`) and also include some custom properties, like `author` and `old_entry_id`. I'm also spitting out `category` in the Yaml-prescribed way to do an array of items. Some of these custom properties I didn't end up needing, but I think it's much better to have more data than less, especially when I wasn't 100% sure of what I'd need.<p></p>
   I'm also generating `body` and `extended` after the Yaml, without any wrapping HTML – these properties will be output post-formatting filters, so they'll already be HTML. Finally, if the post has comments, I embed that `comments` template we created to spit them out as HTML.
 4. Finally, I pulled the data down with curl and into a local file    
 
     <pre><code>curl http://funkatron.com/exp/posts_jekyll > ee_posts.txt</code></pre>
 
-I had to iterate and refactor this export dump a lot, because I had to make very sure I had all the data I needed, and I had a lot of posts: nearly 1000. Depening on your own ExpressionEngine setup, you may have more or less to worry about. Be prepared to experiment.
+I iterated and refactored this export dump a lot, because I had to be sure it contained all the data I needed. I was dealing with nearly 1000 posts, so fixing them afterwards if I had missed something would have been a huge pain. Depending on your own ExpressionEngine setup, you may have more or less to worry about. Be prepared to experiment.
 
 ### How to handle comments ###
 
@@ -79,23 +78,23 @@ Looking back, I probably could have delineated the comments section better. I'm 
 
 So I've generated one big text file with all my post data. Jekyll wants each post in its own file, so I needed to sort out how to split the dump file. Anticipating this, I included a bit of HTML at the end of each post to mark the end:
 
-    `<!-- end of post -->`
+    <!-- end of post -->
 
 Jekyll is also rather picky about how the files are names, so I needed to parse the Yaml to generate the filename.
 
-I looked into several bash scripting approaches, but I had trouble adapting them to what I needed. In the end I went with what I know, and wrote a small1 PHP shell script to split the files as I needed:
+I looked into several bash scripting approaches, but I had trouble adapting them to what I needed. In the end I went with what I know, and wrote a small PHP shell script to split the files as I needed:
 
-<script src="https://gist.github.com/874502.js?file=split_ee_jekyll_output.php"></script>
+<script src="https://gist.github.com/874502.js?file=split_ee_jekyll_output.php"> </script>
 
 This script pulls in the contents of the file, splits it based on my post delimiter, and then iterates over each post in the `$split` array, pulling out the Yaml data and using `preg_match()` to grab the `date` and `url_title` properties to build the filename. It then writes out the post file with that filename.
 
-Now I had a bunch of jekyll-format post files. I put these in the `_posts` directory.
+Now I had a bunch of Jekyll-format post files. I put these in the `_posts` directory.
 
 ### Site layouts ###
 
 Probably the hardest bit of this process was figuring out the templating system. There aren't any examples or best practices described in the Jekyll docs, so I ended up futzing around a lot. What helped the most was finding a couple folks who put [their entire blog up on GitHub](https://github.com/al3x/al3x.github.com/), so I could see exactly how they did it and <strike>rip them off</strike> borrow their approaches.
 
-Things made a lot more sense when I realized that the templates themselves can have Yaml at the top, and they can use other templates as a "parent." So in my setup, I have a base layout called [`default.html`](https://github.com/funkatron/funkatron.com/blob/master/_layouts/default.html), and a [`post.html`](https://github.com/funkatron/funkatron.com/blob/master/_layouts/post.html) which uses `default.html` as its parent. When `post.html` is parsed, its content is injected into the `default.html` template in the [`{{content}}` placeholder](https://github.com/funkatron/funkatron.com/blob/master/_layouts/default.html#L61). I also have a `page.html` layout template for non-post, informational pages (like "About"). So in my `_posts` files, I put `layout: post` in the Yaml, and it will use the `post.html` layout. In my other pages, I use `layout: page`.
+Things made a lot more sense when I realized that the templates themselves can have Yaml at the top, and they can use other templates as a "parent." So in my setup, I have a base layout called [`default.html`](https://github.com/funkatron/funkatron.com/blob/master/_layouts/default.html), and a [`post.html`](https://github.com/funkatron/funkatron.com/blob/master/_layouts/post.html) which uses `default.html` as its parent. When `post.html` is parsed, its content is injected into the `default.html` template in the [`{{content}} placeholder`](https://github.com/funkatron/funkatron.com/blob/master/_layouts/default.html#L61). I also have a `page.html` layout template for non-post, informational pages (like "About"). So in my `_posts` files, I put `layout: post` in the Yaml, and it will use the `post.html` layout. In my other pages, I use `layout: page`.
 
 Getting my site looking the way I wanted was a bit of a challenge, because Jekyll will regenerate the entire site every time you republish. It didn't help that I am using [Less](http://lesscss.org/), which also requires a conversion step. If I make one change to a template, it will have to process nearly 1000 posts. Making changes was a bit of a chore because of this. Two things helped here:
 
@@ -108,18 +107,18 @@ Getting my site looking the way I wanted was a bit of a challenge, because Jekyl
 
 Depending on your previous setup, you may need to redirect old URLs to the new ones on your Jekyll site. I do this with an `.htaccess` file on my server (not maintained in Jekyll, although it could be). It handles more than just stuff for Jekyll, but here's the pertinent bits for redirecting:
 
-<script src="https://gist.github.com/899813.js?file=.htaccess"></script>
+<script src="https://gist.github.com/899813.js?file=.htaccess"> </script>
 
 
 ### Automating build tasks and deployment ###
 
-In my Jekyll directory I have a `_bin/` folder that contains a few scripts. The most important one is `rebuild.sh`, which is what I run when I have finished a post and I'm ready to make it live. The file contains some private info so it's not in [my github repo](https://github.com/funkatron/funkatron.com), but I included it here with the juicy bits redacted:
+In my Jekyll directory I have a `_bin/` folder that contains a few scripts. The most important one is `rebuild.sh`, which is what I run when I have finished a post and I'm ready to make it live. The file contains some private info so it's not in [my GitHub repo](https://github.com/funkatron/funkatron.com), but I included it here with the juicy bits redacted:
 
-<script src="https://gist.github.com/899793.js?file=rebuild.sh"></script>
+<script src="https://gist.github.com/899793.js?file=rebuild.sh"> </script>
 
 In order, this script:
 
-1. `cd`s to my local jekyll site directory
+1. `cd`s to my local Jekyll site directory
 2. runs a short PHP script to generate a page from an RSS feed
 3. generates the site.css file from the .less file
 4. runs `jekyll`, which regenerates the site in the `_site` directory
@@ -134,4 +133,4 @@ Another minor issue is that the RSS feed that is used to generate [`items.html`]
 
 I consider the move from ExpressionEngine to Jekyll for my blog a pretty big success. It removed a lot of unnecessary overhead and maintenance tasks. It also kinda reminded me that publishing content doesn't have to be a complex process. You don't have to make an *application* just to publish stuff online. You just need some HTML pages, and maybe a few scripts to make the tedious stuff a bit easier.
 
-  - [GitHub Repo for Funkatron.com](https://github.com/funkatron/funkatron.com)
+- [GitHub Repo for Funkatron.com](https://github.com/funkatron/funkatron.com)
