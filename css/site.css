@@ -135,6 +135,15 @@ div.post {
 div.post h1 {
   line-height: 1.1em;
 }
+div.post code {
+  font-size: 110%;
+  border: 1px solid #CCCCCC;
+  background-color: #EEEEEE;
+  padding: 1px;
+}
+div.post .gist {
+  font-size: .8em;
+}
 div.post div.content > p > a > img {
   display: block;
   border: 2px solid #333333;
