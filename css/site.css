@@ -247,3 +247,15 @@ span.rss-icon {
   background-repeat: no-repeat;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAI/AAACPwBDcB+qAAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNAay06AAAADbSURBVCiRjdA/S8JxEAbwjyUFLUUoQY2Ck9iSW64RjjW69xLMBt9LNbi1BRXRYO8gaBOaWhKb+gOBZYP3oy8S1sHB957v89zdc/NYxha+8OIfsY0hntDDITZmCWq4xwjjyA90/pq0iF1cJcILLEwTKzhBC6XA9vEaostpwU7ScYzTwDfxHthRKiiiiW4iuou/vcTT2m8+qngM0nFgvajbKfEgfBTCU3axdTTifZuRa8kqWdezqFvI4xMDFOfwgGs84yYE53hDOab1kfNzRUuxfxarJterJFvUsfINaWE5lmBSXrkAAAAASUVORK5CYII=);
 }
+div.footnotes {
+  font-size: 85%;
+  line-height: 1.4em;
+}
+div.footnotes hr {
+  height: 1px;
+  border-width: 1px 0 0 0;
+  border-top: 1px solid #ccc;
+}
+div.footnotes li > p {
+  margin-right: 2em;
+}
