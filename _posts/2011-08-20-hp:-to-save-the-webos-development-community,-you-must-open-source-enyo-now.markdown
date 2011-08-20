@@ -7,7 +7,7 @@ categories:
 - Spaz
 - webOS
 - javascript
-- enyo
+- Enyo
 date: 2011-08-20
 
 ---
@@ -40,7 +40,7 @@ To be clear: the longer you wait, the more you lose. 6 weeks from now, this is a
 
 _photo by [swimparallel](http://www.flickr.com/photos/swimparallel)_
 
-[^1]: much of this is because of the incredibly poor wording of the PR coming from HP, but that's another story
+[^1]: Enyo runs great on any Webkit platform. We make builds of Spaz HD as a desktop app using Titanium Desktop, and I use it on a daily basis – much more than I use the TouchPad builds. We've also done experimental builds and had success packaging Spaz HD for Android using PhoneGap
 
-[^2]: Enyo runs great on any Webkit platform. We make builds of Spaz HD as a desktop app using Titanium Desktop, and I use it on a daily basis – much more than I use the TouchPad builds. We've also done experimental builds and had success packaging Spaz HD for Android using PhoneGap
+[^2]: much of this is because of the incredibly poor wording of the PR coming from HP, but that's another story
 
