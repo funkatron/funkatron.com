@@ -153,6 +153,11 @@ div.post code {
   background-color: #EEEEEE;
   padding: 1px;
 }
+div.post pre code {
+  padding: 10px;
+  display: block;
+  overflow: scroll;
+}
 div.post .gist {
   font-size: .8em;
 }
