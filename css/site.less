@@ -2,10 +2,11 @@
 @color_alt:#999999;
 @color_alt2:#000000;
 @color_alt3:#E0E0E0;
-@color_fg:#666666;
-@color_header:#333333;
+@color_fg:#777777;
+@color_header:#666666;
 @color_link:#990000;
-@color_border:#CCCCCC;
+@color_border:#E0E0E0;
+@color_border_bq:#CCCCCC;
 
 @font_header: "Gill Sans", "Gill Sans MT", "Lucida Sans Unicode", "Lucida Sans", "Helvetica", Arial, sans-serif;
 @font_normal: "Palatino", "Palatino Linotype", Georgia, Times, Serif;
@@ -16,7 +17,7 @@
 }
 
 BODY {
-	background-color:@color_alt;
+	background-color:@color_bg;
 	color:@color_fg;
 	font-family:@font_normal;
 	font-size:1em;
@@ -40,6 +41,15 @@ a:hover { text-decoration:underline }
 ul>li {
 	list-style:square;
 	margin-bottom:.5em;
+}
+
+hr {
+	width: 80%;
+    color: transparent;
+    border: none;
+    border-top: 1px solid @color_border;
+    margin-top:1.5em;
+    margin-bottom:1.5em;
 }
 
 #container {
@@ -141,6 +151,11 @@ ul>li {
 
 div.post {
 	margin-top:2em;
+	padding-top: 2em;
+	
+	&:first-of-type {
+		padding-top: 0;
+	}
 
 	h1 {
 		line-height: 1.1em;
@@ -148,7 +163,7 @@ div.post {
 
 	code {
 		font-size: 110%;
-		border: 1px solid #CCCCCC;
+		border: 1px solid @color_border_bq;
 		background-color: #EEEEEE;
 		padding: 1px;
 	}
@@ -160,7 +175,7 @@ div.post {
 	/* leading image */
 	div.content>p>a>img {
 		display:block;
-		border: 2px solid @color_header;
+		border: 0px solid @color_header;
 		margin-left: auto;
 		margin-right: auto;
 		max-width:600px;
@@ -205,7 +220,7 @@ div.post {
 			background-color:@color_alt3;
 			margin:0em;
 			padding:1em;
-			border-left:.2em solid @color_border;
+			border-left:.2em solid @color_border_bq;
 
 			p:first {
 				margin-top:0px;
@@ -260,8 +275,7 @@ div.post {
 	font-size: .8em;
 	background-color: @color_alt3;
 	padding: 1em;
-	margin: -1.6em;
-	margin-top:1em;
+	margin-top:2em;
 	overflow:auto;
 
 	#page-meta {
@@ -302,7 +316,7 @@ div.footnotes {
 	hr {
 	    height:1px;
 	    border-width:1px 0 0 0;
-	    border-top: 1px solid #ccc;
+	    border-top: 1px solid @color_border;
 	}
 
 	li>p {
