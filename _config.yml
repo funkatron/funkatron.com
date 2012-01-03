@@ -10,7 +10,7 @@ plugins:     ./_plugins
 future:      false
 lsi:         false
 pygments:    false
-markdown:    maruku
+markdown:    kramdown
 permalink:   /posts/:title.html
 
 maruku:
