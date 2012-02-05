@@ -150,16 +150,24 @@ div.post h1 {
 div.post code {
   font-size: 110%;
   border: 1px solid #cccccc;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   padding: 1px;
 }
 div.post pre code {
-  padding: 10px;
+  padding: 1em;
   display: block;
   overflow: scroll;
 }
 div.post .gist {
   font-size: .8em;
+}
+div.post .highlight {
+  border: 1px solid #cccccc;
+  background-color: #eeeeee;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 div.post div.content > p > a > img {
   display: block;

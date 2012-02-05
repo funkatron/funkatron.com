@@ -35,8 +35,12 @@ Notable things I've created, or helped create, include:
 
  * **Spaz**: an open source Twitter, Identi.ca and StatusNet client for the Desktop and HP webOS. Spaz is entirely written in JavaScript and HTML.   
    [More &#x2192;](http://getspaz.com)
+ * **Resty.php**: A simple PHP library for doing RESTful HTTP stuff. Does not require the curl extension    
+   [More &#x2192;](https://github.com/fictivekin/resty.php)
+ * **FUnit**: A simple test suite for PHP 5.3+, partially inspired by QUnit   
+   [More &#x2192;](https://github.com/funkatron/FUnit)
  * **Inspekt**: A comprehensive input filtering and validation library for PHP4 and PHP5   
-   [More &#x2192;](http://funkatron.github.com/inspekt/)
+   [More &#x2192;](http://github.com/funkatron/inspekt/)
  * **PHPSecInfo**: PHP Environment Security Auditing Tool.   
    [More &#x2192;](http://phpsec.org/projects/phpsecinfo/)
 

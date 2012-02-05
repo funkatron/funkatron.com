@@ -7,9 +7,12 @@
 @color_link:#990000;
 @color_border:#E0E0E0;
 @color_border_bq:#CCCCCC;
+@color_box_bg:#EEEEEE;
 
 @font_header: "Gill Sans", "Gill Sans MT", "Lucida Sans Unicode", "Lucida Sans", "Helvetica", Arial, sans-serif;
 @font_normal: "Palatino", "Palatino Linotype", Georgia, Times, Serif;
+
+@padding_box:1em;
 
 .center_margin {
 	margin-left:auto;
@@ -164,13 +167,13 @@ div.post {
 	code {
 		font-size: 110%;
 		border: 1px solid @color_border_bq;
-		background-color: #EEEEEE;
+		background-color: @color_box_bg;
 		padding: 1px;
 	}
 
 	pre {
 		code {
-				padding: 10px;
+				padding: @padding_box;
 				display:block;
 				overflow:scroll;
 		}
@@ -178,6 +181,15 @@ div.post {
 
 	.gist {
 		font-size:.8em;
+	}
+
+	.highlight {
+		border: 1px solid @color_border_bq;
+		background-color: @color_box_bg;
+		padding-left: @padding_box;
+		padding-right: @padding_box;
+		margin-top: @padding_box;
+		margin-bottom: @padding_box;
 	}
 
 	/* leading image */

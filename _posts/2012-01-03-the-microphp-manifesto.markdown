@@ -9,6 +9,21 @@ date: 2012-01-03
 
 ---
 
+<div class="highlight" markdown="1">
+**Update 2012-01-06:**
+
+* The manifesto itself and the collection is now at [MicroPHP.org](http://microphp.org)
+* [Here's a Czech translation](http://zdrojak.root.cz/clanky/manifest-miniaturniho-php/)
+* [The MicroPHP Fallacy](http://blog.ircmaxell.com/2012/01/microphp-fallacy.html)
+* [O Manifesto Micro Php E A Macro Discussão.](http://phprocks.com.br/2012/01/05/o-manifesto-micro-php-e-a-macro-discussao/)
+* [Meus Dois Centavos Sobre O Microphp Manifesto](http://eltonminetto.net/2012/01/05/meus-dois-centavos-sobre-o-microphp-manifesto/)
+* [The MicroPHP Manifesto – What People Are Overlooking](http://ctankersley.com/2012/01/04/the-microphp-manifesto-what-people-are-overlooking/)
+
+**Update 2012-01-04:**
+
+* I've started [a collection of lightweight PHP libraries and frameworks](https://gimmebar.com/loves/funkatron/collection/micro-php) on Gimme Bar [[json](https://gimmebar.com/api/v0/public/assets/funkatron/micro-php.json)] [[rss](https://gimmebar.com/public/feed/user/funkatron/collection/micro-php)]. If you have suggestions, [let me know](/contact.html)!
+</div>
+
 The standard line about the history of Punk is that it was a reaction to the excesses of modern rock, particularly progressive rock of the time. The [reality](http://www.amazon.com/Please-Kill-Me-Uncensored-History/dp/0140266909) is undoubtedly more complex, but I suspect there is some truth to that. Rock n roll did seem to be the realm of Golden Gods in the late 60s and 70s, inaccessible to average folk. The contrast between bands like Rush and Black Flag –– both supposedly playing "rock" –– was extreme.
 
 For fun, let's take a look at Rush drummer Neil Peart's drum kit:
