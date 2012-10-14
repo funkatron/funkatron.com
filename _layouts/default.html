@@ -9,35 +9,49 @@
 	<link rel="alternate" type="application/rss+xml" title="Funkatron / Items of Interest / RSS" href="http://funkatron.com/feeds/itemsofinterest" />
 	
 	<link rel="openid.server"
-            href="http://www.myopenid.com/server" />
-      <link rel="openid.delegate"
-            href="http://funkatron.myopenid.com/" />
-      <link rel="openid2.local_id"
-            href="http://funkatron.myopenid.com" />
-      <link rel="openid2.provider"
-            href="http://www.myopenid.com/server" />
-      <meta http-equiv="X-XRDS-Location"
-            content="http://www.myopenid.com/xrds?username=funkatron.myopenid.com" />
+			href="http://www.myopenid.com/server" />
+	<link rel="openid.delegate"
+			href="http://funkatron.myopenid.com/" />
+	<link rel="openid2.local_id"
+			href="http://funkatron.myopenid.com" />
+	<link rel="openid2.provider"
+			href="http://www.myopenid.com/server" />
+	<meta http-equiv="X-XRDS-Location"
+			content="http://www.myopenid.com/xrds?username=funkatron.myopenid.com" />
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	
 	<script src="../js/jqwidont.js"></script>
+	<script src="../js/jquery.fittext.js"></script>
 	<script src="../js/site.js"></script>
+
+	<link rel="stylesheet/less" type="text/css" href="../css/site.less">
+	<script src="../js/less-1.3.0.min.js" type="text/javascript"></script>
 		
-	<link rel="stylesheet" href="../css/site.css">
-	
-	
 	<script type="text/javascript">
 
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-2032506-1']);
-	  _gaq.push(['_trackPageview']);
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-2032506-1']);
+	_gaq.push(['_trackPageview']);
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+	function fittext() {
+		$("#title").fitText(0.32);
+	}
+
+
+	$(document).ready(function() {
+		$(window).resize(function() {
+			fittext();
+		})
+		fittext();
+	})
+
 
 	</script>
 	

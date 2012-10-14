@@ -14,7 +14,8 @@ He served as web lead and security researcher at The Center for
 Education and Research in Information Assurance and Security (CERIAS)
 at Purdue University for 9 years. More recently, he has been helping
 startup teams build exciting e-commerce, social sharing, and mapping
-systems.
+systems. He's a proud member of the [FictiveKin](http://fictivekin.com)
+team, working on [Gimme Bar](https://gimmebar.com).
 
 Ed spends much of his free time creating and working on open source
 projects such as Spaz, a long-running, award winning
