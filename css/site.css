@@ -93,7 +93,7 @@ hr {
 }
 #header #nav {
   font-size: 21px;
-  letter-spacing: 0.135em;
+  letter-spacing: 0.2em;
 }
 #header #nav-items {
   white-space: nowrap;
@@ -106,9 +106,9 @@ hr {
   margin: 0;
   list-style: none;
   padding: 0;
-  padding-right: 127px;
   display: inline-block;
   text-align: left;
+  width: 166px;
 }
 #header #nav-items li a {
   color: #777777;
