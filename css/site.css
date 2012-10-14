@@ -275,3 +275,6 @@ div.footnotes hr {
 div.footnotes li > p {
   margin-right: 2em;
 }
+#comments {
+  margin: 1.5em 0;
+}
