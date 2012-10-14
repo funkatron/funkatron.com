@@ -15,10 +15,10 @@ Education and Research in Information Assurance and Security (CERIAS)
 at Purdue University for 9 years. More recently, he has been helping
 startup teams build exciting e-commerce, social sharing, and mapping
 systems. He's a proud member of the [FictiveKin](http://fictivekin.com)
-team, working on [Gimme Bar](https://gimmebar.com).
+team, working on [Gimme Bar](https://gimmebar.com) and other projects.
 
 Ed spends much of his free time creating and working on open source
-projects such as Spaz, a long-running, award winning
+projects. He created Spaz, a long-running, award winning
 microblogging client. Built on open technologies like JavaScript,
 HTML5 and CSS, Spaz continues to be the choice of thousands of users
 who value transparency, flexibility, and strong UX. Ed also created

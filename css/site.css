@@ -31,6 +31,7 @@ h1 {
 }
 h2 {
   font-size: 2em;
+  margin-bottom: 0.2em;
 }
 h3 {
   font-size: 1.5em;
@@ -70,27 +71,19 @@ hr {
 #header {
   font-family: "LeagueGothicRegular", "Gill Sans", "Gill Sans MT", "Lucida Sans Unicode", "Lucida Sans", "Helvetica", Arial, sans-serif;
   width: 600px;
-  height: 400px;
-  background-color: #000000;
-  color: #ffffff;
-  text-align: center;
-  position: relative;
+  color: #777777;
   padding: 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 100px;
 }
 #header h1#title {
-  top: 2.5em;
-  color: #ffffff;
-  position: absolute;
-  width: 600px;
-  text-align: center;
-  font-size: 72pt;
+  color: #777777;
+  font-size: 120px;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: .1em;
+  margin-left: -7px;
   padding: 0;
-  letter-spacing: .2em;
+  width: 100%;
+  line-height: 145px;
 }
 #header h1#title a:link {
   color: #99000 !important;
@@ -99,50 +92,28 @@ hr {
   text-decoration: none !important;
 }
 #header #nav {
-  position: absolute;
-  top: 10.2em;
-  font-size: 16pt;
+  font-size: 21px;
   letter-spacing: 0.135em;
-  width: 600px;
-  text-align: center;
-  line-height: 1em;
 }
 #header #nav-items {
-  width: 21.2em;
   white-space: nowrap;
-  margin-left: auto;
-  margin-right: auto;
   text-align: left;
   list-style: none;
   padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  position: relative;
+  margin: 0;
 }
 #header #nav-items li {
   margin: 0;
   list-style: none;
   padding: 0;
+  padding-right: 127px;
   display: inline-block;
-  position: absolute;
   text-align: left;
 }
 #header #nav-items li a {
-  color: #ffffff;
+  color: #777777;
   text-decoration: none;
   display: inline-block;
-}
-#header #nav-items .word1 {
-  left: 0em;
-}
-#header #nav-items .word2 {
-  left: 5.4em;
-}
-#header #nav-items .word3 {
-  right: 7em;
-}
-#header #nav-items .word4 {
-  right: 0em;
 }
 #page-content {
   line-height: 1.5em;
@@ -164,6 +135,7 @@ div.post:first-of-type {
 }
 div.post h1 {
   line-height: 1.1em;
+  margin-bottom: 0.2em;
 }
 div.post code {
   font-size: 110%;
