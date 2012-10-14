@@ -6,6 +6,7 @@ published: true
 categories:
 - Design
 date: 2012-10-13
+comments: true
 
 ---
 
