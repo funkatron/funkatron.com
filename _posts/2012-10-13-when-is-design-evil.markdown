@@ -48,7 +48,7 @@ Both of these posters want to influence and inspire in similar ways. Most of us 
 
 A similar, but more extreme, approach is used in recent anti-smoking and methamphetamine use campaigns:
 
-[!["Be Careful Not To Cut Your Stoma"](../media/th_CDC-Anti-Smoking-Campaign_2.png)](../media/CDC-Anti-Smoking-Campaign_2.png)
+[!["Be Careful Not To Cut Your Stoma"](../media/th_CDC-Anti-Smoking-Campaign_2.png)](../media/CDC-Anti-Smoking-Campaign_2.jpeg)
 
 [!["But On Meth It Is"](../media/th_2029.jpg)](../media/2029.jpeg)
 
