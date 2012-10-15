@@ -10,7 +10,7 @@ comments: true
 
 ---
 
-[!["Evil Pandas by Bill Dickinson"](http://farm8.staticflickr.com/7067/6902110466_22cdd93c8a_z.jpg)](http://www.flickr.com/photos/skynoir/6902110466/)
+[![Evil Pandas by Bill Dickinson](http://farm8.staticflickr.com/7067/6902110466_22cdd93c8a_z.jpg)](http://www.flickr.com/photos/skynoir/6902110466/ "Evil Pandas by Bill Dickinson")
 
 [Ben Pieratt](http://pieratt.com/) gave a compelling talk at Brooklyn Beta this year about his experiences founding, and then leaving, [Svpply](http://svpply.com/). He bravely described both his successes and failures as a founder, and it was one of the highlights of the conference.
 
