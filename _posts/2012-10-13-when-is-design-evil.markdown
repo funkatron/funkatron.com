@@ -30,7 +30,7 @@ To this one from UglyBill:
 
 [!["UglyBill splash page"](../media/th_uglybill_splash.png)](../media/uglybill_splash.png)
 
-I find Hover not only more aesthetically pleasing, but both easier to use and *more trustworthy* because of the level of effort put into the design.[^1] Of course, Hover at one time [stored passwords as plain text](), so it's not as if good design itself indicates good stewardship.
+I find Hover not only more aesthetically pleasing, but both easier to use and *more trustworthy* because of the level of effort put into the design.[^1] Of course, Hover at one time [stored passwords as plain text](http://peterjs.com/blog/2011/7/14/final-take-on-hovercom-storing-passwords-as-plaintext-and-wh.html), so it's not as if good design itself indicates good stewardship.
 
 [^1]: I actually use [Gandi.net](http://gandi.net) for domain registrations. I find their web site a bit harder to use, but their "no bullshit" slogan appeals to me, and they never try to up-sell me on anything. Consider this a recommendation.
 
