@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width" />
+
 	<title>Funkatron / {{page.title}}</title>
 
 	<link rel="alternate" type="application/atom+xml" title="Funkatron / Posts / ATOM" href="http://funkatron.com/posts.xml" />
@@ -21,13 +27,29 @@
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
+	<!-- Included JS Files (Compressed) -->
+	<script src="../js/foundation.min.js"></script>
+
+	<!-- Initialize JS Plugins -->
+	<script src="../js/app.js"></script>
+
 	<script src="../js/jqwidont.js"></script>
 	<script src="../js/jquery.fittext.js"></script>
 	<script src="../js/site.js"></script>
 
 	<!-- <link rel="stylesheet/less" type="text/css" href="../css/site.less"> -->
 	<!-- <script src="../js/less-1.3.0.min.js" type="text/javascript"></script> -->
-	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" href="../css/foundation.css">
+	<link rel="stylesheet" href="../css/app.css">
+
+	<script src="../js/modernizr.foundation.js"></script>
+
+	<!-- <link rel="stylesheet" type="text/css" href="../css/site.css"> -->
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 
 	<script type="text/javascript">
 
@@ -59,29 +81,60 @@
 </head>
 <body id="{{ page.id }}">
 
-	<div id="container">
+	<div id="header-container" class="row">
 
-		<div id="header">
-			<h1 id="title"><a href="/index.html">FUNKATRON</a></h1>
-			<div id="nav">
-				<ul id="nav-items">
-					<li class="word1"><a href="/posts.html">POSTS</a></li>
-					<li class="word2"><a href="/items.html">ITEMS</a></li>
-					<li class="word3"><a href="/about.html">ABOUT</a></li>
-					<li class="word4"><a href="/contact.html">CONTACT</a></li>
-				</ul>
+		<div class="two columns"></div>
+
+		<div id="header" class="eight columns">
+
+			<div class="row">
+				<div class="twelve columns">
+					<h1 id="title"><a href="/index.html">FUNKATRON</a></h1>
+					<div id="nav" class="row">
+						<div class="three columns"><a href="/posts.html">POSTS</a></div>
+						<div class="three columns"><a href="/items.html">ITEMS</a></div>
+						<div class="three columns"><a href="/about.html">ABOUT</a></div>
+						<div class="three columns"><a href="/contact.html">CONTACT</a></div>
+					</div>
+				</div>
 			</div>
+
 		</div>
 
-		<div id="page-content">{{content}}</div>
+		<div class="two columns"></div>
 
-		<div id="page-footer">
-			<div id="page-meta">Page generated: {{ site.time | date_to_string }}</div>
-			<ul id="feeds">
-				<li><a href="/feeds/itemsofinterest"><span class="rss-icon"></span> Items of Interest</a></li>
-				<li><a href="/posts.xml"><span class="rss-icon"></span> Posts</a></li>
-			</ul>
-		</div>
 	</div>
+
+	<div id="content-container" class="row">
+
+		<div class="two columns"></div>
+
+		<div id="page-content" class="eight columns">{{content}}</div>
+
+		<div class="two columns"></div>
+
+	</div>
+
+
+	<div id="footer-container" class="row">
+
+		<div class="two columns"></div>
+
+		<div id="page-footer" class="eight columns">
+
+			<div class="row">
+				<div id="page-meta" class="six columns">Page generated: {{ site.time | date_to_string }}</div>
+				<div id="feeds" class="six columns">
+					<a href="/feeds/itemsofinterest"><span class="rss-icon"></span> Items of Interest</a> &nbsp;
+					<a href="/posts.xml"><span class="rss-icon"></span> Posts</a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="two columns"></div>
+
+	</div>
+
 </body>
 </html>
