@@ -29,7 +29,7 @@ h1 {
   font-size: 3em;
 }
 h2 {
-  font-size: 2em;
+  font-size: 2.5em;
   margin-bottom: 0.2em;
 }
 h3 {
@@ -238,3 +238,17 @@ div.footnotes li > p {
 #comments {
   margin: 1.5em 0;
 }
+#influads_block {
+  text-align: center;
+}
+.influads_text a, .influads_text a:link, .influads_text a:visited  {
+  color:black;
+}
+.influads_text, .influads_powered_div {
+  font-size: .7em;
+  line-height: 1.6em;
+}
+a.influads_powered_link {
+  color:#666666;
+}
+

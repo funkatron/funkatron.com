@@ -91,10 +91,10 @@
 				<div class="twelve columns">
 					<h1 id="title"><a href="/index.html">FUNKATRON</a></h1>
 					<div id="nav" class="row">
-						<div class="three columns"><a href="/posts.html">POSTS</a></div>
-						<div class="three columns"><a href="/items.html">ITEMS</a></div>
-						<div class="three columns"><a href="/about.html">ABOUT</a></div>
-						<div class="three columns"><a href="/contact.html">CONTACT</a></div>
+						<div class="three mobile-two columns"><a href="/posts.html">POSTS</a></div>
+						<div class="three mobile-two columns"><a href="/items.html">ITEMS</a></div>
+						<div class="three mobile-two columns"><a href="/about.html">ABOUT</a></div>
+						<div class="three mobile-two columns"><a href="/contact.html">CONTACT</a></div>
 					</div>
 				</div>
 			</div>
@@ -111,7 +111,9 @@
 
 		<div id="page-content" class="eight columns">{{content}}</div>
 
-		<div class="two columns"></div>
+		<div class="two columns panel">
+			<div id='influads_block' class='influads_block'></div><script type='text/javascript'>(function(){var acc='acc_1072d793_pub';var st='nocss';var or='130';var e=document.getElementsByTagName('script')[0];var d=document.createElement('script');d.src=('https:' == document.location.protocol ?'https://' : 'http://') +'engine.influads.com/show/'+or+'/'+st+'/'+acc;d.type='text/javascript';d.async=true;d.defer=true; e.parentNode.insertBefore(d,e);})();</script>
+		</div>
 
 	</div>
 
@@ -123,8 +125,8 @@
 		<div id="page-footer" class="eight columns">
 
 			<div class="row">
-				<div id="page-meta" class="six columns">Page generated: {{ site.time | date_to_string }}</div>
-				<div id="feeds" class="six columns">
+				<div id="page-meta" class="six mobile-two columns">Page generated: {{ site.time | date_to_string }}</div>
+				<div id="feeds" class="six mobile-two columns">
 					<a href="/feeds/itemsofinterest"><span class="rss-icon"></span> Items of Interest</a> &nbsp;
 					<a href="/posts.xml"><span class="rss-icon"></span> Posts</a>
 				</div>
