@@ -25,6 +25,9 @@ who value transparency, flexibility, and strong UX. Ed also created
 the PHPSecInfo auditing tool and the Inspekt input filtering library
 for PHP.
 
+With his partner Chris Hartjes, Ed records the popular [Development Hell](http://devhell.info) podcast on coding and open source culture.
+
+
 ### CV/Resume ###
 
 You can read my CV on [careers.stackoverflow &#x2192;](http://careers.stackoverflow.com/funkatron)
