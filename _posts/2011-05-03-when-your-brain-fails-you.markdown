@@ -4,7 +4,7 @@ title: "What's wrong with my brain?"
 author: funkatron
 published: true
 categories:
-- General
+- Mental Illness
 date: 2011-05-03
 
 ---
