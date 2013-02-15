@@ -15,7 +15,7 @@ date: 2013-02-15
 
 In June of 2012, we posted [an episode of the Development Hell](http://devhell.info/post/2012-06-18/whack-job-central/) podcast that was a little out of the norm. Instead of focusing on technical issues or open source community stuff, we talked about mental illness: specifically, my ongoing struggles with depression and anxiety.
 
-I had just come from the [tek12 conference](http://tek12.phparch.com/, which was one of my worst conference experiences ever. I had forgotten some of my daily medications, and also ended up getting (physically) ill. The whole experience was a big struggle for me physically and mentally. I ended up going home early because I was deeply uncomfortable and unhappy.
+I had just come from the [tek12 conference](http://tek12.phparch.com/), which was one of my worst conference experiences ever. I had forgotten some of my daily medications, and also ended up getting (physically) ill. The whole experience was a big struggle for me physically and mentally. I ended up going home early because I was deeply uncomfortable and unhappy.
 
 I felt really compelled to talk about it when I was home for a couple days. I wasn't quite sure why, exactly, but I had been carrying this burden for a long, long time, and I was tired and frustrated dealing with it privately. I wanted to explain what it was like for me. I hoped I would feel a little less alone with it. Maybe other folks could learn from it.
 
