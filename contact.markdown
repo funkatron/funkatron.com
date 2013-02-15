@@ -9,9 +9,9 @@ title: Contact Information
 
 <coj@funkatron.com>
 
-### Twitter & Identi.ca ###
+### Twitter & App.net ###
 
-[@funkatron@twitter.com](http://twitter.com/funkatron), [@funkatron@identi.ca](http://identi.ca/funkatron)
+[@funkatron@twitter.com](http://twitter.com/funkatron), [@funkatron@app.net](http://alpha.app.net/funkatron)
 
 ### Github ###
 
