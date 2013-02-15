@@ -3,3 +3,4 @@ _site/
 _drafts/
 _bin/rebuild.sh
 *.sublime-*
+node_modules
