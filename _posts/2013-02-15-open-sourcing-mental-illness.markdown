@@ -13,6 +13,8 @@ date: 2013-02-15
 
 <a href="http://www.flickr.com/photos/funkatron/1584721348/" title="ChicagoArtInstitute-092.jpg by funkatron, on Flickr"><img src="http://farm3.staticflickr.com/2007/1584721348_8618e4f4d8_b.jpg" width="1024" height="684" alt="ChicagoArtInstitute-092.jpg"></a>
 
+***Update:** I talked more about this in [Episode 28 of the Development Hell podcast](http://j.mp/devhellep28)*
+
 In June of 2012, we posted [an episode of the Development Hell](http://devhell.info/post/2012-06-18/whack-job-central/) podcast that was a little out of the norm. Instead of focusing on technical issues or open source community stuff, we talked about mental illness: specifically, my ongoing struggles with depression and anxiety.
 
 I had just come from the [tek12 conference](http://tek12.phparch.com/), which was one of my worst conference experiences ever. I had forgotten some of my daily medications, and also ended up getting (physically) ill. The whole experience was a big struggle for me physically and mentally. I ended up going home early because I was deeply uncomfortable and unhappy.
