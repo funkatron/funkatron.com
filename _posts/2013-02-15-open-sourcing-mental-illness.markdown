@@ -13,7 +13,11 @@ date: 2013-02-15
 
 <a href="http://www.flickr.com/photos/funkatron/1584721348/" title="ChicagoArtInstitute-092.jpg by funkatron, on Flickr"><img src="http://farm3.staticflickr.com/2007/1584721348_8618e4f4d8_b.jpg" width="1024" height="684" alt="ChicagoArtInstitute-092.jpg"></a>
 
+***Update update:** I started [a campaign to fund my travel expenses](http://j.mp/osmigogo) giving this talk at tech confs. The response has been amazing. Thank you!*
+
 ***Update:** I talked more about this in [Episode 28 of the Development Hell podcast](http://j.mp/devhellep28)*
+
+<iframe src="http://www.indiegogo.com/project/368758/widget/2795127" width="224px" height="486px" frameborder="0" scrolling="no" style="margin-left: 1em; float:right"></iframe>
 
 In June of 2012, we posted [an episode of the Development Hell](http://devhell.info/post/2012-06-18/whack-job-central/) podcast that was a little out of the norm. Instead of focusing on technical issues or open source community stuff, we talked about mental illness: specifically, my ongoing struggles with depression and anxiety.
 
