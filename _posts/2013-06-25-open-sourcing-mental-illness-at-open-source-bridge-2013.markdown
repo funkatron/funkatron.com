@@ -6,6 +6,7 @@ published: true
 categories:
 - Mental Illness
 - Open Source
+- Open Sourcing Mental Illness
 date: 2013-06-25
 
 ---

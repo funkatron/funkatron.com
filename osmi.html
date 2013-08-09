@@ -1,0 +1,73 @@
+---
+layout: default
+title: Open Sourcing Mental Illness
+---
+<div class="post">
+  <h1>{{page.title}}</h1>
+
+  <p><a href="/posts/open-sourcing-mental-illness.html"><strong>Open Sourcing Mental Illness</strong></a> is a speaking campaign by Ed Finkler to raise awareness and understanding of mental illness in the developer community.</p>
+
+  <h2>Presentations</h2>
+
+  <h3><a href="https://www.youtube.com/watch?feature=player_embedded&v=QqBl3ICJltc">OSCON 2013</a></h4>
+  <iframe width="597" height="329" src="//www.youtube-nocookie.com/embed/QqBl3ICJltc" frameborder="0" allowfullscreen></iframe>
+  <ul><li><a href="http://j.mp/osmislidesoscon13">Slides</a></li></ul>
+
+  <h3><a href="https://www.youtube.com/watch?feature=player_embedded&v=t0okOTvXfCY">Lone Star PHP 2013</a></h4>
+  <iframe width="597" height="329" src="//www.youtube-nocookie.com/embed/t0okOTvXfCY" frameborder="0" allowfullscreen></iframe>
+  <ul><li><a href="http://j.mp/osmislideslsp13">Slides</a></li></ul>
+
+  <h3><a href="https://www.youtube.com/watch?feature=player_embedded&v=91qp1aAqRjY">Open Source Bridge 2013</a></h4>
+  <iframe width="597" height="329" src="https://www.youtube-nocookie.com/embed/91qp1aAqRjY" frameborder="0" allowfullscreen=""></iframe>
+  <ul><li><a href="http://bit.ly/osmislidesosb13">Slides</a></li></ul>
+
+  <h3>php|tek 13</h3>
+  <div><audio src="http://funkatron-random.s3.amazonaws.com/Open-Sourcing-Mental-Illness_tek13.mp3"/></div>
+  <ul>
+    <li><a href="http://j.mp/osmiaudio">Download MP3</a></li>
+    <li><a href="http://j.mp/osmislides">Slides</a></li>
+  </ul>
+  <p></p>
+
+  <h2>Resources</h2>
+  <ul>
+    <li><a href="http://www.youtube.com/watch?v=NOAgplgTxfc">Robert Sapolsky on Depression</a></li>
+    <li><a href="http://www.newrepublic.com/article/113176/science-loneliness-how-isolation-can-kill-you">Lonliness: How Isolation Can Kill You</a></li>
+    <li><a href="http://helpguide.org/">http://helpguide.org/</a></li>
+    <li><a href="http://www.devpressed.com/">http://www.devpressed.com/</a></li>
+    <li><a href="http://nami.org">http://nami.org</a></li>
+    <li><a href="http://bit.ly/namilocal">http://bit.ly/namilocal</a></li>
+    <li><a href="http://htfd.org">Hope For The Day</a></li>
+    <li><a href="http://www.mentalhealthamerica.net/">http://www.mentalhealthamerica.net/</a></li>
+    <li><a href="http://www.nimh.nih.gov">http://www.nimh.nih.gov</a></li>
+    <li><a href="http://www.patientslikeme.com/">http://www.patientslikeme.com/</a></li>
+    <li><a href="https://www.moodscope.com/">https://www.moodscope.com/</a></li>
+    <li><a href="https://www.superbetter.com/">https://www.superbetter.com/</a></li>
+    <li><a href="http://BlueHackers.org">http://BlueHackers.org</a></li>
+    <li><a href="http://mentalpod.com/">Mental Illness Happy Hour</a> </li>
+    <li><a href="http://mentalpod.com/forum/">http://mentalpod.com/forum/</a></li>
+  </ul>
+  <p></p>
+
+  <h2>Blog Posts</h2>
+  <ul>
+  {% for category in site.categories %}
+    {% if category[0] == "Open Sourcing Mental Illness" %}
+      {% for posts in category %}
+        {% for post in posts %}
+          {% if post.title %}
+              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>
+<script src="/js/audio.min.js"></script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+

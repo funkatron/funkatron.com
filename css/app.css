@@ -251,4 +251,6 @@ div.footnotes li > p {
 a.influads_powered_link {
   color:#666666;
 }
-
+.audiojs .time {
+  font-size:12px;
+}

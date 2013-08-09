@@ -1,8 +1,7 @@
 <?php
-$GOOGLE_FEED_URL = 'http://www.google.com/reader/public/javascript/feed/';
-$ITEMS_FEED_URL  = 'http://funkatron.com/feeds/itemsofinterest';
+$ITEMS_FEED_URL  = 'http://pipes.yahoo.com/pipes/pipe.run?_id=f47255f899136fec61f6ef21c210bf12&_render=json';
 
-$json = file_get_contents("{$GOOGLE_FEED_URL}{$ITEMS_FEED_URL}");
+$json = file_get_contents("{$ITEMS_FEED_URL}");
 
 $feed = json_decode($json, true);
 ?>
@@ -15,7 +14,7 @@ title: Items of Interest
 
 
 <ul class="items">
-	<?php foreach($feed['items'] as $item) : ?>
-	<li><a href="<?=$item['alternate']['href']?>"><?=$item['title']?></a></li>
+	<?php foreach($feed['value']['items'] as $item) : ?>
+	<li><a href="<?=$item['link']?>"><?=$item['title']?></a></li>
 	<?php endforeach; ?>
 </ul>
