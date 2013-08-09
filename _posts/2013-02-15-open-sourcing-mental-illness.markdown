@@ -14,6 +14,10 @@ date: 2013-02-15
 
 <a href="http://www.flickr.com/photos/funkatron/1584721348/" title="ChicagoArtInstitute-092.jpg by funkatron, on Flickr"><img src="http://farm3.staticflickr.com/2007/1584721348_8618e4f4d8_b.jpg" width="1024" height="684" alt="ChicagoArtInstitute-092.jpg"></a>
 
+<div class="highlight" markdown="1">
+***To Learn more about Open Sourcing Mental Illness, [click here](http://funkatron.com/osmi)***
+</div>
+
 ***Update update:** I started [a campaign to fund my travel expenses](http://j.mp/osmigogo) giving this talk at tech confs. The response has been amazing. Thank you!*
 
 ***Update:** I talked more about this in [Episode 28 of the Development Hell podcast](http://j.mp/devhellep28)*

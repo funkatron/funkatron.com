@@ -11,6 +11,11 @@ date: 2013-07-18
 
 ---
 
+<div class="highlight" markdown="1">
+***To Learn more about Open Sourcing Mental Illness, [click here](http://funkatron.com/osmi)***
+</div>
+
+
 <iframe width="597" height="329" src="//www.youtube-nocookie.com/embed/t0okOTvXfCY" frameborder="0" allowfullscreen></iframe>
 
 I've been slow about posting this update -- my apologies!

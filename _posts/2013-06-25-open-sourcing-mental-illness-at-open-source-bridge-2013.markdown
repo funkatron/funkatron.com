@@ -11,6 +11,11 @@ date: 2013-06-25
 
 ---
 
+<div class="highlight" markdown="1">
+***To Learn more about Open Sourcing Mental Illness, [click here](http://funkatron.com/osmi)***
+</div>
+
+
 <iframe width="597" height="329" src="https://www.youtube-nocookie.com/embed/91qp1aAqRjY" frameborder="0" allowfullscreen></iframe>
 
 I was proud to give my Open Sourcing Mental Illness talk at [Open Source Bridge 2013](http://opensourcebridge.org). OSBridge is one of my favorite conferences, and it always has a lot of non-technical stuff going on in addition to mad hackery, so I think my talk was a pretty good fit.

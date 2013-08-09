@@ -126,6 +126,7 @@ div.post .gist {
 div.post .highlight {
   border: 1px solid #cccccc;
   background-color: #eeeeee;
+  padding-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
   margin-top: 1em;
@@ -138,6 +139,13 @@ div.post div.content > p > a > img {
   margin-right: auto;
   max-width: 100%;
 }
+
+div.post div.content  iframe {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
 div.post div.post-meta {
   overflow: auto;
   border-top: 1px solid #e0e0e0;
