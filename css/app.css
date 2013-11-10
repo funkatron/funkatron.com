@@ -268,3 +268,16 @@ a.influads_powered_link {
 .audiojs .time {
   font-size:12px;
 }
+
+div.content.osmi h2, div.content.osmi h3 {
+  margin-top:1.5em;
+}
+
+ul.toc {
+  border-top: 2px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1em 0;
+}
+ul.toc li {
+  margin-left: 2em;
+}
