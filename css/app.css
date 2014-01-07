@@ -54,8 +54,7 @@ hr {
   color: transparent;
   border: none;
   border-top: 1px solid #e0e0e0;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: 1.5em auto;
 }
 #header {
   font-family: "LeagueGothicRegular", "Gill Sans", "Gill Sans MT", "Lucida Sans Unicode", "Lucida Sans", "Helvetica", Arial, sans-serif;
@@ -239,6 +238,9 @@ span.rss-icon {
 div.footnotes {
   font-size: 85%;
   line-height: 1.4em;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #e0e0e0;
 }
 div.footnotes hr {
   height: 1px;
