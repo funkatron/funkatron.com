@@ -8,7 +8,7 @@ categories:
 - webOS
 - Enyo
 - JavaScript
-- open source
+- Open source
 date: 2011-05-16
 
 ---
