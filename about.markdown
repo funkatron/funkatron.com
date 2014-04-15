@@ -5,27 +5,20 @@ title: About
 
 ## {{page.title}} ##
 
-With his 15 years of passionate web development experience and open
-source advocacy, Ed Finkler loves empowering people through
-technology. He's excited about creating things and sharing them with
-the world.
+Ed Finkler, also known as [Funkatron][1], started making web sites before browsers had frames. He does front-end and server-side work in Python, PHP, and JavaScript.
 
-He served as web lead and security researcher at The Center for
-Education and Research in Information Assurance and Security (CERIAS)
-at Purdue University for 9 years. More recently, he has been helping
-startup teams build exciting e-commerce, social sharing, and mapping
-systems. He's a proud member of the [FictiveKin](http://fictivekin.com)
-team, working on [Gimme Bar](https://gimmebar.com) and other projects.
+He served as web lead and security researcher at [The Center for Education and Research in Information Assurance and Security (CERIAS) at Purdue University][2] for 9 years. Now he's a proud member of the [Fictive Kin][3] team. Along with Chris Hartjes, Ed is co-host of the [Development Hell podcast][4].
 
-Ed spends much of his free time creating and working on open source
-projects. He created Spaz, a long-running, award winning
-microblogging client. Built on open technologies like JavaScript,
-HTML5 and CSS, Spaz continues to be the choice of thousands of users
-who value transparency, flexibility, and strong UX. Ed also created
-the PHPSecInfo auditing tool and the Inspekt input filtering library
-for PHP.
+Ed's current passion is raising mental health awareness in the tech community with his [Open Sourcing Mental Illness][5] speaking campaign. He is part of [Engine Yard's Prompt][6] campaign.
 
-With his partner Chris Hartjes, Ed records the popular [Development Hell](http://devhell.info) podcast on coding and open source culture.
+Ed writes at <http://funkatron.com>.
+
+ [1]: https://twitter.com/funkatron
+ [2]: http://www.cerias.purdue.edu
+ [3]: http://fictivekin.com
+ [4]: http://devhell.info
+ [5]: http://funkatron.com/osmi
+ [6]: http://prompt.engineyard.com
 
 
 ### CV/Resume ###
