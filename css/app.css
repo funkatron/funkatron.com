@@ -67,20 +67,26 @@ hr {
   margin-left: -4px;
   padding: 0;
   line-height: 145px;
+  text-transform: uppercase;
 }
 #header h1#title a:link {
+  display:inline-block;
   color: #99000 !important;
 }
 #header h1#title a:hover {
   text-decoration: none !important;
 }
-#header #nav div {
+ul#nav > li {
   text-align: left;
+  font-size: 36px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   list-style: none;
-  font-size: 42px;
-  letter-spacing:3px
+  margin-top:.3em;
+  margin-left: 0;
+  margin-bottom: 0;
 }
-#header #nav a {
+#nav a {
   color: #777777;
   text-decoration: none;
 }
