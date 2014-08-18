@@ -289,3 +289,24 @@ ul.toc {
 ul.toc li {
   margin-left: 2em;
 }
+
+.video-thumb {
+  display:block;
+}
+.video-play-label {
+  font-family: "LeagueGothicRegular", "Gill Sans", "Gill Sans MT", "Lucida Sans Unicode", "Lucida Sans", "Helvetica", Arial, sans-serif;
+  color: #FFF;
+  display: inline;
+  font-size: 3em;
+  right: .5em;
+  margin-top: -1em;
+  text-align: right;
+  text-shadow: 1px 1px 0px #000;
+  position: absolute;
+}
+.video-play-label:hover {
+  text-decoration: none;
+}
+
+
+  
