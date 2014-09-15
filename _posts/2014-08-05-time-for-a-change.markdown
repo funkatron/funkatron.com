@@ -37,5 +37,5 @@ I am at a point where I'm considering new work opportunities. Here's what I'd re
 - I will be maintaining some kind of business/emeritus relationship with my friends and partners at [Fictive Kin](http://fictivekin.com).
 
 ### More info
-* [My resume](http://careers.stackoverflow.com/funkatron)
+* [My resume](http://careers.stackoverflow.com/funkatron) - [PDF Version](http://funkatron.com/media/Ed_Finkler_Resume.pdf)
 * [My GitHub repo](http://github.com/funkatron)

@@ -23,7 +23,7 @@ Ed writes at <http://funkatron.com>.
 
 ### CV/Resume ###
 
-You can read my CV on [careers.stackoverflow &#x2192;](http://careers.stackoverflow.com/funkatron)
+You can read my CV on [careers.stackoverflow &#x2192;](http://careers.stackoverflow.com/funkatron).
 
 
 ### Projects ###
