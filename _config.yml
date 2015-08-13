@@ -1,15 +1,21 @@
 safe:        false
-auto:        false
-server:      false
-server_port: 4000
+port: 4000
 
 source:      .
 destination: ./_site
 plugins:     ./_plugins
+exclude:
+  - ./osmi2/.idea
+  - ./osmi2/.sass-cache
+  - ./osmi2/.bowerrc
+  - ./osmi2/.gitignore
+  - ./osmi2/config.rb
+  - ./osmi2/Gemfile
+  - ./osmi2/Gemfile.lock
 
 future:      false
 lsi:         false
-pygments:    false
+highlighter:    pygments
 markdown:    kramdown
 permalink:   /posts/:title.html
 

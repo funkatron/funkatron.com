@@ -18,7 +18,6 @@ header = <<-END
 layout: post
 title: "#{ARGV[0]}"
 author: funkatron
-tags: "spaz"
 published: true
 categories:
 - General

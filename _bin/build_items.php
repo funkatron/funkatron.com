@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 $ITEMS_FEED_URL  = 'http://pipes.yahoo.com/pipes/pipe.run?_id=f47255f899136fec61f6ef21c210bf12&_render=json';
 
