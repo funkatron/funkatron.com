@@ -1,10 +1,10 @@
 #!/usr/bin/env php
 <?php
-$ITEMS_FEED_URL  = 'http://pipes.yahoo.com/pipes/pipe.run?_id=f47255f899136fec61f6ef21c210bf12&_render=json';
+// $ITEMS_FEED_URL  = 'http://pipes.yahoo.com/pipes/pipe.run?_id=f47255f899136fec61f6ef21c210bf12&_render=json';
 
-$json = file_get_contents("{$ITEMS_FEED_URL}");
+// $json = file_get_contents("{$ITEMS_FEED_URL}");
 
-$feed = json_decode($json, true);
+// $feed = json_decode($json, true);
 ?>
 ---
 layout: page
@@ -13,9 +13,4 @@ title: Items of Interest
 
 <h2>{{page.title}}</h2>
 
-
-<ul class="items">
-	<?php foreach($feed['value']['items'] as $item) : ?>
-	<li><a href="<?=$item['link']?>"><?=$item['title']?></a></li>
-	<?php endforeach; ?>
-</ul>
+<p>coming again soon</p>

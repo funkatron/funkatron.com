@@ -5,20 +5,20 @@ title: About
 
 ## {{page.title}} ##
 
-Ed Finkler, also known as [Funkatron][1], started making web sites before browsers had frames. He does front-end and server-side work in Python, PHP, and JavaScript.
+Ed Finkler, also known as [Funkatron][1], started making web sites before browsers had frames. He does front-end and server-side work in Python, PHP, and JavaScript. He is the Lead Developer and Head of Developer Culture at [Graph Story][6].
 
-He served as web lead and security researcher at [The Center for Education and Research in Information Assurance and Security (CERIAS) at Purdue University][2] for 9 years. Now he's a proud member of the [Fictive Kin][3] team. Along with Chris Hartjes, Ed is co-host of the [Development Hell podcast][4].
+He served as web lead and security researcher at [The Center for Education and Research in Information Assurance and Security (CERIAS) at Purdue University][2] for 9 years, and he's an partner emeritus of [Fictive Kin][3]. Along with Chris Hartjes, Ed is co-host of the [Development Hell podcast][4].
 
-Ed's current passion is raising mental health awareness in the tech community with his [Open Sourcing Mental Illness][5] speaking campaign. He is part of [Engine Yard's Prompt][6] campaign.
+Ed's current passion is raising mental health awareness in the tech community with his [Open Sourcing Mental Illness][5] speaking campaign.
 
-Ed writes at <http://funkatron.com>.
+Ed writes at funkatron.com.
 
  [1]: https://twitter.com/funkatron
  [2]: http://www.cerias.purdue.edu
  [3]: http://fictivekin.com
  [4]: http://devhell.info
  [5]: http://funkatron.com/osmi
- [6]: http://prompt.engineyard.com
+ [6]: http://graphstory.com
 
 
 ### CV/Resume ###
