@@ -16,7 +16,7 @@ date: 2013-05-20
 </div>
 
 
-<a href="http://www.flickr.com/photos/funkatron/1584798852/" title="ChicagoArtInstitute-146.jpg by funkatron, on Flickr"><img src="http://farm3.staticflickr.com/2249/1584798852_c2e41cf1df_b.jpg" width="1024" height="684" alt="ChicagoArtInstitute-146.jpg"></a>
+<a href="http://www.flickr.com/photos/funkatron/1584798852/" title="ChicagoArtInstitute-146.jpg by funkatron, on Flickr"><img src="https://farm3.staticflickr.com/2249/1584798852_c2e41cf1df_b.jpg" width="1024" height="684" alt="ChicagoArtInstitute-146.jpg"></a>
 
 So I gave my ["Open Sourcing Mental Illness"](http://funkatron.com/posts/open-sourcing-mental-illness.html) talk for the first time last week at [tek13](http://tek.phparch.com/). This was exciting, and scary, and overall went well, I think. Here are the slides and audio:
 

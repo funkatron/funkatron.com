@@ -11,7 +11,7 @@ comments: true
 
 ---
 
-<a href="http://www.flickr.com/photos/l_amande/8990574078/" title="Monument of grant privileges of Düsseldorf - Détail by L'amande, on Flickr"><img src="http://farm3.staticflickr.com/2838/8990574078_862ec42259_b.jpg" width="1024" height="683" alt="Monument of grant privileges of Düsseldorf - Détail"></a>
+<a href="http://www.flickr.com/photos/l_amande/8990574078/" title="Monument of grant privileges of Düsseldorf - Détail by L'amande, on Flickr"><img src="https://farm3.staticflickr.com/2838/8990574078_862ec42259_b.jpg" width="1024" height="683" alt="Monument of grant privileges of Düsseldorf - Détail"></a>
 
 *Some off-the-cuff thoughts, originally posted on [Twitter](https://twitter.com/funkatron/status/414037405075664897):*
 

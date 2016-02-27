@@ -12,7 +12,7 @@ date: 2014-02-14
 
 ---
 
-<a href="http://www.flickr.com/photos/rooreynolds/8294378113/" title="Developer developers developers developers! by Roo Reynolds, on Flickr"><img src="http://farm9.staticflickr.com/8351/8294378113_7707143436_o.jpg" width="612" height="612" alt="Developer developers developers developers!"></a>
+<a href="http://www.flickr.com/photos/rooreynolds/8294378113/" title="Developer developers developers developers! by Roo Reynolds, on Flickr"><img src="https://farm9.staticflickr.com/8351/8294378113_7707143436_o.jpg" width="612" height="612" alt="Developer developers developers developers!"></a>
 
 *This was originally posted on [The Pastry Box Project](http://j.mp/greatdev)*
 
