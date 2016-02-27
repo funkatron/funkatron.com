@@ -1,18 +1,16 @@
-safe:        false
+safe: false
 port: 4000
 
 source:      .
 destination: ./_site
-plugins:     ./_plugins
-exclude:
-  - ./osmi2/.idea
-  - ./osmi2/.sass-cache
-  - ./osmi2/.bowerrc
-  - ./osmi2/.gitignore
-  - ./osmi2/config.rb
-  - ./osmi2/Gemfile
-  - ./osmi2/Gemfile.lock
-
+plugins_dir:     ./_plugins
+include:
+  - ./osmi/
+  - ./osmi/bower_components
+  - ./osmi/css
+  - ./osmi/img
+  - ./osmi/js
+  - ./osmi/index.html
 future:      false
 lsi:         false
 highlighter:    pygments
@@ -34,8 +32,8 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  use_coderay: false
-  
+  enable_coderay: false
+
   coderay:
     coderay_wrap: div
     coderay_line_numbers: inline
