@@ -20,7 +20,7 @@ Within a month, my son was in a terrible crisis, and I was let go from my job.
 
 I tried hard to push through. I had often felt my time was split between OSMI and dev work, and after a little bit of consideration, I decided I'd give a run at doing OSMI full-time.
 
-This didn't work. OSMI paid me a salary, but one well below what was a fraction of what I had been making. I tried to supplement that income with some consulting, and I took out a second mortgage to give me some money to work with.
+This didn't work. OSMI paid me a salary, but one well below what I had been making. I tried to supplement that income with some consulting, and I took out a second mortgage to give me some money to work with.
 
 All the while, my son's crisis dragged on. It was incredibly anxiety-inducing, with weeks and months waiting on information and next steps. His mother and I were stuck in limbo, worried about our only son, with nothing to do but wait. Expenses mounted in thousands and tens of thousands of dollars.
 
