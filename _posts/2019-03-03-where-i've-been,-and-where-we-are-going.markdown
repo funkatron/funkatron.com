@@ -56,7 +56,7 @@ So, that's how I spent six days in inpatient care in the middle of September, 20
 
 It helped in some ways, and in some ways it was frustrating. It was not the most pleasant environment, and towards the end of my stay I was advocating strongly for leaving (without going against doctor's advice. My attending pyschiatrist was not helpful in many regards, and gave me bad advice about this).
 
-I think the way it helped the most was that I stopped everything. Carreer, OSMI, friends, family, all of my responsibilities. It all just… stopped. I had nothing to do but take care of myself. I was allowed to do that.
+I think the way it helped the most was that I stopped everything. Career, OSMI, friends, family, all of my responsibilities. It all just… stopped. I had nothing to do but take care of myself. I was allowed to do that.
 
 That was the only thing that would save me.
 
@@ -68,7 +68,7 @@ I started a outpatient group therapy at the same facility. This was, I think, mo
 
 I also talked to a couple more places about jobs. I needed to make money, as much as I wished I could coast more. So I pushed myself to a few interviews, and I had discussions with a local software development company I'd known for a few years. I was still very scared, but I did my best.
 
-That local software company, [DelMar Software Development], seemed like the best choice. and so on the first monday in December, 2017, I started there.
+That local software company, [DelMar Software Development](https://delmarsd.com), seemed like the best choice. and so on the first monday in December, 2017, I started there.
 
 I was so, so scared.
 
